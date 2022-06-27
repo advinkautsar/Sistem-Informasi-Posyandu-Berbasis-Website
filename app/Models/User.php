@@ -23,7 +23,7 @@ class User extends Authenticatable
         'kata_sandi',
         'no_hp',
         'role',
-        'token',
+        'token',  'password'
     ];
 
     public function orangtua()
@@ -59,7 +59,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
+        'password','kata_sandi',
         'remember_token',
     ];
 

@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
         Schema::create('user', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_pengguna')->unique();
-            $table->string('kata_sandi');
+            $table->string('password');
             $table->string("no_hp")->nullable();
             $table->enum('role',['petugas_desa','petugas_puskesmas','bidan','kader','orangtua','dinas_kesehatan','super_admin'])->default('orangtua');
             $table->string('token')->nullable();
@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             'id' =>1,
             'role'=>'bidan',
             'nama_pengguna' =>'Fatimah Zahro',
-            'kata_sandi'=> bcrypt(123456),
+            'password'=> bcrypt(123456),
         ]);
 
          DB::table('user')->insert([
@@ -37,7 +37,7 @@ class CreateUsersTable extends Migration
             'id' =>2,
             'role'=>'kader',
             'nama_pengguna' =>'Melati',
-            'kata_sandi'=> bcrypt(123456),
+            'password'=> bcrypt(123456),
         ]);
 
          DB::table('user')->insert([
@@ -45,7 +45,7 @@ class CreateUsersTable extends Migration
             'id' =>3,
             'role'=>'orangtua',
             'nama_pengguna' =>'Berda',
-            'kata_sandi'=> bcrypt(123),
+            'password'=> bcrypt(123),
         ]);
 
         DB::table('user')->insert([
@@ -53,7 +53,7 @@ class CreateUsersTable extends Migration
             'id' =>4,
             'role'=>'orangtua',
             'nama_pengguna' =>'Irfan Rakha',
-            'kata_sandi'=> bcrypt(123456),
+            'password'=> bcrypt(123456),
         ]);
 
         DB::table('user')->insert([
@@ -61,7 +61,7 @@ class CreateUsersTable extends Migration
             'id' =>5,
             'role'=>'orangtua',
             'nama_pengguna' =>'Reza Wahid',
-            'kata_sandi'=> bcrypt(123456),
+            'password'=> bcrypt(123456),
         ]);
 
         DB::table('user')->insert([
@@ -69,7 +69,7 @@ class CreateUsersTable extends Migration
             'id' =>6,
             'role'=>'orangtua',
             'nama_pengguna' =>'Bondolan',
-            'kata_sandi'=> bcrypt(123),
+            'password'=> bcrypt(123),
         ]);
 
         DB::table('user')->insert([
@@ -77,7 +77,7 @@ class CreateUsersTable extends Migration
             'id' =>7,
             'role'=>'petugas_desa',
             'nama_pengguna' =>'Desa Licin',
-            'kata_sandi'=> bcrypt(123456),
+            'password'=> bcrypt(123456),
         ]);
 
         DB::table('user')->insert([
@@ -85,7 +85,7 @@ class CreateUsersTable extends Migration
             'id' =>8,
             'role'=>'petugas_puskesmas',
             'nama_pengguna' =>'Puskesmas Glagah',
-            'kata_sandi'=> bcrypt(123456),
+            'password'=> bcrypt(123456),
         ]);
 
         DB::table('user')->insert([
@@ -93,7 +93,7 @@ class CreateUsersTable extends Migration
             'id' =>13,
             'role'=>'dinas_kesehatan',
             'nama_pengguna' =>'Dinas Kesehatan',
-            'kata_sandi'=> bcrypt(123456),
+            'password'=> bcrypt(123456),
         ]);
 
         DB::table('user')->insert([
@@ -101,7 +101,7 @@ class CreateUsersTable extends Migration
             'id' =>14,
             'role'=>'super_admin',
             'nama_pengguna' =>'Super Admin',
-            'kata_sandi'=> bcrypt(123456),
+            'password'=> bcrypt(123456),
         ]);
        
     }
