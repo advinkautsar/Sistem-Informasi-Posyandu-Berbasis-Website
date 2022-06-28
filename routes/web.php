@@ -81,3 +81,13 @@ Route::group(['middleware' => ['auth', 'dinas_kesehatan']], function () {
     })->name('dashboard');
 
 });
+
+
+
+Route::get('grafik/bb_pb',[App\Http\Controllers\WEB\GrafikController::class,"bb_pb"]);
+Route::get('grafik/bb_tb',[App\Http\Controllers\WEB\GrafikController::class,"bb_tb"]);
+Route::get('grafik/bb_u',[App\Http\Controllers\WEB\GrafikController::class,"bb_u"]);
+Route::get('grafik/imt_u',[App\Http\Controllers\WEB\GrafikController::class,"imt_u"]);
+Route::get('grafik/lk_u',[App\Http\Controllers\WEB\GrafikController::class,"lk_u"]);
+Route::get('grafik/pb_u',[App\Http\Controllers\WEB\GrafikController::class,"pb_u"]);
+Route::get('grafik/tb_u',[App\Http\Controllers\WEB\GrafikController::class,"tb_u"]);
