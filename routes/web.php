@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\WEB\AuthController;
+use App\Http\Controllers\WEB\SuperAdmin\GrafikAnakController;
+use App\Http\Controllers\WEB\SuperAdmin\RekapitulasiAnakController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,9 +52,8 @@ Route::group(['middleware' => ['auth', 'super_admin']], function () {
         return view('admin.dashboard');
     })->name('dashboard');
 
-    Route::get('admin/rekapitulasi', function () {
-        return view('admin.rekapitulasi');
-    })->name('rekapitulasi');
+    Route::get('admin/rekapitulasi', [RekapitulasiAnakController::class, 'index'])->name('rekapitulasi');
+    Route::get('admin/grafik_anak',[GrafikAnakController::class,'index'])->name('grafik_anak');
 
 
 });

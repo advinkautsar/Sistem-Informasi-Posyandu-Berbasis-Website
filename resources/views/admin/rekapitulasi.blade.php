@@ -1,6 +1,6 @@
 @extends('layouts-admin.master')
 @section('title')
-Rekapitulasi Pertumbuhan Anak
+Rekapitulasi Pertumbuhan Anak Posyandu
 @endsection
 @section('content')
 
@@ -15,9 +15,9 @@ Rekapitulasi Pertumbuhan Anak
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>NIK ANAK</th>
-                        <th>Nama Anak</th>
                         <th>Posyandu</th>
+                        <th>Alamat</th>
+     
                         <th>Laporan 1</th>
                         <th>Laporan 2</th>
                         <th>Laporan 3</th>
@@ -25,10 +25,10 @@ Rekapitulasi Pertumbuhan Anak
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1 </td>
-                        <td>Tiger Nixon</td>
-                        <td> </td>
-                        <td> </td>
+                        @foreach($posyandu as $key => $data)
+                        <td>{{$loop->iteration}} </td>
+                        <td>{{$data->nama_posyandu}}</td>
+                        <td>{{$data->nama}}</td>
 
                         <td>
                             <a href="#" data-toggle="modal" onclick="deleteData()" data-target="#DeleteModal" 
@@ -44,6 +44,7 @@ Rekapitulasi Pertumbuhan Anak
                         </td>
 
                     </tr>
+                    @endforeach
 
 
                 </tbody>

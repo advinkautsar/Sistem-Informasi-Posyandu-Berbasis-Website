@@ -17,17 +17,25 @@
             </div>
             <div class="sidebar-content">
                 <ul>
-                    <li>
-                        <a href="{{url('admin/dashboard')}}" class="link {{ Request::segment(1) === 'super_admin' ? 'active' : null }}">
+                <li class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">
+                        <a href="{{url('admin/dashboard')}}" class="">
                             <i class="ti-home"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
         
-                    <li class="active open">
+                    <li class="{{ request()->is('admin/rekapitulasi') ? 'active' : '' }}">
                         <a href="{{url('admin/rekapitulasi')}}" class="link">
                             <i class="ti-write"></i>
                             <span>Rekapitulasi</span>
+                        </a>
+                       
+                    </li>
+
+                    <li class="{{ request()->is('admin/grafik_anak') ? 'active' : '' }}">
+                        <a href="{{url('admin/grafik_anak')}}" class="link">
+                            <i class="ti-write"></i>
+                            <span>Grafik</span>
                         </a>
                        
                     </li>
