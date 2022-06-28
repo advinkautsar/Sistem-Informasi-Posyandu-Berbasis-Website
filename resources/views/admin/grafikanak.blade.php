@@ -10,29 +10,47 @@ Grafik Anak
             <h4>@yield('title')</h4>
         </div>
         <div class="card-body">
-            <p class="form-text mb-2">Datatables also provide responsive table</p>
+
             <table id="example2" class="table display">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>NIK ANAK</th>
-                        <th>Nama Anak</th>
-                    
-                        <th>Grafik BB_PB</th>
-                       
+                        <th style="text-align:center;">No.</th>
+                        <th style="text-align:center;">NIK ANAK</th>
+                        <th style="text-align:center;">Nama Anak</th>
+                        <th style="text-align:center;">Grafik BB_PB</th>
+                        <th style="text-align:center;">Grafik BB_TB</th>
+                        <th style="text-align:center;">Grafik PB_U</th>
+                        <th style="text-align:center;">Grafik BB_U</th>
+                        <th style="text-align:center;">Grafik TB_U</th>
+                        <th style="text-align:center;">Grafik IMT_U</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($penimbangan as $key => $data)
                     <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$data->nik_anak}}</td>
-                        <td>{{$data->nama_anak}} </td>
-                       
+                        <td style="text-align:center;">{{$loop->iteration}}</td>
+                        <td style="text-align:center;">{{$data->nik_anak}}</td>
+                        <td style="text-align:center;">{{$data->nama_anak}} </td>
 
-                        <td>
-                            <a href="#" data-toggle="modal" onclick="deleteData()" data-target="#DeleteModal" 
-                            class="btn btn-sm btn-success" data-placement="bottom" title="grafik bb menurut pb" style="color: white;"><i class="fa fa-bars"></i></a>
+
+                        <td style="text-align:center;">
+                            <a href="#" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                        </td>
+                        <td style="text-align:center;">
+                            <a href="#" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                        </td>
+                        <td style="text-align:center;">
+                            <a href="#" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                        </td>
+                        <td style="text-align:center;">
+                            <a href="#" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                        </td>
+                        <td style="text-align:center;">
+                            <a href="#" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                        </td>
+                        <td style="text-align:center;">
+                            <a href="#" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
                         </td>
 
                     </tr>
