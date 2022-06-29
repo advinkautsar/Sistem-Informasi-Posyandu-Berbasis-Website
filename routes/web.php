@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\WEB\AuthController;
 
+
 use App\Http\Controllers\WEB\SuperAdmin\Kelola_Pengguna\DinkesController as Kelola_PenggunaDinkesController;
 use App\Http\Controllers\WEB\SuperAdmin\Kelola_Pengguna\PetdesController;
 use App\Http\Controllers\WEB\SuperAdmin\Kelola_Pengguna\PetpusController;
 use App\Http\Controllers\WEB\SuperAdmin\GrafikAnakController;
 use App\Http\Controllers\WEB\SuperAdmin\RekapitulasiAnakController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -88,10 +90,4 @@ Route::group(['middleware' => ['auth', 'dinas_kesehatan']], function () {
 
 
 
-Route::get('grafik/bb_pb',[App\Http\Controllers\WEB\GrafikController::class,"bb_pb"]);
-Route::get('grafik/bb_tb',[App\Http\Controllers\WEB\GrafikController::class,"bb_tb"]);
-Route::get('grafik/bb_u',[App\Http\Controllers\WEB\GrafikController::class,"bb_u"]);
-Route::get('grafik/imt_u',[App\Http\Controllers\WEB\GrafikController::class,"imt_u"]);
-Route::get('grafik/lk_u',[App\Http\Controllers\WEB\GrafikController::class,"lk_u"]);
-Route::get('grafik/pb_u',[App\Http\Controllers\WEB\GrafikController::class,"pb_u"]);
-Route::get('grafik/tb_u',[App\Http\Controllers\WEB\GrafikController::class,"tb_u"]);
+Route::get('grafik/{kode}/{id}',[App\Http\Controllers\WEB\GrafikController::class,"index"]);
