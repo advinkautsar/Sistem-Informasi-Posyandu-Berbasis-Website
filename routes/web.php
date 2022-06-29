@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\WEB\AuthController;
+use App\Http\Controllers\WEB\SuperAdmin\Kelola_Pengguna\DinkesController as Kelola_PenggunaDinkesController;
+use App\Http\Controllers\WEB\SuperAdmin\Kelola_Pengguna\PetdesController;
+use App\Http\Controllers\WEB\SuperAdmin\Kelola_Pengguna\PetpusController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,30 +32,35 @@ Route::get('/', function () {
             return redirect('petugas_puskesmas/dashboard');
         } elseif (auth()->user()->role == "petugas_desa") {
             return redirect('petugas_desa/dashboard');
-        }elseif (auth()->user()->role == "dinas_kesehatan") {
+        } elseif (auth()->user()->role == "dinas_kesehatan") {
             return redirect('dinas_kesehatan/dashboard');
         }
     } else {
         return view('autentikasi.login');
-
-
     }
-
 })->name('login');
-Route::get('logout',[AuthController::class,'logout'])->name('logout');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::post('/login', [AuthController::class, 'postlogin'])->name('postlogin');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'super_admin']], function () {
 
-    Route::GET('admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::GET('admin/data_anak', function () {
+        return view('admin.data_anak');
+    })->name('data_anak');
 
     Route::get('admin/rekapitulasi', function () {
         return view('admin.rekapitulasi');
     })->name('rekapitulasi');
+
+    Route::get('admin/kelola_pengguna/dinkes', function () {
+        return view('admin.kelola_pengguna.dinas_kesehatan.index');
+    })->name('rekapitulasi');
+
+    Route::resource('admin/kelola_pengguna/dinkes', Kelola_PenggunaDinkesController::class);
+    Route::resource('admin/kelola_pengguna/petdes', PetdesController::class);
+    Route::resource('admin/kelola_pengguna/petpus', PetpusController::class);
 
 
 });
@@ -61,22 +69,16 @@ Route::group(['middleware' => ['auth', 'petugas_puskesmas']], function () {
     Route::get('petugas_puskesmas/dashboard', function () {
         return view('petugas_puskesmas.dashboard');
     })->name('dashboard');
-
-
 });
 
 Route::group(['middleware' => ['auth', 'petugas_desa']], function () {
     Route::get('petugas_desa/dashboard', function () {
         return view('petugas_desa.dashboard');
     })->name('dashboard');
-
-
-
 });
 Route::group(['middleware' => ['auth', 'dinas_kesehatan']], function () {
 
     Route::get('dinas_kesehatan/dashboard', function () {
         return view('dinas_kesehatan.dashboard');
     })->name('dashboard');
-
 });

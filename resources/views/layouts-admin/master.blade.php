@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{asset('arfa/vendor/perfect-scrollbar/css/perfect-scrollbar.css')}}">
 
     <!-- CSS for this page only -->
+    @stack('css')
 <link href="{{asset('arfa/vendor/datatables.net-dt/css/jquery.dataTables.min.css')}}" rel="stylesheet" />
 <link href="{{asset('arfa/vendor/datatables.net-responsive-dt/css/responsive.dataTables.min.css')}}" rel="stylesheet" />
     <!-- End CSS  -->
@@ -109,6 +110,7 @@
     <script src="{{asset('arfa/vendor/perfect-scrollbar/dist/perfect-scrollbar.min.js')}}"></script>
 
     <!-- js for this page only -->
+    @stack('js')
 <script src="{{asset('arfa/vendor/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{asset('arfa/vendor/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('arfa/vendor/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
