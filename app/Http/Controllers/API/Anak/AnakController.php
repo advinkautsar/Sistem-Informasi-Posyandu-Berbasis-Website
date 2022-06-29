@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Anak;
 use App\Models\Penimbangan;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 
@@ -110,11 +111,111 @@ class AnakController extends Controller
 
     public function create_timbang(Request $request)
     {
+
+        $usia = DB::table('anak')->where('nik_anak',$request->nik_anak)->first();
+        $usia->umur_bulan = Carbon::parse($usia->tanggal_lahir)->diff(\Carbon\Carbon::now())->format('%m');
+        // return $usia->umur_bulan;
+
+        $i_tb = $request->tinggi_badan;
+
+        // $i=89.9;
+        $status_tb='';
+
+        
+        $tb_u= DB::table('standart_tb_u')->where('umur_bulan',$usia->umur_bulan )->where('jk','laki-laki')->first();
+        if($tb_u){
+            if( ($tb_u->plus_2_sd <= $i_tb) && ($i_tb <= $tb_u->plus_3_sd)){
+                $status_tb ='tinggi';
+            }else if(($tb_u->plus_1_sd <= $i_tb) && ($i_tb <= $tb_u->plus_2_sd)){
+                $status_tb ='normal 1';
+            }elseif(($tb_u->median <= $i_tb) && ($i_tb <= $tb_u->plus_1_sd)){
+                $status_tb = 'normal2';
+            }elseif(($tb_u->min_1_sd <= $i_tb) && ($i_tb <= $tb_u->median)){
+                $status_tb = 'normal3';
+            }
+            elseif(($tb_u->min_2_sd <= $i_tb) && ($i_tb <= $tb_u->min_1_sd)){
+                $status_tb = 'normal4';
+            }
+            elseif(($tb_u->min_3_sd <= $i_tb) && ($i_tb <= $tb_u->min_2_sd)){
+                $status_tb = 'pendek';
+            }else{
+                $status_tb ='sangat pendek';
+            }
+        }else{
+            $status_tb ='data tidak tersedia';
+        }
+        // return $tb_u;
+       
+        // return $status_tb;
+
+
+        $i_bb=$request->berat_badan;
+        $status_bb='';
+        
+        $bb_u= DB::table('standart_bb_u')->where('umur_bulan',$usia->umur_bulan )->where('jk','laki-laki')->first();
+        // return $bb_u;
+        if( ( $i_bb >= $bb_u->plus_3_sd )){
+            $status_bb ='obesitas';
+        }else if(($i_bb >= $bb_u->plus_2_sd) && ($i_bb <= $bb_u->plus_3_sd)){
+            $status_bb ='obesitas0';
+        }elseif(($i_bb >= $bb_u->plus_1_sd) && ($i_bb <= $bb_u->plus_2_sd)){
+            $status_bb = 'gemuk';
+        }elseif(($i_bb >= $bb_u->median) && ($i_bb <= $bb_u->plus_1_sd)){
+            $status_bb = 'normal3';
+        }elseif(($i_bb >= $bb_u->min_1_sd) && ($i_bb <= $bb_u->median)){
+            $status_bb = 'normal2';
+        }elseif(($i_bb >= $bb_u->min_2_sd) && ($i_bb <= $bb_u->min_1_sd)){
+            $status_bb = 'normal1';
+        }
+        elseif(($i_bb >= $bb_u->min_3_sd) && ($i_bb <= $bb_u->min_2_sd)){
+            $status_bb = 'kurus';
+        }else{
+            $status_bb ='sangat kurus';
+        }
+        // return $status_bb;
+
+
+        $i_lk=$request->lingkar_kepala;
+        $status_lk='';
+
+        $lk_u= DB::table('standart_lk_u')->where('umur_bulan',$usia->umur_bulan )->where('jk','laki-laki')->first();
+        if( ($lk_u->plus_2_sd <= $i_lk) && ($i_lk <= $lk_u->plus_3_sd)){
+            $status_lk ='lebih dr normal';
+        }else if(($lk_u->plus_1_sd <= $i_lk) && ($i_lk <= $lk_u->plus_2_sd)){
+            $status_lk ='lebih dr normal';
+        }elseif(($lk_u->median <= $i_lk) && ($i_lk <= $lk_u->plus_1_sd)){
+            $status_lk = 'normal2';
+        }elseif(($lk_u->min_1_sd <= $i_lk) && ($i_lk <= $lk_u->median)){
+            $status_lk = 'normal3';
+        }
+        elseif(($lk_u->min_2_sd <= $i_lk) && ($i_lk <= $lk_u->min_1_sd)){
+            $status_lk = 'normal4';
+        }
+        elseif(($lk_u->min_3_sd <= $i_lk) && ($i_lk <= $lk_u->min_2_sd)){
+            $status_lk ='lingkar kepala kurang dari normal';
+        }else{
+            $status_lk ='lingkar kepala kurang dari normal';
+        }
+        // return $status_lk;
+
+        
+
+      
+
+  
+
+        
         $data_baru = Penimbangan::create([
             'nik_anak'=>$request->nik_anak,
             'berat_badan'=>$request->berat_badan,
             'tinggi_badan'=>$request->tinggi_badan,
             'lingkar_kepala'=>$request->lingkar_kepala,
+            'status_tb_u'=>$status_tb,
+            'status_bb_u'=>$status_bb,
+            'status_lk_u'=>$status_lk,
+          
+            // 'status_bb_tb',
+            // 'status_imt_u',
         ]);
         if ($data_baru) {
             $data = [
