@@ -17,6 +17,9 @@ class GrafikController extends Controller
         ->join("anak", "anak.nik_anak", "=", "penimbangan.nik_anak")
         ->where("penimbangan.id", $id)
         ->first();
+        if(!$penimbangan){
+            return "Data tidak ditemukan";
+        }
         $umur = $this->cekumur($penimbangan->tanggal_lahir);
         $berat_badan = $penimbangan->berat_badan;
         $tinggi_badan = $penimbangan->tinggi_badan;
