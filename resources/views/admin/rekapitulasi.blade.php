@@ -1,6 +1,6 @@
 @extends('layouts-admin.master')
 @section('title')
-Rekapitulasi Pertumbuhan Anak
+Rekapitulasi Pertumbuhan Anak Posyandu
 @endsection
 @section('content')
 
@@ -10,40 +10,41 @@ Rekapitulasi Pertumbuhan Anak
             <h4>@yield('title')</h4>
         </div>
         <div class="card-body">
-            <p class="form-text mb-2">Datatables also provide responsive table</p>
+        
             <table id="example2" class="table display">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>NIK ANAK</th>
-                        <th>Nama Anak</th>
-                        <th>Posyandu</th>
-                        <th>Laporan 1</th>
-                        <th>Laporan 2</th>
-                        <th>Laporan 3</th>
+                        <th style="text-align:center;">No.</th>
+                        <th style="text-align:center;">Posyandu</th>
+                        <th style="text-align:center;">Alamat</th>
+     
+                        <th style="text-align:center;">Lap. Data Balita</th>
+                        <th style="text-align:center;">Lap. Data Bayi</th>
+                        <th style="text-align:center;">Lap. Kegiatan </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1 </td>
-                        <td>Tiger Nixon</td>
-                        <td> </td>
-                        <td> </td>
+                        @foreach($posyandu as $key => $data)
+                        <td style="text-align:center;">{{$loop->iteration}} </td>
+                        <td style="text-align:center;">{{$data->nama_posyandu}}</td>
+                        <td style="text-align:center;">{{$data->nama}}</td>
 
-                        <td>
+                        <td style="text-align:center;">
                             <a href="#" data-toggle="modal" onclick="deleteData()" data-target="#DeleteModal" 
-                            class="btn btn-sm btn-success" data-placement="bottom" title="Laporan2" style="color: white;"><i class="fa fa-print"></i></a>
+                            class="btn btn-sm btn-success" data-placement="bottom" title="Laporan Data Balita Posyandu" style="color: white;"><i class="fas fa-file-excel"></i>
                         </td>
-                        <td>
+                        <td style="text-align:center;">
                             <a href="#" data-toggle="modal" onclick="deleteData()" data-target="#DeleteModal" 
-                            class="btn btn-sm btn-success" data-placement="bottom" title="Laporan2" style="color: white;"><i class="fa fa-print"></i></a>
+                            class="btn btn-sm btn-success" data-placement="bottom" title="Laporan Data Bayi Posyandu" style="color: white;"><i class="fas fa-file-excel"></i>
                         </td>
-                        <td>
+                        <td style="text-align:center;">
                             <a href="#" data-toggle="modal" onclick="deleteData()" data-target="#DeleteModal" 
-                            class="btn btn-sm btn-success" data-placement="bottom" title="Laporan2" style="color: white;"><i class="fa fa-print"></i></a>
+                            class="btn btn-sm btn-success" data-placement="bottom" title="Data Kegiatan Posyandu" style="color: white;"><i class="fas fa-file-excel"></i>
                         </td>
 
                     </tr>
+                    @endforeach
 
 
                 </tbody>

@@ -17,7 +17,18 @@
             </div>
             <div class="sidebar-content">
                 <ul>
+<<<<<<< HEAD
                 <li class="{{ request()->segment(2) === 'rekapitulasi' ? 'active' : '' }}"">
+=======
+                <li class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">
+                        <a href="{{url('admin/dashboard')}}" class="">
+                            <i class="ti-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+        
+                    <li class="{{ request()->is('admin/rekapitulasi') ? 'active' : '' }}">
+>>>>>>> 710290a6a294283a2715c2e8e10a41a5b2d7e51d
                         <a href="{{url('admin/rekapitulasi')}}" class="link">
                             <i class="ti-write"></i>
                             <span>Rekapitulasi</span>
@@ -39,6 +50,14 @@
                             <i class="ti-bar-chart"></i>
                             <span>Data Anak Banyuwangi</span>
                         </a>
+                    </li>
+
+                    <li class="{{ request()->is('admin/grafik_anak') ? 'active' : '' }}">
+                        <a href="{{url('admin/grafik_anak')}}" class="link">
+                            <i class="ti-write"></i>
+                            <span>Grafik</span>
+                        </a>
+                       
                     </li>
                     
                 </ul>
