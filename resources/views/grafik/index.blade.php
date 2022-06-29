@@ -24,6 +24,39 @@
 
     let data = {
         type: 'line',
+        plugins: [{
+  afterDraw: chart => {
+    var ctx = chart.chart.ctx;
+    var xAxis = chart.scales['x-axis-0'];
+    var yAxis = chart.scales['y-axis-0'];
+    // xAxis.ticks.forEach((value, index) => {
+    //   var x = xAxis.getPixelForTick(index);
+    //   var y = yAxis.getPixelForTick(index);
+    //   console.log(x)
+    //   console.log(value);
+    //   var image = new Image();
+    //   image.src = "https://i.stack.imgur.com/2RAv2.png",
+    //     ctx.drawImage(image, x - 12, 400.74912448181936-35);
+    // });
+
+    
+    var datanyaX = xAxis.ticks;
+    var datanyaY = yAxis.ticks;
+    var goalX = setingan.berdasarkanX;
+    var goalY = setingan.berdasarkanY;
+    var cariDataX = datanyaX.reduce(function(prev, curr) {
+        return (Math.abs(curr - goalX) < Math.abs(prev - goalX) ? curr : prev);
+    });
+    var cariDataY = datanyaY.reduce(function(prev, curr) {
+        return (Math.abs(curr - goalY) < Math.abs(prev - goalY) ? curr : prev);
+    });
+    goalX = datanyaX.indexOf(cariDataX);
+    goalY = datanyaY.indexOf(cariDataY);
+    var image = new Image();
+    image.src = "{{asset('/icon')}}/iconbalita.png",
+        ctx.drawImage(image,xAxis.getPixelForTick(goalX)-12 , yAxis.getPixelForTick(goalY) - 35);
+  }
+}],
         data: {
             labels: dataGrafik.label,
             datasets: datasets,
@@ -48,7 +81,7 @@
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: 'Berat Badan (kg)',
+                            labelString: setingan.titleY,
                             fontSize: 14,
                         },
                     },
@@ -74,7 +107,7 @@
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: 'Panjang Badan (cm)',
+                        labelString: setingan.titleX,
                         fontSize: 14,
                     },
 

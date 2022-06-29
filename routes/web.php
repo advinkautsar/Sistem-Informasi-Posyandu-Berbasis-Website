@@ -1,14 +1,14 @@
 <?php
 
 use App\Http\Controllers\WEB\AuthController;
-<<<<<<< HEAD
+// <<<<<<< HEAD
 use App\Http\Controllers\WEB\SuperAdmin\Kelola_Pengguna\DinkesController as Kelola_PenggunaDinkesController;
 use App\Http\Controllers\WEB\SuperAdmin\Kelola_Pengguna\PetdesController;
 use App\Http\Controllers\WEB\SuperAdmin\Kelola_Pengguna\PetpusController;
-=======
+// =======
 use App\Http\Controllers\WEB\SuperAdmin\GrafikAnakController;
 use App\Http\Controllers\WEB\SuperAdmin\RekapitulasiAnakController;
->>>>>>> 710290a6a294283a2715c2e8e10a41a5b2d7e51d
+// >>>>>>> 710290a6a294283a2715c2e8e10a41a5b2d7e51d
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -89,4 +89,4 @@ Route::group(['middleware' => ['auth', 'dinas_kesehatan']], function () {
 
 
 
-Route::get('grafik/{kode}',[App\Http\Controllers\WEB\GrafikController::class,"index"]);
+Route::get('grafik/{kode}/{id}',[App\Http\Controllers\WEB\GrafikController::class,"index"]);
