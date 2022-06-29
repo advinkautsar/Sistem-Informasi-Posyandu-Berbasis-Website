@@ -42,6 +42,10 @@ class HasilKegiatanExport implements  WithEvents
             $sheet->setCellValue('P3', $data->nama_posyandu);
             $sheet->setCellValue('P4', $data->alamat);
 
+            for($i=0; $i<100; $i++){
+                $sheet->setCellValue('A'.($i+19), $i);
+            }
+
 
 
     }

@@ -124,39 +124,39 @@ class GrafikAnakController extends Controller
         // return $status_bb_tb;
 
 
-           $usia = DB::table('anak')->where('nik_anak','3510210102990011')->first();
-        $usia->umur_bulan = Carbon::parse($usia->tanggal_lahir)->diff(\Carbon\Carbon::now())->format('%m');
-        // return $usia->umur_bulan;
+        //    $usia = DB::table('anak')->where('nik_anak','3510210102990011')->first();
+        // $usia->umur_bulan = Carbon::parse($usia->tanggal_lahir)->diff(\Carbon\Carbon::now())->format('%m');
+        // // return $usia->umur_bulan;
 
-        $imt_u = DB::table('standart_imt_u')->where('jk','laki-laki')->where('umur_bulan',$usia->umur_bulan)->first();
-        // return $bb_tb;
+        // $imt_u = DB::table('standart_imt_u')->where('jk','laki-laki')->where('umur_bulan',$usia->umur_bulan)->first();
+        // // return $bb_tb;
 
-        $tinggi = 66.5*100;
+        // $tinggi = 66.5*100;
 
-        $imt_us = 38/($tinggi*$tinggi);
-        $i_imt_u=$imt_us;
+        // $imt_us = 38/($tinggi*$tinggi);
+        // $i_imt_u=$imt_us;
             
       
-        $status_imt_u='';
+        // $status_imt_u='';
 
-        if( ($imt_u->plus_2_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->plus_3_sd)){
-            $status_imt_u ='obesitas';
-        }else if(($imt_u->plus_1_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->plus_2_sd)){
-            $status_imt_u ='obesitas';
-        }elseif(($imt_u->median <= $i_imt_u) && ($i_imt_u <= $imt_u->plus_1_sd)){
-            $status_imt_u = 'normal1';
-        }elseif(($imt_u->min_1_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->median)){
-            $status_imt_u = 'normal2';
-        }
-        elseif(($imt_u->min_2_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->min_1_sd)){
-            $status_imt_u = 'normal3';
-        }
-        elseif(($imt_u->min_3_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->min_2_sd)){
-            $status_imt_u ='kurus';
-        }else{
-            $status_imt_u ='kurus';
-        }
-        return $status_imt_u;
+        // if( ($imt_u->plus_2_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->plus_3_sd)){
+        //     $status_imt_u ='obesitas';
+        // }else if(($imt_u->plus_1_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->plus_2_sd)){
+        //     $status_imt_u ='obesitas';
+        // }elseif(($imt_u->median <= $i_imt_u) && ($i_imt_u <= $imt_u->plus_1_sd)){
+        //     $status_imt_u = 'normal1';
+        // }elseif(($imt_u->min_1_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->median)){
+        //     $status_imt_u = 'normal2';
+        // }
+        // elseif(($imt_u->min_2_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->min_1_sd)){
+        //     $status_imt_u = 'normal3';
+        // }
+        // elseif(($imt_u->min_3_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->min_2_sd)){
+        //     $status_imt_u ='kurus';
+        // }else{
+        //     $status_imt_u ='kurus';
+        // }
+        // return $status_imt_u;
 
       
 
