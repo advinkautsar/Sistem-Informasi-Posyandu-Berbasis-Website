@@ -17,6 +17,9 @@
             </div>
             <div class="sidebar-content">
                 <ul>
+<<<<<<< HEAD
+                <li class="{{ request()->segment(2) === 'rekapitulasi' ? 'active' : '' }}"">
+=======
                 <li class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">
                         <a href="{{url('admin/dashboard')}}" class="">
                             <i class="ti-home"></i>
@@ -25,11 +28,28 @@
                     </li>
         
                     <li class="{{ request()->is('admin/rekapitulasi') ? 'active' : '' }}">
+>>>>>>> 710290a6a294283a2715c2e8e10a41a5b2d7e51d
                         <a href="{{url('admin/rekapitulasi')}}" class="link">
                             <i class="ti-write"></i>
                             <span>Rekapitulasi</span>
                         </a>
-                       
+                    </li>     
+                    <li class="{{ request()->segment(2) === 'kelola_pengguna' ? 'active open' : '' }}">
+                        <a href="" class="main-menu has-dropdown">
+                            <i class="ti-user"></i>
+                            <span>Kelola Data Pengguna</span>
+                        </a>
+                        <ul class="sub-menu {{ request()->segment(2) === 'kelola_pengguna' ? 'expand': '' }} ">
+                            <li class="{{ request()->segment(2) === 'kelola_pengguna' && request()->segment(3) === 'dinkes' ? 'active': '' }}"><a href="{{route('dinkes.index')}}" class="link"><span>Dinas Kesehatan</span></a></li>
+                            <li class="{{ request()->segment(2) === 'kelola_pengguna' && request()->segment(3) === 'petdes' ? 'active': '' }}"><a href="{{route('petdes.index')}}" class="link"><span>Petugas Desa</span></a></li>
+                            <li class="{{ request()->segment(2) === 'kelola_pengguna' && request()->segment(3) === 'petpus' ? 'active': '' }}"><a href="{{route('petpus.index')}}" class="link"><span>Petugas Puskesmas</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="{{ request()->segment(2) === 'data_anak' ? 'active' : '' }}">
+                        <a href="{{url('admin/data_anak')}}" class="link">
+                            <i class="ti-bar-chart"></i>
+                            <span>Data Anak Banyuwangi</span>
+                        </a>
                     </li>
 
                     <li class="{{ request()->is('admin/grafik_anak') ? 'active' : '' }}">
