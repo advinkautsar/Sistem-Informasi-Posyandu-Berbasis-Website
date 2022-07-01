@@ -96,7 +96,7 @@ Data Akun Petugas Dinas Kesehatan
                     </div>
                     <div class="modal-footer text-center">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                        <form action="{{route('dinkes.destroy',$row->id)}}" method='post'>
+                        <form action="" method='post'>
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Hapus</button>

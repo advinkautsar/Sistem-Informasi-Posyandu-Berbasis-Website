@@ -19,8 +19,21 @@
 
 </head>
 
-<body>
-    <section class="container h-100">
+<body class="background_login">
+    <div class="header">
+        <div class="container h-20">
+            <div class="header-body text-center mb-2 mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-xl-5 col-lg-6 col-md-8 px-2">
+                        <img src="https://sit.poliwangi.ac.id/images/logo.svg" class="logo" alt="Politeknik Negeri Banyuwangi">
+                        <h1 class="fw-bold mt-3 text-white" style="font-size: 20px;">Selamat Datang</h1>
+                        <p class="fw-bold mt-2 text-white" style="font-size: 13px;">SISTEM INFORMASI POSYANDU BANYUWANGI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="container">
         <div class="row justify-content-sm-center h-100 align-items-center">
             <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-8">
                 <div class="card shadow-lg">

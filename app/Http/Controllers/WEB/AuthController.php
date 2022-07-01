@@ -18,7 +18,6 @@ class AuthController extends Controller
     {
 
         $input = $request->all();
-
         $rules = [
 
             'nama_pengguna'     => 'required',
@@ -36,8 +35,6 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-
-
 
         if (User::where('nama_pengguna', '=', $input['nama_pengguna'])->first() == true) {
             if (auth()->attempt(array('nama_pengguna' => $input['nama_pengguna'], 'password' => $input['password']))) {
