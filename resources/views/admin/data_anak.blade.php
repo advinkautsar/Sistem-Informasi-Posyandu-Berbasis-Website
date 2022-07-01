@@ -38,6 +38,10 @@ Daftar Riwayat Kesehatan Anak
               
             </table>
         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2203e21aa5d6cc1eb0b0e18b32b6d1b82f765a4c
     </div>
 </div>
 @endsection

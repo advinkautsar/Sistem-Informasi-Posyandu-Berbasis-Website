@@ -35,22 +35,23 @@ Grafik Anak
 
 
                         <td style="text-align:center;">
-                            <a href="#" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                            <a href="{{url('grafik/standart_bb_pb',$data->id)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
                         </td>
                         <td style="text-align:center;">
-                            <a href="#" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                            <a href="{{url('grafik/standart_bb_tb',$data->id)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                        </td>
+                      
+                        <td style="text-align:center;">
+                            <a href="{{url('grafik/standart_pb_u',$data->id)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
                         </td>
                         <td style="text-align:center;">
-                            <a href="#" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                            <a href="{{url('grafik/standart_bb_u',$data->id)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
                         </td>
                         <td style="text-align:center;">
-                            <a href="#" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                            <a href="{{url('grafik/standart_tb_u',$data->id)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
                         </td>
                         <td style="text-align:center;">
-                            <a href="#" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
-                        </td>
-                        <td style="text-align:center;">
-                            <a href="#" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                            <a href="{{url('grafik/standart_imt_u',$data->id)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
                         </td>
 
                     </tr>
