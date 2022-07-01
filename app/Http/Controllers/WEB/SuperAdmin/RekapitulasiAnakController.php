@@ -15,7 +15,9 @@ class RekapitulasiAnakController extends Controller
 {
     //
     public function index(){
-        $posyandu = DB::table('posyandu')->join('desa_kelurahan', 'posyandu.desa_kelurahan_id', '=', 'desa_kelurahan.id')->get();
+        $posyandu = DB::table('posyandu')->join('desa_kelurahan', 'posyandu.desa_kelurahan_id', '=', 'desa_kelurahan.id')
+        ->select("posyandu.*",'desa_kelurahan.nama')
+        ->get();
       
         return view('admin.rekapitulasi',compact('posyandu'));
     }

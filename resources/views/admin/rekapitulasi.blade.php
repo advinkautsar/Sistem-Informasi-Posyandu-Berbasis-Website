@@ -29,10 +29,9 @@ Rekapitulasi Pertumbuhan Anak Posyandu
                         <td style="text-align:center;">{{$loop->iteration}} </td>
                         <td style="text-align:center;">{{$data->nama_posyandu}}</td>
                         <td style="text-align:center;">{{$data->nama}}</td>
-
                         <td style="text-align:center;">
-                            <a href="#" data-toggle="modal" onclick="deleteData()" data-target="#DeleteModal" 
-                            class="btn btn-sm btn-success" data-placement="bottom" title="Laporan Data Balita Posyandu" style="color: white;"><i class="fas fa-file-excel"></i>
+                            <a href="{{url('laporanbalita/'.$data->id)}}" 
+                            class="btn btn-sm btn-success"  style="color: white;"><i class="fas fa-file-excel"></i>
                         </td>
                         <td style="text-align:center;">
                             <a href="#" data-toggle="modal" onclick="deleteData()" data-target="#DeleteModal" 

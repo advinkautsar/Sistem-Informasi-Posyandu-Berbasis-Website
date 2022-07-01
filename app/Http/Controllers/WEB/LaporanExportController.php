@@ -5,7 +5,8 @@ namespace App\Http\Controllers\WEB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Exports\HasilKegiatanExport;
-use App\Models\Anak;
+use App\Exports\RegisterBalitaExport;
+use App\Models\Orangtua;
 use App\Models\Pemeriksaan;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
@@ -23,16 +24,26 @@ class LaporanExportController extends Controller
         $data = DB::table('posyandu')->find($id);
 
         // $data_anak= Anak::where('posyandu_id', $id)->get();
-        $ortu = DB::table('orangtua')->where('posyandu_id', $id)->get();
+        $ortu = Orangtua::where('posyandu_id', $id)->with(['anaks.penimbangans'
+        =>function($q) {
+            $q->select("*",DB::raw('YEAR(created_at) year, MONTH(created_at) bulan'))->get();
+        },
+        'anaks.pemeriksaans'
+        ]
+        )->get();
         $data->orangtua= $ortu;
        
-        foreach($data->orangtua as $row){
-            $anak= DB::table('anak')->where('orangtua_id', $row->id)->get();
-            // $data->orangtua->anak= $anak;
-            $row->anak= $anak;
+        // foreach($data->orangtua as $row){
+        //     $anak= DB::table('anak')->where('orangtua_id', $row->id)->get();
+        //     // $data->orangtua->anak= $anak;
+        //     $row->anak= $anak;
 
-        }
-        return $data->orangtua;
+        // }
+        
+        return Excel::download(new RegisterBalitaExport($id), 'DATA REGISTRASI BALITA.xlsx');
+        // return $data->orangtua;
+
+
         // foreach($data->orangtua->anak as $row){
         //     $pemeriksaan = Pemeriksaan::where('nik_anak', $row->nik_anak)->get();
         //     $row->pemeriksaan= $pemeriksaan;
