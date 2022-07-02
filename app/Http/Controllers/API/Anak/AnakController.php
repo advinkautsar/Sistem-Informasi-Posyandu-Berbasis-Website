@@ -175,31 +175,100 @@ class AnakController extends Controller
         // return $status_bb;
 
 
+
+
         $i_lk=$request->lingkar_kepala;
         $status_lk='';
 
         $lk_u= DB::table('standart_lk_u')->where('umur_bulan',$usia->umur_bulan )->where('jk','laki-laki')->first();
-        if( ($lk_u->plus_2_sd <= $i_lk) && ($i_lk <= $lk_u->plus_3_sd)){
-            $status_lk ='lebih dr normal';
-        }else if(($lk_u->plus_1_sd <= $i_lk) && ($i_lk <= $lk_u->plus_2_sd)){
-            $status_lk ='lebih dr normal';
-        }elseif(($lk_u->median <= $i_lk) && ($i_lk <= $lk_u->plus_1_sd)){
-            $status_lk = 'normal2';
-        }elseif(($lk_u->min_1_sd <= $i_lk) && ($i_lk <= $lk_u->median)){
-            $status_lk = 'normal3';
-        }
-        elseif(($lk_u->min_2_sd <= $i_lk) && ($i_lk <= $lk_u->min_1_sd)){
-            $status_lk = 'normal4';
-        }
-        elseif(($lk_u->min_3_sd <= $i_lk) && ($i_lk <= $lk_u->min_2_sd)){
-            $status_lk ='lingkar kepala kurang dari normal';
+        if($lk_u){
+            if( ($lk_u->plus_2_sd <= $i_lk) && ($i_lk <= $lk_u->plus_3_sd)){
+                $status_lk ='lebih dr normal';
+            }else if(($lk_u->plus_1_sd <= $i_lk) && ($i_lk <= $lk_u->plus_2_sd)){
+                $status_lk ='lebih dr normal';
+            }elseif(($lk_u->median <= $i_lk) && ($i_lk <= $lk_u->plus_1_sd)){
+                $status_lk = 'normal2';
+            }elseif(($lk_u->min_1_sd <= $i_lk) && ($i_lk <= $lk_u->median)){
+                $status_lk = 'normal3';
+            }
+            elseif(($lk_u->min_2_sd <= $i_lk) && ($i_lk <= $lk_u->min_1_sd)){
+                $status_lk = 'normal4';
+            }
+            elseif(($lk_u->min_3_sd <= $i_lk) && ($i_lk <= $lk_u->min_2_sd)){
+                $status_lk ='lingkar kepala kurang dari normal';
+            }else{
+                $status_lk ='lingkar kepala kurang dari normal';
+            }
+            // return $status_lk;
+
         }else{
-            $status_lk ='lingkar kepala kurang dari normal';
+            $status_lk ='data tidak tersedia';
         }
-        // return $status_lk;
+      
 
         
+    $bb_tb = DB::table('standart_bb_tb')->where('jk','laki-laki')->where('tinggi_badan',$request->tinggi_badan)->first();
+        // return $bb_tb;
+        $i_bb_tb=$request->berat_badan;
+        $status_bb_tb='';
 
+        if($bb_tb){
+
+        
+        
+        if( ($bb_tb->plus_2_sd <= $i_bb_tb) && ($i_bb_tb <= $bb_tb->plus_3_sd)){
+            $status_bb_tb ='gemuk';
+        }else if(($bb_tb->plus_1_sd <= $i_bb_tb) && ($i_bb_tb <= $bb_tb->plus_2_sd)){
+            $status_bb_tb ='normal 1';  
+        }elseif(($bb_tb->median <= $i_bb_tb) && ($i_bb_tb <= $bb_tb->plus_1_sd)){
+            $status_bb_tb = 'normal2';
+        }elseif(($bb_tb->min_1_sd <= $i_bb_tb) && ($i_bb_tb <= $bb_tb->median)){
+            $status_bb_tb = 'normal3';
+        }
+        elseif(($bb_tb->min_2_sd <= $i_bb_tb) && ($i_bb_tb <= $bb_tb->min_1_sd)){
+            $status_bb_tb = 'normal4';
+        }
+        elseif(($bb_tb->min_3_sd <= $i_bb_tb) && ($i_bb_tb <= $bb_tb->min_2_sd)){
+            $status_bb_tb ='kurus';
+        }else{
+            $status_bb_tb ='kurus';
+        }
+
+        // return $status_bb_tb;
+    }else{
+        $status_bb_tb ='data tidak tersedia';
+    }
+
+
+          
+        $imt_u = DB::table('standart_imt_u')->where('jk','laki-laki')->where('umur_bulan',$usia->umur_bulan)->first();
+        // return $bb_tb;
+
+        $tinggi = $request->tinggi_badan*100;
+        $imt_us = $request->berat_badan/($tinggi*$tinggi);
+        $i_imt_u=$imt_us;
+        $status_imt_u='';
+
+        if( ($imt_u->plus_2_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->plus_3_sd)){
+            $status_imt_u ='obesitas';
+        }else if(($imt_u->plus_1_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->plus_2_sd)){
+            $status_imt_u ='obesitas';
+        }elseif(($imt_u->median <= $i_imt_u) && ($i_imt_u <= $imt_u->plus_1_sd)){
+            $status_imt_u = 'normal1';
+        }elseif(($imt_u->min_1_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->median)){
+            $status_imt_u = 'normal2';
+        }
+        elseif(($imt_u->min_2_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->min_1_sd)){
+            $status_imt_u = 'normal3';
+        }
+        elseif(($imt_u->min_3_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->min_2_sd)){
+            $status_imt_u ='kurus';
+        }else{
+            $status_imt_u ='kurus';
+        }
+        // return $status_imt_u;
+
+      
       
 
   
@@ -213,6 +282,8 @@ class AnakController extends Controller
             'status_tb_u'=>$status_tb,
             'status_bb_u'=>$status_bb,
             'status_lk_u'=>$status_lk,
+            'status_imt_u'=>$status_imt_u,
+            'status_bb_tb'=>$status_bb_tb,
           
             // 'status_bb_tb',
             // 'status_imt_u',
