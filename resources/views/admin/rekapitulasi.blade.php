@@ -20,7 +20,6 @@ Rekapitulasi Pertumbuhan Anak Posyandu
                         <th style="text-align:center;">No.</th>
                         <th style="text-align:center;">Posyandu</th>
                         <th style="text-align:center;">Alamat</th>
-                        <th style="text-align:center;">Periode Tahun</th>
 
                         <th style="text-align:center;">Lap. Format 2 - Register Bayi</th>
                         <th style="text-align:center;">Lap. Format 3 - Register Balita</th>
