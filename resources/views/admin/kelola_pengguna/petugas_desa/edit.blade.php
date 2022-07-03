@@ -88,7 +88,7 @@ Formulir Edit Akun Petugas Desa
                     </div>
                     <div class="mb-3">
                         <label for="basicInput" class="form-label">Desa / Kelurahan</label>
-                        <select class="form-select" name="desa_kelurahan_id" aria-label="Default select example">
+                        <select class="form-select" name="desa_kelurahan" aria-label="Default select example">
                             @foreach($data_desa as $desa)
                             <option value="{{$desa->id}}" @if($desa->id==$data_user->petugas_desa->desa_kelurahan_id)
                                 selected

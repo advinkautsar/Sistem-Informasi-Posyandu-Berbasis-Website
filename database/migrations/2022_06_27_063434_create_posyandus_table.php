@@ -16,12 +16,15 @@ class CreatePosyandusTable extends Migration
     {
         Schema::create('posyandu', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("desa_kelurahan_id")->unsigned()->nullable();
+            $table->bigInteger("desa_kelurahan_id")->unsigned();
+            $table->bigInteger("puskesmas_id")->unsigned();
             $table->string("nama_posyandu");
             $table->string("alamat");
             $table->string("hari_kegiatan");
             $table->enum('minggu_kegiatan', ['Minggu-1', 'Minggu-2','Minggu-3','Minggu-4']);
             $table->foreign('desa_kelurahan_id')->references('id')->on('desa_kelurahan')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('puskesmas_id')->references('id')->on('desa_kelurahan')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
         DB::table('posyandu')->insert([

@@ -130,7 +130,7 @@ class PetdesController extends Controller
         $update_petdes = $data_petdes->update([
             'nama'=>$request->nama,
             'alamat'=>$request->alamat,
-            'desa_kelurahan_id'=>$request->desa_kelurahan_id,
+            'desa_kelurahan_id'=>$request->desa_kelurahan,
         ]);
 
         

@@ -68,7 +68,7 @@ Formulir Edit Akun Petugas Puskesmas
                         <span class="text-danger">@error('role'){{ $message }} @enderror</span>
                     </div>
 
-                    <h6 class="fw-bold mt-5 ">Data Profil Petugas Desa</h6>
+                    <h6 class="fw-bold mt-5 ">Data Profil Petugas Puskesmas</h6>
 
                     <div class="mb-3">
                         <label for="basicInput" class="form-label">Nama Petugas Puskesmas</label>
