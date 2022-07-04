@@ -97,6 +97,8 @@ class PetdesController extends Controller
         $data_petdes = Petugas_desa::all();
         $data_user = User::find($id);
 
+        // return $data_desa->nama;
+
         return view('admin.kelola_pengguna.petugas_desa.edit', compact('data_desa','data_petdes','data_user'));
     }
 
@@ -128,7 +130,7 @@ class PetdesController extends Controller
         $update_petdes = $data_petdes->update([
             'nama'=>$request->nama,
             'alamat'=>$request->alamat,
-            'desa_kelurahan_id'=>$request->desa_kelurahan_id,
+            'desa_kelurahan_id'=>$request->desa_kelurahan,
         ]);
 
         

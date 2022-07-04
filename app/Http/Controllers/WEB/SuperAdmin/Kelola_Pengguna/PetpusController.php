@@ -62,7 +62,7 @@ class PetpusController extends Controller
         $create_petpus = Petugas_puskesmas::create([
             'nama'=>$request->nama,
             'alamat'=>$request->alamat,
-            'puskesmas_id'=>$request->puskesmas_id,
+            'puskesmas_id'=>$request->puskesmas,
             'user_id'=>$create_akun->id,
         ]);
 
@@ -127,7 +127,7 @@ class PetpusController extends Controller
         $update_petpus = $data_petpus->update([
             'nama'=>$request->nama,
             'alamat'=>$request->alamat,
-            'desa_kelurahan_id'=>$request->desa_kelurahan_id,
+            'puskesmas_id'=>$request->puskesmas_id,
         ]);
 
         
@@ -147,8 +147,10 @@ class PetpusController extends Controller
     public function destroy($id)
     {
         $data_user = User::find($id);
-        $data_user->delete();
         
-        return redirect()->route('petpus.index')->with('succes', 'Akun berhasil di hapus');
+
+        return $data_user;
+        
+        // return redirect()->route('petpus.index')->with('succes', 'Akun berhasil di hapus');
     }
 }

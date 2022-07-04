@@ -26,4 +26,8 @@ class Puskesmas extends Model
     {
     	return $this->belongsTo(Kecamatan::class);
     }
+    public function posyandus()
+    {
+        return $this->hasMany(Posyandu::class);
+    }
 }

@@ -5,22 +5,25 @@ Rekapitulasi Pertumbuhan Anak Posyandu
 @section('content')
 
 <div class="col-md-12">
+    <div class="title fw-bold mt-2 mb-3" style="font-size: 20px;">
+        @yield('title')
+    </div>
     <div class="card">
         <div class="card-header">
-            <h4>@yield('title')</h4>
+            <h4>Data Laporan Pertumbuhan Anak</h4>
         </div>
         <div class="card-body">
-        
+
             <table id="example2" class="table display">
                 <thead>
                     <tr>
                         <th style="text-align:center;">No.</th>
                         <th style="text-align:center;">Posyandu</th>
                         <th style="text-align:center;">Alamat</th>
-     
-                        <th style="text-align:center;">Lap. Data Balita</th>
-                        <th style="text-align:center;">Lap. Data Bayi</th>
-                        <th style="text-align:center;">Lap. Kegiatan </th>
+
+                        <th style="text-align:center;">Lap. Format 2 - Register Bayi</th>
+                        <th style="text-align:center;">Lap. Format 3 - Register Balita</th>
+                        <th style="text-align:center;">Lap. Format 7 - Data Hasil Kegiatan</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,12 +37,10 @@ Rekapitulasi Pertumbuhan Anak Posyandu
                             class="btn btn-sm btn-success"  style="color: white;"><i class="fas fa-file-excel"></i>
                         </td>
                         <td style="text-align:center;">
-                            <a href="#" data-toggle="modal" onclick="deleteData()" data-target="#DeleteModal" 
-                            class="btn btn-sm btn-success" data-placement="bottom" title="Laporan Data Bayi Posyandu" style="color: white;"><i class="fas fa-file-excel"></i>
+                            <a href="#" data-toggle="modal" onclick="deleteData()" data-target="#DeleteModal" class="btn btn-sm btn-success" data-placement="bottom" title="Laporan Data Bayi Posyandu" style="color: white;"><i class="fas fa-file-excel"></i>
                         </td>
                         <td style="text-align:center;">
-                            <a href="#" data-toggle="modal" onclick="deleteData()" data-target="#DeleteModal" 
-                            class="btn btn-sm btn-success" data-placement="bottom" title="Data Kegiatan Posyandu" style="color: white;"><i class="fas fa-file-excel"></i>
+                            <a href="#" data-toggle="modal" onclick="deleteData()" data-target="#DeleteModal" class="btn btn-sm btn-success" data-placement="bottom" title="Data Kegiatan Posyandu" style="color: white;"><i class="fas fa-file-excel"></i>
                         </td>
 
                     </tr>

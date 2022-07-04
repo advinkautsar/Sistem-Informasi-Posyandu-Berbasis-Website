@@ -18,7 +18,6 @@ class AuthController extends Controller
     {
 
         $input = $request->all();
-
         $rules = [
 
             'nama_pengguna'     => 'required',
@@ -37,8 +36,6 @@ class AuthController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-
-
         if (User::where('nama_pengguna', '=', $input['nama_pengguna'])->first() == true) {
             if (auth()->attempt(array('nama_pengguna' => $input['nama_pengguna'], 'password' => $input['password']))) {
             
@@ -48,7 +45,7 @@ class AuthController extends Controller
                         return redirect('/admin/rekapitulasi');
                         break;
                     case 'petugas_puskesmas':
-                        return redirect('/');
+                        return redirect('/petugas_puskesmas/dashboard');
                         break;
                     case 'petugas_desa':
                         return redirect('/');

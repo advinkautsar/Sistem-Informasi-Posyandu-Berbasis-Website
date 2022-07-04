@@ -1,6 +1,6 @@
 @extends('layouts-admin.master')
 @section('title 1')
-Formulir Daftar Akun Petugas Puskesmas
+Formulir Edit Data Bidan
 @endsection
 
 @push('css')
@@ -12,7 +12,7 @@ Formulir Daftar Akun Petugas Puskesmas
 
 <div class="col-md-12">
     <div class="title fw-bold mt-2 mb-3" style="font-size: 20px;">
-        Pengelolaan Data Pengguna
+        Pengelolaan Data Bidan
     </div>
 
     <div class="card">
@@ -28,15 +28,15 @@ Formulir Daftar Akun Petugas Puskesmas
         @endif
 
         <div class="card-body">
-            <h6 class="fw-bold mt-4 ">Data Akun</h6>
-            <form action="{{route('petpus.store')}}" method="POST" aria-label="abdul" data-id="abdul" class="needs-validation" novalidate="" autocomplete="off">
+            <form action="{{route('kelola_bidan.update', $data_bidan->id)}}" method="POST" aria-label="abdul" data-id="abdul" class="needs-validation" novalidate="" autocomplete="off">
 
                 @csrf
+                @method('PUT')
 
                 <div class="col-md-12">
                     <div class="mb-3">
                         <label for="basicInput" class="form-label">Nama Pengguna</label>
-                        <input class="form-control" type="text" placeholder="Masukan nama pengguna" aria-label="default input example" name="nama_pengguna" id="validationCustom01" required autofocus>
+                        <input class="form-control" type="text" placeholder="Masukan nama pengguna" aria-label="default input example" value="{{$data_bidan->nama_pengguna}}" name="nama_pengguna" id="validationCustom01" required autofocus>
 
                         <div class="invalid-feedback">
                             Nama pengguna tidak boleh kosong
@@ -45,55 +45,69 @@ Formulir Daftar Akun Petugas Puskesmas
                     <div class="mb-3">
                         <label for="basicInput" class="form-label">Password</label>
                         <div class="input-group input-group-join mb-3">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan kata sandi" required>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan kata sandi" >
                             <span class="input-group-text rounded-end password cursor-pointer">&nbsp<i class="fa fa-eye"></i>&nbsp</span>
 
-                            <span class="text-danger"></span>
-                            <div class="invalid-feedback">
-                                Kata sandi tidak boleh kosong
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="basicInput" class="form-label">Nomor Handphone</label>
-                        <input class="form-control" type="tel" placeholder="Masukan nomor handphone pengguna" aria-label="default input example" name="no_hp" id="validationCustom01">
+                        <input class="form-control" type="tel" placeholder="Masukan nomor handphone pengguna" aria-label="default input example" value="{{$data_bidan->no_hp}}" name="no_hp" id="validationCustom01">
                     </div>
                     <div class="mb-3">
                         <label for="basicInput" class="form-label">Role</label>
                         <select class="form-select" name="role" aria-label="Default select example">
-                            <option value="petugas_puskesmas" selected>Petugas Puskesmas</option>
+                            <option value="bidan" selected>Bidan</option>
                         </select>
                         <span class="text-danger">@error('role'){{ $message }} @enderror</span>
                     </div>
 
-                    <h6 class="fw-bold mt-5 ">Data Profil Petugas Puskesmas</h6>
+                    <h6 class="fw-bold mt-5 ">Data Profil Bidan</h6>
 
+
+                <div class="col-md-12">
                     <div class="mb-3">
-                        <label for="basicInput" class="form-label">Nama Petugas Puskesmas</label>
-                        <input class="form-control" type="text" placeholder="Masukan nama petugas puskesmas" aria-label="default input example" name="nama" id="validationCustom01" required autofocus>
+                        <label for="basicInput" class="form-label">Nama Bidan</label>
+                        <input class="form-control" type="text" placeholder="Masukan nama bidan" aria-label="default input example" name="nama_bidan" value="{{$data_bidan->nama_bidan}}" id="validationCustom01" required autofocus>
 
                         <div class="invalid-feedback">
-                            Nama Petugas Puskesmas tidak boleh kosong
+                            Nama bidan tidak boleh kosong
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="basicInput" class="form-label">Alamat</label>
-                        <input class="form-control" type="text" placeholder="Masukan alamat petugas puskesmas" aria-label="default input example" name="alamat" id="validationCustom01" required autofocus>
+                        <input class="form-control" type="text" placeholder="Alamat rumah bidan" aria-label="default input example" name="alamat" value="{{$data_bidan->alamat}}" id="validationCustom01" required autofocus>
 
                         <div class="invalid-feedback">
-                            Alamat Petugas Puskesmas tidak boleh kosong
+                            Alamat rumah bidan tidak boleh kosong
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="basicInput" class="form-label">Puskesmas</label>
-                        <select class="form-select" name="puskesmas_id" aria-label="Default select example">
-                            @foreach($data_pus as $pus)
-                            <option value="{{$pus->id}}">{{$pus->nama_puskesmas}}</option>
+                        <label for="basicInput" class="form-label">Posyandu</label>
+                        <select class="form-select" name="posyandu_id" aria-label="Default select example">
+                            @foreach($data_pos as $pos)
+                            <option value="{{$pos->id}}" @if($pos->id==$data_bidan->posyandu_id)
+                                selected
+                                @endif
+                                >{{$pos->nama_posyandu}}</option>
                             @endforeach
                         </select>
                     </div>
 
-                    <a href="{{route('petpus.index')}}" class="btn btn-light btn-sm me-2"><i class="me-2 ti-arrow-left"></i>Kembali</a>
+                    <div class="mb-3">
+                        <label for="basicInput" class="form-label">Berada di wilayah kerja puskesmas</label>
+                        <select class="form-select" name="puskesmas_id" aria-label="Default select example">
+                            @foreach($data_pus as $pus)
+                            <option value="{{$pus->id}}" @if($pus->id==$data_bidan->puskesmas_id)
+                                selected
+                                @endif
+                                >{{$pus->nama_puskesmas}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <a href="{{route('kelola_bidan.index')}}" class="btn btn-light btn-sm me-2"><i class="me-2 ti-arrow-left"></i>Kembali</a>
 
                     <button type="submit" class="btn btn-primary btn-sm">
                         <i class="me-2 ti-save"></i> Simpan

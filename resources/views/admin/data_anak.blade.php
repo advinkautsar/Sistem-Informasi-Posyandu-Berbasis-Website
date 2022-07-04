@@ -1,10 +1,6 @@
 @extends('layouts-admin.master')
 @section('title')
-
 Daftar Riwayat Kesehatan Anak
-
-Dashboard
-
 @endsection
 @section('content')
 
@@ -13,7 +9,6 @@ Dashboard
         <div class="card-header">
             <h4>@yield('title')</h4>
         </div>
-
         <div class="card-body">
             <p class="form-text mb-2">Berikut ini merupakan data riwayat kesehatan anak per desa / kelurahan seluruh banyuwangi</p>
             <table id="example2" class="table display">
@@ -43,7 +38,6 @@ Dashboard
               
             </table>
         </div>
-
     </div>
 </div>
 @endsection
