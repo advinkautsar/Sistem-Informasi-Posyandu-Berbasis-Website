@@ -147,8 +147,10 @@ class PetpusController extends Controller
     public function destroy($id)
     {
         $data_user = User::find($id);
-        $data_user->delete();
         
-        return redirect()->route('petpus.index')->with('succes', 'Akun berhasil di hapus');
+
+        return $data_user;
+        
+        // return redirect()->route('petpus.index')->with('succes', 'Akun berhasil di hapus');
     }
 }

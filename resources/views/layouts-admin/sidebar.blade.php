@@ -52,9 +52,27 @@
 
             @if(auth()->user()->role == 'petugas_puskesmas')
                 <li class="{{ request()->segment(2) === 'kelola_posyandu' ? 'active' : '' }}">
-                    <a href="{{url('petugas_puskesmas/kelola_posyandu')}}" class="link">
+                    <a href="{{route('kelola_posyandu.index')}}" class="link">
                         <i class="ti-bar-chart"></i>
                         <span>Kelola Posyandu</span>
+                    </a>
+                </li>
+                <li class="{{ request()->segment(2) === 'kelola_bidan' ? 'active' : '' }}">
+                    <a href="{{route('kelola_bidan.index')}}" class="link">
+                        <i class="ti-bar-chart"></i>
+                        <span>Kelola Bidan</span>
+                    </a>
+                </li>
+                <li class="{{ request()->segment(2) === 'kelola_kader' ? 'active' : '' }}">
+                    <a href="{{route('kelola_kader.index')}}" class="link">
+                        <i class="ti-bar-chart"></i>
+                        <span>Kelola Kader</span>
+                    </a>
+                </li>
+                <li class="{{ request()->segment(2) === 'kelola_tips_kesehatan' ? 'active' : '' }}">
+                    <a href="#" class="link">
+                        <i class="ti-bar-chart"></i>
+                        <span>Kelola Tips Kesehatan</span>
                     </a>
                 </li>
             @endif

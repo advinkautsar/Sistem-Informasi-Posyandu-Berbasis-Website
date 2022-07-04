@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\WEB\AuthController;
+use App\Http\Controllers\WEB\PetugasPuskesmas\BidanCrudController;
+use App\Http\Controllers\WEB\PetugasPuskesmas\KaderCrudController;
 use App\Http\Controllers\WEB\PetugasPuskesmas\PosyanduCrudController;
 use App\Http\Controllers\WEB\SuperAdmin\Kelola_Pengguna\DinkesController as Kelola_PenggunaDinkesController;
 use App\Http\Controllers\WEB\SuperAdmin\Kelola_Pengguna\PetdesController;
@@ -69,14 +71,24 @@ Route::group(['middleware' => ['auth', 'super_admin']], function () {
 
 });
 
+
+
+
+
 Route::group(['middleware' => ['auth', 'petugas_puskesmas']], function () {
     Route::get('petugas_puskesmas/dashboard', function () {
         return view('petugas_puskesmas.dashboard');
     })->name('dashboard');
 
     Route::resource('petugas_puskesmas/kelola_posyandu', PosyanduCrudController::class);
+    Route::resource('petugas_puskesmas/kelola_bidan', BidanCrudController::class);
+    Route::resource('petugas_puskesmas/kelola_kader', KaderCrudController::class);
 
 });
+
+
+
+
 
 Route::group(['middleware' => ['auth', 'petugas_desa']], function () {
     Route::get('petugas_desa/dashboard', function () {
