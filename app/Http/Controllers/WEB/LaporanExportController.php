@@ -20,6 +20,8 @@ class LaporanExportController extends Controller
 
     public function hasil_laporan_registrasi_balita($id)
     {
+        //check query age of children
+
         // return Excel::download(new HasilKegiatanExport($id), 'DATA HASIL KEGIATAN POSYANDU.xlsx');
         $data = DB::table('posyandu')->find($id);
 
@@ -28,6 +30,7 @@ class LaporanExportController extends Controller
         =>function($q) {
             $q->select("*",DB::raw('YEAR(created_at) year, MONTH(created_at) bulan'))->get();
         },
+  
         'anaks.pemeriksaans'
         ]
         )->get();
@@ -39,6 +42,7 @@ class LaporanExportController extends Controller
         //     $row->anak= $anak;
 
         // }
+      
         
         return Excel::download(new RegisterBalitaExport($id), 'DATA REGISTRASI BALITA.xlsx');
         // return $data->orangtua;

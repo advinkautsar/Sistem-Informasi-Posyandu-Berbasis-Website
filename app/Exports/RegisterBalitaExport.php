@@ -59,6 +59,8 @@ class RegisterBalitaExport implements WithEvents
             $nama_ibu = $Orangtua->nama_ibu;
             if (!$Orangtua->anaks->isEmpty()) {
                 foreach($Orangtua->anaks as $anak){
+                    $umuranak = $this->cekumur($anak->tanggal_lahir);
+                    if($umuranak > 24 && $umuranak<= 60 ){
                     $sheet->setCellValue('A'.$no, $urutan);
                     $sheet->setCellValue('B'.$no, $anak->nama_anak);
                     $sheet->setCellValue('C'.$no, $anak->tanggal_lahir);
@@ -86,6 +88,7 @@ class RegisterBalitaExport implements WithEvents
                     }
                     $no++;
                     $urutan++;
+                }
                 }
                
             }
@@ -135,5 +138,12 @@ class RegisterBalitaExport implements WithEvents
                 return 'G';
                 break;
         }
+    }
+
+    public function cekumur($tanggal_lahir)
+    {
+        $bulan =  \Carbon\Carbon::parse($tanggal_lahir)->diff(\Carbon\Carbon::now())->format('%m');
+        $tahun =  \Carbon\Carbon::parse($tanggal_lahir)->diff(\Carbon\Carbon::now())->format('%y');
+        return $tahun*12+$bulan;
     }
 }
