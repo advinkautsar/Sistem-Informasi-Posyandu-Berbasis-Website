@@ -2,9 +2,7 @@
 
 namespace App\Exports;
 
-
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithCustomStartCell;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\BeforeWriting;
 use Maatwebsite\Excel\Files\LocalTemporaryFile;
@@ -13,9 +11,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Orangtua;
 
 
-class RegisterBalitaExport implements WithEvents
+class RegisterBayiExport implements WithEvents
 {
-    //export per posyandu
     var $id;
     var $request;
     public function __construct($id,$request)
@@ -28,7 +25,7 @@ class RegisterBalitaExport implements WithEvents
 
         return [
             BeforeWriting::class => function (BeforeWriting $event) {
-                $templateFile = new LocalTemporaryFile(public_path('template-excel-laporan/FORMAT 3 - REGISTER BALITA.xlsx'));
+                $templateFile = new LocalTemporaryFile(public_path('template-excel-laporan/FORMAT-2.xlsx'));
                 $event->writer->reopen($templateFile, Excel::XLSX);
                 $sheet = $event->writer->getSheetByIndex(0);
 
@@ -64,33 +61,35 @@ class RegisterBalitaExport implements WithEvents
             if (!$Orangtua->anaks->isEmpty()) {
                 foreach($Orangtua->anaks as $anak){
                     $umuranak = $this->cekumur($anak->tanggal_lahir);
-                    if($umuranak > 24 && $umuranak<= 60 ){
+                    if($umuranak > 0 && $umuranak<= 24 ){
                     $sheet->setCellValue('A'.$no, $urutan);
                     $sheet->setCellValue('B'.$no, $anak->nama_anak);
                     $sheet->setCellValue('C'.$no, $anak->tanggal_lahir);
-                    $sheet->setCellValue('D'.$no,$nama_ayah );
-                    $sheet->setCellValue('E'.$no,$nama_ibu );
+                   
+                    $sheet->setCellValue('E'.$no,$nama_ayah );
+                    $sheet->setCellValue('F'.$no,$nama_ibu );
                     if(!$anak->penimbangans->isEmpty()){
                         foreach($anak->penimbangans as $penimbangan){
                             $sheet->setCellValue($this->selectField($penimbangan->bulan).$no, $penimbangan->berat_badan);
+                            $sheet->setCellValue('D'.$no, $penimbangan->berat_badan);
                         }
                     }
                     if(!$anak->pemeriksaans->isEmpty()){
                         $pemeriksaan = $anak->pemeriksaans->last();
+                    
                         $sheet->setCellValue('W'.$no, $pemeriksaan->PMT);
                         $sheet->setCellValue('X'.$no, $pemeriksaan->oralit);
                         if($pemeriksaan->Fe_1 == 'Ya' && $pemeriksaan->Fe_2 == "Ya" ){
-                            $sheet->setCellValue('S'.$no, 'V');
                             $sheet->setCellValue('T'.$no, 'V');
+                            $sheet->setCellValue('U'.$no, 'V');
                         }
 
                         if($pemeriksaan->vitA_merah == 'Ya' && $pemeriksaan->vitA_biru == "Ya" ){
-                            $sheet->setCellValue('U'.$no, 'V');
                             $sheet->setCellValue('V'.$no, 'V');
+                            $sheet->setCellValue('W'.$no, 'V');
                         }
                         $sheet->setCellValue('X'.$no, $pemeriksaan->oralit);
-                        $sheet->setCellValue('W'.$no, $pemeriksaan->PMT);
-                        
+
                     }
                     $no++;
                     $urutan++;
@@ -105,43 +104,43 @@ class RegisterBalitaExport implements WithEvents
     {
         switch ($month) {
             case 1:
-               return 'G';
+               return 'H';
                 break;
             case 2:
-                return 'H';
-                 break;
-            case 3:
                 return 'I';
                  break;
-            case 4:
+            case 3:
                 return 'J';
                  break;
-            case 5:
+            case 4:
                 return 'K';
                  break;
-            case 6:
+            case 5:
                 return 'L';
                  break;
-            case 7:
+            case 6:
                 return 'M';
                  break;
-            case 8:
+            case 7:
                 return 'N';
                  break;
-            case 9:
+            case 8:
                 return 'O';
                  break;
-            case 10:
+            case 9:
                 return 'P';
                  break;
-            case 11:
+            case 10:
                 return 'Q';
                  break;
-            case 12:
+            case 11:
                 return 'R';
                  break;
+            case 12:
+                return 'S';
+                 break;
             default:
-                return 'G';
+                return 'H';
                 break;
         }
     }
