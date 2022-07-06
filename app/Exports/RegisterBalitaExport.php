@@ -17,9 +17,11 @@ class RegisterBalitaExport implements WithEvents
 {
     //export per posyandu
     var $id;
-    public function __construct($id)
+    var $request;
+    public function __construct($id,$request)
     {
         $this->id = $id;
+        $this->request = $request;
     }
     public function registerEvents(): array
     {
@@ -42,11 +44,13 @@ class RegisterBalitaExport implements WithEvents
     {
 
         $data = DB::table('posyandu')->find($this->id);
+        $filter= $this->request;
 
         $ortu = Orangtua::where('posyandu_id', $this->id)->with(
             ['anaks.penimbangans'
-            => function ($q) {
-                $q->select("*", DB::raw('YEAR(created_at) year, MONTH(created_at) bulan'))->get();
+            => function ($q) use($filter) {
+                $q->select("*", DB::raw('YEAR(created_at) year, MONTH(created_at) bulan'));
+                $q->wherebetween('created_at',[$filter->tanggal.' 00:00:00',$filter->tanggal2.' 23:59:59'])->get();
             }]
         )->get();
 
@@ -84,6 +88,8 @@ class RegisterBalitaExport implements WithEvents
                             $sheet->setCellValue('U'.$no, 'V');
                             $sheet->setCellValue('V'.$no, 'V');
                         }
+                        $sheet->setCellValue('X'.$no, $pemeriksaan->oralit);
+                        $sheet->setCellValue('W'.$no, $pemeriksaan->PMT);
                         
                     }
                     $no++;

@@ -110,6 +110,7 @@
     <script src="{{asset('arfa/vendor/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('arfa/vendor/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('arfa/assets/js/page/datatables.js')}}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- ======= -->
     <script src="{{asset('arfa/assets/js/main.js')}}"></script>
     <script>
