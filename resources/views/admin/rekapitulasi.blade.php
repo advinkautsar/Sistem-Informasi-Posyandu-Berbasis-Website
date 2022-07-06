@@ -20,10 +20,8 @@ Rekapitulasi Pertumbuhan Anak Posyandu
                         <th style="text-align:center;">No.</th>
                         <th style="text-align:center;">Posyandu</th>
                         <th style="text-align:center;">Alamat</th>
-
-                        <th style="text-align:center;">Lap. Format 2 - Register Bayi</th>
                         <th style="text-align:center;">Lap. Format 3 - Register Balita</th>
-                        <th style="text-align:center;">Lap. Format 7 - Data Hasil Kegiatan</th>
+                        <th style="text-align:center;">Lap. Format 2 - Register Bayi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,10 +37,6 @@ Rekapitulasi Pertumbuhan Anak Posyandu
                         <td style="text-align:center;">
                             <a href="#" data-toggle="modal" onclick="deleteData()" data-target="#DeleteModal" class="btn btn-sm btn-success" data-placement="bottom" title="Laporan Data Bayi Posyandu" style="color: white;"><i class="fas fa-file-excel"></i>
                         </td>
-                        <td style="text-align:center;">
-                            <a href="#" data-toggle="modal" onclick="deleteData()" data-target="#DeleteModal" class="btn btn-sm btn-success" data-placement="bottom" title="Data Kegiatan Posyandu" style="color: white;"><i class="fas fa-file-excel"></i>
-                        </td>
-
                     </tr>
                     @endforeach
 
