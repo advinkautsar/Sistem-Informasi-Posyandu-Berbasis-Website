@@ -51,7 +51,9 @@ class LaporanExportController extends Controller
         //check query age of children
 
         // return Excel::download(new HasilKegiatanExport($id), 'DATA HASIL KEGIATAN POSYANDU.xlsx');
-        $data = DB::table('posyandu')->find($id);
+        $data = DB::table('posyandu')->find($this->$id);
+
+        
 
         // $data_anak= Anak::where('posyandu_id', $id)->get();
         $ortu = Orangtua::where('posyandu_id', $id)->with(

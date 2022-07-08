@@ -23,13 +23,14 @@ class CreatePosyandusTable extends Migration
             $table->string("hari_kegiatan");
             $table->enum('minggu_kegiatan', ['Minggu-1', 'Minggu-2','Minggu-3','Minggu-4']);
             $table->foreign('desa_kelurahan_id')->references('id')->on('desa_kelurahan')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('puskesmas_id')->references('id')->on('desa_kelurahan')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('puskesmas_id')->references('id')->on('puskesmas')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });
         DB::table('posyandu')->insert([
             'id' =>1,
             'desa_kelurahan_id'=>'1',
+            'puskesmas_id'=>'1',
             'nama_posyandu' =>'posyandu anggrek 1',         
             'alamat' =>'jl. blimbing 11',        
             'hari_kegiatan' =>'Senin',        
@@ -39,6 +40,7 @@ class CreatePosyandusTable extends Migration
         DB::table('posyandu')->insert([
             'id' =>2,
             'desa_kelurahan_id'=>'1',
+            'puskesmas_id'=>'1',
             'nama_posyandu' =>'posyandu mawar',         
             'alamat' =>'jl. blimbing 11',        
             'hari_kegiatan' =>'Senin',        
@@ -48,6 +50,7 @@ class CreatePosyandusTable extends Migration
         DB::table('posyandu')->insert([
             'id' =>3,
             'desa_kelurahan_id'=>'1',
+            'puskesmas_id'=>'1',
             'nama_posyandu' =>'posyandu rafleshia',         
             'alamat' =>'jl. blimbing 11',        
             'hari_kegiatan' =>'Senin',        
