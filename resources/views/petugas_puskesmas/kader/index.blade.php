@@ -20,7 +20,7 @@ Data Kader di wilayah kerja {{auth()->user()->petugas_puskesmas->puskesmas->nama
             <h4>@yield('title 1')</h4>
         </div>
 
-         @if(Session::get('succes'))
+        @if(Session::get('succes'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ Session::get('succes') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -71,39 +71,26 @@ Data Kader di wilayah kerja {{auth()->user()->petugas_puskesmas->puskesmas->nama
                             <td>{{$row->nama_kader}}</td>
                             <td>{{$row->alamat}}</td>
                             <td>{{$row->nama_posyandu}}</td>
-
-
                             <td>
-                                <a href="{{route('kelola_kader.edit', $row->id)}}" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
-                                <button type="button" class="btn mb-2 btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#verticalCenter"><i class="ti-trash"></i></button>
+
+                                <a href="{{route('kelola_kader.edit', $row->id)}}" class="btn btn-sm mb-2 btn-warning" type="button">
+                                    <i class="ti-pencil"></i>
+                                </a>
+
+                                <form action="{{route('kelola_kader.destroy', $row->id)}}" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-sm mb-2 btn-danger">
+                                        <i class="ti-trash"></i>
+                                    </button>
+                                </form>
+
                             </td>
 
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-            </div>
-        </div>
-
-        <!-- Modal Konfirmasi Hapus -->
-        <div class="modal fade" id="verticalCenter" tabindex="-1" aria-labelledby="verticalCenterLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body text-center">
-                        Apakah anda yakin ingin menghapus akun ini ?
-                    </div>
-                    <div class="modal-footer text-center">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                        <form action="{{route('kelola_kader.destroy', $row->id)}}" method='post'>
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger" type="submit">Hapus</button>
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

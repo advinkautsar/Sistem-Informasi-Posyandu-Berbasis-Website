@@ -49,7 +49,7 @@ Data Bidan di wilayah kerja {{auth()->user()->petugas_puskesmas->puskesmas->nama
         @endif -->
 
         <div class="card-body">
-            <a href="{{route('kelola_bidan.create')}}" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Tambah Akun Petugas</a>
+            <a href="{{route('kelola_bidan.create')}}" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Tambah Akun Bidan Baru</a>
             <p class="form-text mb-2">Berikut ini list data bidan yang bertugas di sekitar wilayah kerja {{auth()->user()->petugas_puskesmas->puskesmas->nama_puskesmas}}
             </p>
 
@@ -75,7 +75,13 @@ Data Bidan di wilayah kerja {{auth()->user()->petugas_puskesmas->puskesmas->nama
 
                             <td>
                                 <a href="{{route('kelola_bidan.edit', $row->id)}}" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
-                                <button type="button" class="btn mb-2 btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#verticalCenter"><i class="ti-trash"></i></button>
+                                <form action="{{route('kelola_bidan.destroy', $row->id)}}" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-sm mb-2 btn-danger">
+                                        <i class="ti-trash"></i>
+                                    </button>
+                                </form>
                             </td>
 
                         </tr>
@@ -85,27 +91,6 @@ Data Bidan di wilayah kerja {{auth()->user()->petugas_puskesmas->puskesmas->nama
             </div>
         </div>
 
-        <!-- Modal Konfirmasi Hapus -->
-        <div class="modal fade" id="verticalCenter" tabindex="-1" aria-labelledby="verticalCenterLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body text-center">
-                        Apakah anda yakin ingin menghapus akun ini ?
-                    </div>
-                    <div class="modal-footer text-center">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                        <form action="{{route('kelola_bidan.destroy', $row->id)}}" method='post'>
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger" type="submit">Hapus</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 </div>

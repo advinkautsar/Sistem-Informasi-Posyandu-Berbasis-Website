@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\WEB\AuthController;
+use App\Http\Controllers\WEB\PetugasDesa\DashboardDesaController;
 use App\Http\Controllers\WEB\PetugasPuskesmas\BidanCrudController;
 use App\Http\Controllers\WEB\PetugasPuskesmas\KaderCrudController;
 use App\Http\Controllers\WEB\PetugasPuskesmas\PosyanduCrudController;
@@ -38,7 +39,7 @@ Route::get('/', function () {
         } elseif (auth()->user()->role == "petugas_puskesmas") {
             return redirect('petugas_puskesmas/dashboard');
         } elseif (auth()->user()->role == "petugas_desa") {
-            return redirect('petugas_desa/dashboard');
+            return redirect('petugas_desa/dashboard_desa');
         } elseif (auth()->user()->role == "dinas_kesehatan") {
             return redirect('dinas_kesehatan/dashboard');
         }
@@ -71,10 +72,6 @@ Route::group(['middleware' => ['auth', 'super_admin']], function () {
 
 });
 
-
-
-
-
 Route::group(['middleware' => ['auth', 'petugas_puskesmas']], function () {
     Route::get('petugas_puskesmas/dashboard', function () {
         return view('petugas_puskesmas.dashboard');
@@ -86,15 +83,15 @@ Route::group(['middleware' => ['auth', 'petugas_puskesmas']], function () {
 
 });
 
-
-
-
-
 Route::group(['middleware' => ['auth', 'petugas_desa']], function () {
-    Route::get('petugas_desa/dashboard', function () {
+    Route::get('petugas_desa/dashboard_desa', function () {
         return view('petugas_desa.dashboard');
     })->name('dashboard');
+
+    Route::resource('petugas_desa/dashboard_desa', DashboardDesaController::class);
+
 });
+
 Route::group(['middleware' => ['auth', 'dinas_kesehatan']], function () {
 
     Route::get('dinas_kesehatan/dashboard', function () {

@@ -19,9 +19,9 @@ class DinkesController extends Controller
     {
         $data_user = DB::table('user')
             ->where('role', 'dinas_kesehatan')
-            ->get();       
+            ->get();
 
-        return view('admin.kelola_pengguna.dinas_kesehatan.index', ['data_user' => $data_user] );
+        return view('admin.kelola_pengguna.dinas_kesehatan.index', ['data_user' => $data_user]);
     }
 
     /**
@@ -57,10 +57,8 @@ class DinkesController extends Controller
         $save = $user->save();
 
         if ($save) {
-            return back()->with('succes', 'Akun pengguna berhasil terdaftar');
-        } else {
-            return back()->with('fail', 'Ups!! ada sesuatu yang bermasalah, coba sesaat lagi !');
-        }
+            return redirect()->route('dinkes.index')->with('succes', 'Akun pengguna berhasil ditambahkan');
+        } 
     }
 
     /**
@@ -82,8 +80,8 @@ class DinkesController extends Controller
      */
     public function edit($id)
     {
-        $data_user = User::find($id);  
-        return view('admin.kelola_pengguna.dinas_kesehatan.edit', ['data_user' => $data_user] );
+        $data_user = User::find($id);
+        return view('admin.kelola_pengguna.dinas_kesehatan.edit', ['data_user' => $data_user]);
     }
 
     /**
@@ -102,12 +100,12 @@ class DinkesController extends Controller
 
         $user = User::find($id);
 
-            $user->nama_pengguna = $request->get('nama_pengguna');
-            $user->password= Hash::make ($request->get('password'));
-            $user->no_hp = $request->get('no_hp');
-            $user->role= $request->get('role');
+        $user->nama_pengguna = $request->get('nama_pengguna');
+        $user->password = Hash::make($request->get('password'));
+        $user->no_hp = $request->get('no_hp');
+        $user->role = $request->get('role');
 
-            $user->save();
+        $user->save();
 
         if ($user) {
             return redirect()->route('dinkes.index')->with('succes', 'Akun pengguna berhasil di ubah');
@@ -127,6 +125,5 @@ class DinkesController extends Controller
         $user = User::find($id);
         $user->delete();
         return redirect()->route('dinkes.index')->with('berhasil', 'Akun pengguna berhasil di hapus');
-
     }
 }

@@ -29,6 +29,8 @@ class KaderCrudController extends Controller
         ->where('puskesmas_id','=', $user_petpus)
         ->get();
 
+        // dd($data_kader);
+
         // return $data_kader;
         return view('petugas_puskesmas.kader.index', compact(['data_kader']));
     }
