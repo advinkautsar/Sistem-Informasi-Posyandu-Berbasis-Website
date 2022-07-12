@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\WEB\AuthController;
 use App\Http\Controllers\WEB\PetugasDesa\DashboardDesaController;
+use App\Http\Controllers\WEB\PetugasDesa\ProfilOrtuCrudController;
 use App\Http\Controllers\WEB\PetugasPuskesmas\BidanCrudController;
 use App\Http\Controllers\WEB\PetugasPuskesmas\KaderCrudController;
 use App\Http\Controllers\WEB\PetugasPuskesmas\PosyanduCrudController;
@@ -89,6 +90,7 @@ Route::group(['middleware' => ['auth', 'petugas_desa']], function () {
     })->name('dashboard');
 
     Route::resource('petugas_desa/dashboard_desa', DashboardDesaController::class);
+    Route::resource('petugas_desa/kelola_ortu', ProfilOrtuCrudController::class);
 
 });
 

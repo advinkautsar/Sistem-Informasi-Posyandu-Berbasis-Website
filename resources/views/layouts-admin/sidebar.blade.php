@@ -85,7 +85,7 @@
                     </a>
                 </li>
                 <li class="{{ request()->segment(2) === 'kelola_ortu' ? 'active' : '' }}">
-                    <a href="#" class="link">
+                    <a href="{{route('kelola_ortu.index')}}" class="link">
                         <i class="ti-id-badge"></i>
                         <span>Kelola Profil Orangtua dan Anak</span>
                     </a>
