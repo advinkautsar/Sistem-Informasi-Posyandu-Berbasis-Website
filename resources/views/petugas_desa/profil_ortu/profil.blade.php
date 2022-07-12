@@ -144,6 +144,8 @@ Data Anak
                         </div>
                         <hr>
 
+                        <a href="{{route('kelola_ortu.index')}}" class="btn btn-light btn-sm me-2"><i class="me-2 ti-arrow-left"></i>Kembali</a>
+
                     </div>                     
                 </div>
 
@@ -158,7 +160,7 @@ Data Anak
                             </div>
 
                             <div class="card-body">
-                                <a href="" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Tambah Data Anak</a>
+                                <!-- <a href="" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Tambah Data Anak</a> -->
                                 <p class="form-text mb-2">Berikut ini merupakan data anak yang dimiliki oleh orangtua terpilih.
                                 </p>
 
@@ -172,7 +174,7 @@ Data Anak
                                                 <th>Jenis Kelamin</th>
                                                 <th>Tanggal lahir</th>
                                                 <th>Status Gizi Terakhir</th>
-                                                <th>Tindakan</th>
+                                                <!-- <th>Tindakan</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -184,8 +186,8 @@ Data Anak
                                                 <td>{{$row->jenis_kelamin}}</td>
                                                 <td>{{$row->tanggal_lahir}}</td>
                                                 <td class="text-center"><span class="badge bg-success ">Gizi Baik</span></td>
-                                                <td>
-                                                    <a href="" class="btn btn-sm mb-2 btn-primary" type="button"><i class="ti-eye"></i></a>
+                                                <!-- <td>
+                                                    <a href="" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
                                                     <form action="" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
                                                         @method('DELETE')
                                                         @csrf
@@ -193,7 +195,7 @@ Data Anak
                                                             <i class="ti-trash"></i>
                                                         </button>
                                                     </form>
-                                                </td>
+                                                </td> -->
 
                                             </tr>
                                             @endforeach

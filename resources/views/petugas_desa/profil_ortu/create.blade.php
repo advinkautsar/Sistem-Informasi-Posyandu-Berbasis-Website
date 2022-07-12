@@ -91,12 +91,12 @@ Formulir Daftar Akun Orangtua Baru
                         <div class="mb-3">
                             <label for="basicInput" class="form-label">Pendidikan Terakhir Ibu</label>
                             <select class="form-select" name="pendidikan_terakhir_ibu" aria-label="Default select example">
-                                <option value="SMA/SMK" >SMA sederajat</option>
-                                <option value="D1" >D1</option>
-                                <option value="D2" >D2</option>
-                                <option value="D3" >D3</option>
-                                <option value="D4/S1" >D4 atau S1</option>
-                                <option value="S2" >S2</option>
+                                <option value="SMA/SMK">SMA sederajat</option>
+                                <option value="D1">D1</option>
+                                <option value="D2">D2</option>
+                                <option value="D3">D3</option>
+                                <option value="D4/S1">D4 atau S1</option>
+                                <option value="S2">S2</option>
                             </select>
                             <span class="text-danger">@error('pendidikan_terakhir_ibu'){{ $message }} @enderror</span>
                         </div>
@@ -119,12 +119,12 @@ Formulir Daftar Akun Orangtua Baru
                         <div class="mb-3">
                             <label for="basicInput" class="form-label">Pendidikan Terakhir Ayah</label>
                             <select class="form-select" name="pendidikan_terakhir_ayah" aria-label="Default select example">
-                                <option value="SMA/SMK" >SMA sederajat</option>
-                                <option value="D1" >D1</option>
-                                <option value="D2" >D2</option>
-                                <option value="D3" >D3</option>
-                                <option value="D4/S1" >D4 atau S1</option>
-                                <option value="S2" >S2</option>
+                                <option value="SMA/SMK">SMA sederajat</option>
+                                <option value="D1">D1</option>
+                                <option value="D2">D2</option>
+                                <option value="D3">D3</option>
+                                <option value="D4/S1">D4 atau S1</option>
+                                <option value="S2">S2</option>
                             </select>
                             <span class="text-danger">@error('pendidikan_terakhir_ibu'){{ $message }} @enderror</span>
                         </div>
@@ -179,7 +179,65 @@ Formulir Daftar Akun Orangtua Baru
                                 @endforeach
                             </select>
                         </div>
-                        
+
+                        <!-- Data Anak -->
+
+                        <h6 class="fw-bold mt-5 ">Data Anak</h6>
+
+                        <div class="mb-3">
+                            <label for="basicInput" class="form-label">NIK Anak</label>
+                            <input class="form-control" type="number" placeholder="ex : 3510210102450005" aria-label="default input example" name="nik_anak" id="validationCustom01" required autofocus>
+
+                            <div class="invalid-feedback">
+                                NIK Anak tidak boleh kosong
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="basicInput" class="form-label">Nama Anak</label>
+                            <input class="form-control" type="text" placeholder="Masukan nama anak" aria-label="default input example" name="nama_anak" id="validationCustom01" required autofocus>
+
+                            <div class="invalid-feedback">
+                                Nama anak tidak boleh kosong
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="basicInput" class="form-label">Jenis Kelamin Anak</label>
+                            <select class="form-select" name="jenis_kelamin" aria-label="Default select example">
+                                <option value="L">Laki - Laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                            <span class="text-danger">@error('jenis_kelamin'){{ $message }} @enderror</span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="basicInput" class="form-label">Tanggal lahir Anak</label>
+                            <input class="form-control" type="date" aria-label="default input example" name="tanggal_lahir" id="validationCustom01" required autofocus>
+
+                            <div class="invalid-feedback">
+                                Tanggal lahir anak tidak boleh kosong
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="basicInput" class="form-label">Berat lahir Anak</label>
+                            <input class="form-control" type="floatval" aria-label="default input example" placeholder="ex : 4,5 ( Dalam Kg )" name="berat_lahir" id="validationCustom01" required autofocus>
+
+                            <div class="invalid-feedback">
+                                Berat lahir anak tidak boleh kosong
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="basicInput" class="form-label">Panjang lahir Anak</label>
+                            <input class="form-control" type="floatval" aria-label="default input example" name="panjang_lahir" placeholder="ex : 10 ( Dalam cm )" id="validationCustom01" required autofocus>
+
+                            <div class="invalid-feedback">
+                                Panjang lahir anak tidak boleh kosong
+                            </div>
+                        </div>
+
 
                         <a href="{{route('kelola_ortu.index')}}" class="btn btn-light btn-sm me-2"><i class="me-2 ti-arrow-left"></i>Kembali</a>
 

@@ -75,6 +75,13 @@ class ProfilOrtuCrudController extends Controller
             'rw'=>'required',
             'posyandu_id' => 'required',
             'desa_kelurahan_id' => 'required',
+            'nama_anak' => 'required',
+            'jenis_kelamin' => 'required',
+            'tanggal_lahir' => 'required',
+            'berat_lahir' => 'required',
+            'panjang_lahir' => 'required',
+            'nik_anak' => 'required',
+
         ]);
 
         $create_akun = User::create([
@@ -101,7 +108,17 @@ class ProfilOrtuCrudController extends Controller
             'user_id'=>$create_akun->id,
         ]);
 
-        if ($create_akun || $create_ortu) {
+        $create_anak = Anak::create([
+            'nik_anak'=>$request->nik_anak,
+            'nama_anak'=>$request->nama_anak,
+            'jenis_kelamin'=>$request->jenis_kelamin,
+            'tanggal_lahir'=>$request->tanggal_lahir,
+            'berat_lahir'=>$request->berat_lahir,
+            'panjang_lahir'=>$request->berat_lahir,
+            'orangtua_id'=>$create_ortu->id,
+        ]);
+
+        if ($create_akun || $create_ortu || $create_anak) {
             return redirect()->route('kelola_ortu.index')->with('succes', 'Data Orangtua Berhasil Terdaftar');
         }
     }
