@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\WEB\AuthController;
 use App\Http\Controllers\WEB\PetugasDesa\DashboardDesaController;
+use App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController;
 use App\Http\Controllers\WEB\PetugasDesa\ProfilOrtuCrudController;
 use App\Http\Controllers\WEB\PetugasPuskesmas\BidanCrudController;
 use App\Http\Controllers\WEB\PetugasPuskesmas\KaderCrudController;
@@ -60,7 +61,7 @@ Route::group(['middleware' => ['auth', 'super_admin']], function () {
     })->name('data_anak');
 
     Route::get('admin/rekapitulasi', [RekapitulasiAnakController::class, 'index'])->name('rekapitulasi');
-    Route::get('admin/grafik_anak',[GrafikAnakController::class,'index'])->name('grafik_anak');
+    Route::get('admin/grafik_anak', [GrafikAnakController::class, 'index'])->name('grafik_anak');
 
     Route::get('admin/kelola_pengguna/dinkes', function () {
         return view('admin.kelola_pengguna.dinas_kesehatan.index');
@@ -69,8 +70,6 @@ Route::group(['middleware' => ['auth', 'super_admin']], function () {
     Route::resource('admin/kelola_pengguna/dinkes', Kelola_PenggunaDinkesController::class);
     Route::resource('admin/kelola_pengguna/petdes', PetdesController::class);
     Route::resource('admin/kelola_pengguna/petpus', PetpusController::class);
-
-
 });
 
 Route::group(['middleware' => ['auth', 'petugas_puskesmas']], function () {
@@ -81,7 +80,6 @@ Route::group(['middleware' => ['auth', 'petugas_puskesmas']], function () {
     Route::resource('petugas_puskesmas/kelola_posyandu', PosyanduCrudController::class);
     Route::resource('petugas_puskesmas/kelola_bidan', BidanCrudController::class);
     Route::resource('petugas_puskesmas/kelola_kader', KaderCrudController::class);
-
 });
 
 Route::group(['middleware' => ['auth', 'petugas_desa']], function () {
@@ -91,8 +89,11 @@ Route::group(['middleware' => ['auth', 'petugas_desa']], function () {
 
     Route::resource('petugas_desa/dashboard_desa', DashboardDesaController::class);
     Route::resource('petugas_desa/kelola_ortu', ProfilOrtuCrudController::class);
-
+    Route::get('petugas_desa/riwayat_pertumbuhan_anak/index', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "index"])->name('indexriwayatpertumbuhan');
+    Route::get('petugas_desa/riwayat_pertumbuhan_anak/index_tambah', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "index_tambah"]);
 });
+    Route::post('petugas_desa/riwayat_pertumbuhan_anak/store_anak', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "store_anak"]);
+
 
 Route::group(['middleware' => ['auth', 'dinas_kesehatan']], function () {
 
@@ -103,7 +104,7 @@ Route::group(['middleware' => ['auth', 'dinas_kesehatan']], function () {
 
 
 
-Route::get('grafik/{kode}/{id}',[App\Http\Controllers\WEB\GrafikController::class,"index"]);
-Route::get("export/hasilkegiatan/{id}",[App\Http\Controllers\WEB\LaporanExportController::class,"hasilkegiatan"]);
-Route::post('laporanbalita/{id}',[App\Http\Controllers\WEB\LaporanExportController::class,"hasil_laporan_registrasi_balita"]);
-Route::post('laporanbayi/{id}',[App\Http\Controllers\WEB\LaporanExportController::class,"hasil_laporan_registrasi_bayi"]);
+Route::get('grafik/{kode}/{id}', [App\Http\Controllers\WEB\GrafikController::class, "index"]);
+Route::get("export/hasilkegiatan/{id}", [App\Http\Controllers\WEB\LaporanExportController::class, "hasilkegiatan"]);
+Route::post('laporanbalita/{id}', [App\Http\Controllers\WEB\LaporanExportController::class, "hasil_laporan_registrasi_balita"]);
+Route::post('laporanbayi/{id}', [App\Http\Controllers\WEB\LaporanExportController::class, "hasil_laporan_registrasi_bayi"]);

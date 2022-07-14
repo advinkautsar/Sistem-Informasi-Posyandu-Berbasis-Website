@@ -91,7 +91,7 @@
                     </a>
                 </li>
                 <li class="{{ request()->segment(2) === 'riwayat_pertumbuhan_anak' ? 'active' : '' }}">
-                    <a href="#" class="link">
+                    <a href="{{url('petugas_desa/riwayat_pertumbuhan_anak/index')}}" class="link">
                         <i class="ti-stats-up"></i>
                         <span>Riwayat Pertumbuhan Anak</span>
                     </a>

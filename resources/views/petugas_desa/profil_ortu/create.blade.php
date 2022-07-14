@@ -222,7 +222,7 @@ Formulir Daftar Akun Orangtua Baru
 
                         <div class="mb-3">
                             <label for="basicInput" class="form-label">Berat lahir Anak</label>
-                            <input class="form-control" type="floatval" aria-label="default input example" placeholder="ex : 4,5 ( Dalam Kg )" name="berat_lahir" id="validationCustom01" required autofocus>
+                            <input class="form-control" type="number" step="any" aria-label="default input example" placeholder="ex : 4,5 ( Dalam Kg )" name="berat_lahir" id="validationCustom01" required autofocus>
 
                             <div class="invalid-feedback">
                                 Berat lahir anak tidak boleh kosong
@@ -231,7 +231,7 @@ Formulir Daftar Akun Orangtua Baru
 
                         <div class="mb-3">
                             <label for="basicInput" class="form-label">Panjang lahir Anak</label>
-                            <input class="form-control" type="floatval" aria-label="default input example" name="panjang_lahir" placeholder="ex : 10 ( Dalam cm )" id="validationCustom01" required autofocus>
+                            <input class="form-control" type="number" step="any" aria-label="default input example" name="panjang_lahir" placeholder="ex : 10 ( Dalam cm )" id="validationCustom01" required autofocus>
 
                             <div class="invalid-feedback">
                                 Panjang lahir anak tidak boleh kosong

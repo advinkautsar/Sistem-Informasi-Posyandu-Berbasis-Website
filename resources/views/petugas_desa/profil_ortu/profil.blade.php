@@ -173,9 +173,7 @@ Data Anak
                                                 <th>Nama Anak</th>
                                                 <th>Jenis Kelamin</th>
                                                 <th>Tanggal lahir</th>
-                                                <th>Status Gizi Terakhir</th>
-                                                <!-- <th>Tindakan</th> -->
-                                            </tr>
+                                                <th>Status Gizi Terakhir</th>                                            </tr>
                                         </thead>
                                         <tbody>
                                             @foreach($data_anak as $i=>$row)
@@ -186,16 +184,7 @@ Data Anak
                                                 <td>{{$row->jenis_kelamin}}</td>
                                                 <td>{{$row->tanggal_lahir}}</td>
                                                 <td class="text-center"><span class="badge bg-success ">Gizi Baik</span></td>
-                                                <!-- <td>
-                                                    <a href="" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
-                                                    <form action="" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button class="btn btn-sm mb-2 btn-danger">
-                                                            <i class="ti-trash"></i>
-                                                        </button>
-                                                    </form>
-                                                </td> -->
+                                                
 
                                             </tr>
                                             @endforeach

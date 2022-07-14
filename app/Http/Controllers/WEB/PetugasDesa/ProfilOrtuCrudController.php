@@ -114,7 +114,7 @@ class ProfilOrtuCrudController extends Controller
             'jenis_kelamin'=>$request->jenis_kelamin,
             'tanggal_lahir'=>$request->tanggal_lahir,
             'berat_lahir'=>$request->berat_lahir,
-            'panjang_lahir'=>$request->berat_lahir,
+            'panjang_lahir'=>$request->panjang_lahir,
             'orangtua_id'=>$create_ortu->id,
         ]);
 
@@ -150,7 +150,7 @@ class ProfilOrtuCrudController extends Controller
         // $data_anak = DB::table('anak')
         // ->where('orangtua_id',$id);
 
-        // return $data_ortu;
+        // return $data_anak;
         return view('petugas_desa.profil_ortu.profil',compact(['data_ortu','data_anak']));
     }
 
@@ -244,4 +244,6 @@ class ProfilOrtuCrudController extends Controller
         $del->delete();
         return redirect()->route('kelola_ortu.index')->with('berhasil', 'Data Orangtua berhasil di hapus');
     }
+
+    
 }
