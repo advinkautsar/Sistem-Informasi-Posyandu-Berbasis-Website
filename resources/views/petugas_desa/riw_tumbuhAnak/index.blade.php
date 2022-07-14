@@ -73,7 +73,7 @@ Data Anak di {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                                 <a href="{{route('riwayat_pemeriksaan',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-primary" type="button"  >Lihat Riwayat</a>
                             </td>
                             <td class="text-center">
-                                <a href="" class=" btn btn-sm mb-2 btn-primary " type="button" >Lihat Riwayat</a>
+                                <a href="{{route('riwayat_penimbangan',$row->nik_anak)}}" class=" btn btn-sm mb-2 btn-primary " type="button" >Lihat Riwayat</a>
                             </td>
                             <td style="text-align:center;">
                                 <a href="" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
