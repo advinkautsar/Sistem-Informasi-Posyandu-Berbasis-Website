@@ -93,6 +93,7 @@ Route::group(['middleware' => ['auth', 'petugas_desa']], function () {
     Route::get('petugas_desa/riwayat_pertumbuhan_anak/index_tambah', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "index_tambah"]);
 });
     Route::post('petugas_desa/riwayat_pertumbuhan_anak/store_anak', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "store_anak"]);
+    Route::get('petugas_desa/riwayat_pertumbuhan_anak/riwayat_pemeriksaan/{id}', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "riwayat_pemeriksaan"])->name('riwayat_pemeriksaan');
 
 
 Route::group(['middleware' => ['auth', 'dinas_kesehatan']], function () {

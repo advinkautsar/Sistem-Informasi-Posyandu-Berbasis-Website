@@ -70,7 +70,7 @@ Data Anak di {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                             <td>{{$row->tanggal_lahir}}</td>
                             <td class="text-center"><span class="badge bg-success ">Gizi Baik</span></td>
                             <td class="text-center">
-                                <a href="" class="btn btn-sm mb-2 btn-primary" type="button"  >Lihat Riwayat</a>
+                                <a href="{{route('riwayat_pemeriksaan',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-primary" type="button"  >Lihat Riwayat</a>
                             </td>
                             <td class="text-center">
                                 <a href="" class=" btn btn-sm mb-2 btn-primary " type="button" >Lihat Riwayat</a>
