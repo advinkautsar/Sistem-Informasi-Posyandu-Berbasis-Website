@@ -26,39 +26,39 @@ Riwayat Penimbangan dan Status Gizi Anak
             </p>
 
             <div class="table-responsive">
-                <table id="example" class="display nowrap" style="width:100%">
+                <table id="example" class="display nowrap">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Nama Anak</th>
-                            <th>Berat Badan</th>
-                            <th>Tinggi Badan</th>
-                            <th>Lingkar Kepala</th>
-                            <!-- <th style="text-align:center;">Status Gizi Indeks PB_U</th> -->
-                            <th style="text-align:center;">Status Gizi Indeks BB_U</th>
-                            <th style="text-align:center;">Status Gizi Indeks TB_U</th>
-                            <th style="text-align:center;">Status Gizi Indeks LK_U</th>
-                            <!-- <th style="text-align:center;">Status Gizi Indeks BB_PB</th> -->
-                            <th style="text-align:center;">Status Gizi Indeks BB_TB</th>
-                            <th style="text-align:center;">Status Gizi Indeks IMT_U</th>
-                            <th>Tanggal Penimbangan</th>
+                            <th style="font-size: 12px;">No.</th>
+                            <th style="font-size: 12px;">Nama Anak</th>
+                            <th style="font-size: 12px; ">Berat Badan</th>
+                            <th style="font-size: 12px;">Tinggi Badan</th>
+                            <th style="font-size: 12px;">Lingkar Kepala</th>
+                            <!-- <th style="text-align:center;">PB_U</th> -->
+                            <th style="text-align:center; font-size: 12px;">BB_U</th>
+                            <th style="text-align:center; font-size: 12px;">TB_U</th>
+                            <th style="text-align:center; font-size: 12px;">LK_U</th>
+                            <!-- <th style="text-align:center;">BB_PB</th> -->
+                            <th style="text-align:center; font-size: 12px;">BB_TB</th>
+                            <th style="text-align:center; font-size: 12px;">IMT_U</th>
+                            <th style="font-size: 12px;">Tanggal Penimbangan</th>
 
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($data_anak as $i=>$row)
                         <tr>
-                            <td class="text-center">{{++$i}}</td>
-                            <td style="text-align:center;">{{$row->nama_anak}}</td>
-                            <td style="text-align:center;">{{$row->berat_badan}}</td>
-                            <td style="text-align:center;">{{$row->tinggi_badan}}</td>
-                            <td style="text-align:center;">{{$row->lingkar_kepala}}</td>
-                            <td style="text-align:center;">{{$row->status_bb_u}}</td>
-                            <td style="text-align:center;">{{$row->status_tb_u}}</td>
-                            <td style="text-align:center;">{{$row->status_lk_u}}</td>
-                            <td style="text-align:center;">{{$row->status_bb_tb}}</td>
-                            <td style="text-align:center;">{{$row->status_imt_u}}</td> 
-                            <td style="text-align:center;">{{\Carbon\Carbon::parse($row->created_at)->format('d M Y')}}</td>        
+                            <td class="text-center" style="font-size: 12px;">{{++$i}}</td>
+                            <td style="text-align:center; font-size: 12px;">{{$row->nama_anak}}</td>
+                            <td style="text-align:center; font-size: 12px;">{{$row->berat_badan}}</td>
+                            <td style="text-align:center; font-size: 12px;">{{$row->tinggi_badan}}</td>
+                            <td style="text-align:center; font-size: 12px;">{{$row->lingkar_kepala}}</td>
+                            <td style="text-align:center; font-size: 12px;">{{$row->status_bb_u}}</td>
+                            <td style="text-align:center; font-size: 12px;">{{$row->status_tb_u}}</td>
+                            <td style="text-align:center; font-size: 12px;">{{$row->status_lk_u}}</td>
+                            <td style="text-align:center; font-size: 12px;">{{$row->status_bb_tb}}</td>
+                            <td style="text-align:center; font-size: 12px;">{{$row->status_imt_u}}</td> 
+                            <td style="text-align:center; font-size: 12px;">{{\Carbon\Carbon::parse($row->created_at)->format('d M Y')}}</td>        
                         </tr>
                         @endforeach
                     </tbody>

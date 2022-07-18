@@ -43,20 +43,20 @@ Data Akun Petugas Puskesmas
                 <table id="example" class="display nowrap" style="width:100%">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Nama Pengguna</th>
-                            <th>Role</th>
-                            <th>No Hp</th>
-                            <th>Tindakan</th>
+                            <th style="font-size: 12px;">No.</th>
+                            <th style="font-size: 12px;">Nama Pengguna</th>
+                            <th style="font-size: 12px;">Role</th>
+                            <th style="font-size: 12px;">No Hp</th>
+                            <th style="font-size: 12px;">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($data_user as $i=>$row)
                         <tr>
-                            <td class="text-center">{{++$i}}</td>
-                            <td>{{$row->nama_pengguna}}</td>
-                            <td>{{$row->role}}</td>
-                            <td>{{$row->no_hp}}</td>
+                            <td class="text-center" style="font-size: 12px;">{{++$i}}</td>
+                            <td style="font-size: 12px;">{{$row->nama_pengguna}}</td>
+                            <td style="font-size: 12px;">{{$row->role}}</td>
+                            <td style="font-size: 12px;">{{$row->no_hp}}</td>
 
                             <td>
                                 <a href="{{route('petpus.edit',$row->id)}}" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>

@@ -57,20 +57,20 @@ Data Kader di wilayah kerja {{auth()->user()->petugas_puskesmas->puskesmas->nama
                 <table id="example" class="display nowrap" style="width:100%">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Nama Kader</th>
-                            <th>Alamat</th>
-                            <th>Posyandu</th>
-                            <th>Tindakan</th>
+                            <th style="font-size: 12px;">No.</th>
+                            <th style="font-size: 12px;">Nama Kader</th>
+                            <th style="font-size: 12px;">Alamat</th>
+                            <th style="font-size: 12px;">Posyandu</th>
+                            <th style="font-size: 12px;">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($data_kader as $i=>$row)
                         <tr>
-                            <td class="text-center">{{++$i}}</td>
-                            <td>{{$row->nama_kader}}</td>
-                            <td>{{$row->alamat}}</td>
-                            <td>{{$row->nama_posyandu}}</td>
+                            <td class="text-center" style="font-size: 12px;">{{++$i}}</td>
+                            <td style="font-size: 12px;">{{$row->nama_kader}}</td>
+                            <td style="font-size: 12px;">{{$row->alamat}}</td>
+                            <td style="font-size: 12px;">{{$row->nama_posyandu}}</td>
                             <td>
 
                                 <a href="{{route('kelola_kader.edit', $row->id)}}" class="btn btn-sm mb-2 btn-warning" type="button">

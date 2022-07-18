@@ -43,24 +43,24 @@ Data Orangtua di  {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                 <table id="example" class="display nowrap" style="width:100%">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Nama Orangtua ( Ibu )</th>
-                            <th>NIK Ibu</th>
-                            <th>Nama Orangtua ( Suami )</th>
-                            <th>NIK Ayah</th>
-                            <th>Alamat Rumah</th>
-                            <th>Tindakan</th>
+                            <th style="font-size: 12px;">No.</th>
+                            <th style="font-size: 12px;">Nama Ibu</th>
+                            <th style="font-size: 12px;">NIK Ibu</th>
+                            <th style="font-size: 12px;">Nama Ayah</th>
+                            <th style="font-size: 12px;">NIK Ayah</th>
+                            <th style="font-size: 12px;">Alamat Rumah</th>
+                            <th style="font-size: 12px;">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($data_ortu as $i=>$row)
                         <tr>
-                            <td class="text-center">{{++$i}}</td>
-                            <td>{{$row->nama_ibu}}</td>
-                            <td>{{$row->nik_ibu}}</td>
-                            <td>{{$row->nama_ayah}}</td>
-                            <td>{{$row->nik_ayah}}</td>
-                            <td>{{$row->alamat}}</td>
+                            <td class="text-center" style="font-size: 12px;">{{++$i}}</td>
+                            <td style="font-size: 12px;">{{$row->nama_ibu}}</td>
+                            <td style="font-size: 12px;">{{$row->nik_ibu}}</td>
+                            <td style="font-size: 12px;">{{$row->nama_ayah}}</td>
+                            <td style="font-size: 12px;">{{$row->nik_ayah}}</td>
+                            <td style="font-size: 12px;">{{$row->alamat}}</td>
                             <td>
                                 <a href="{{route('kelola_ortu.show',$row->id)}}" class="btn btn-sm mb-2 btn-primary" type="button"><i class="ti-eye"></i></a>
                                 <a href="{{route('kelola_ortu.edit',$row->id)}}" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
