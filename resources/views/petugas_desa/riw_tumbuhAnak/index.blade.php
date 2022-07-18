@@ -70,8 +70,8 @@ Data Anak di {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                                 <a href="{{route('riwayat_penimbangan',$row->nik_anak)}}" class=" btn btn-sm mb-2 btn-primary " style="font-size: 12px;" type="button" >Lihat Riwayat</a>
                             </td>
                             <td>
-                                <a href="{{route('kelola_ortu.edit',$row->id)}}" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
-                                <form action="" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
+                                <a href="{{route('show_anak',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
+                                <form action="{{route('del_anak',$row->nik_anak)}}" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
                                     @method('DELETE')
                                     @csrf
                                     <button class="btn btn-sm mb-2 btn-danger">

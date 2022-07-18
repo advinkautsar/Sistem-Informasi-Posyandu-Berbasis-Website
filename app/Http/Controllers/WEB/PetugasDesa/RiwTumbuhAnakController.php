@@ -80,7 +80,7 @@ class RiwTumbuhAnakController extends Controller
                 'bidan.nama_bidan as nama_bidan',
             )
             ->where('anak.nik_anak', $id)
-            ->orderBy('tanggal_pemeriksaan','desc')
+            ->orderBy('tanggal_pemeriksaan', 'desc')
             ->get();
 
         // return $data_anak;
@@ -91,14 +91,58 @@ class RiwTumbuhAnakController extends Controller
     public function riwayat_penimbangan($id)
     {
         $data_anak = DB::table('anak')
-        ->join('penimbangan','penimbangan.nik_anak','anak.nik_anak')
-        ->select('anak.*','penimbangan.*')
-        ->where('anak.nik_anak',$id)
-        ->orderBy('penimbangan.created_at','desc')
-        ->get();
+            ->join('penimbangan', 'penimbangan.nik_anak', 'anak.nik_anak')
+            ->select('anak.*', 'penimbangan.*')
+            ->where('anak.nik_anak', $id)
+            ->orderBy('penimbangan.created_at', 'desc')
+            ->get();
 
         // return $data_anak;
         return view('petugas_desa.riw_tumbuhAnak.riwayat_penimbangan', compact(['data_anak']));
+    }
 
+    public function show_anak($id)
+    {
+        $data_anak = DB::table('anak')
+            ->where('anak.nik_anak', $id)
+            ->first();
+
+        return view('petugas_desa.riw_tumbuhAnak.edit_anak', compact(['data_anak']));
+    }
+
+    public function update_anak(Request $request, $id)
+    {
+        $request->validate([
+            'nama_anak' => 'required',
+            'jenis_kelamin' => 'required',
+            'tanggal_lahir' => 'required',
+            'berat_lahir' => 'required',
+            'panjang_lahir' => 'required',
+            'nik_anak' => 'required',
+        ]);
+
+        $data_anak = Anak::where('nik_anak',$id)->first();
+
+        $update_anak = $data_anak->update([
+            'nik_anak' => $request->nik_anak,
+            'nama_anak' => $request->nama_anak,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'berat_lahir' => $request->berat_lahir,
+            'panjang_lahir' => $request->panjang_lahir,
+        ]);
+
+        if ($update_anak) {
+            return redirect()->route('indexriwayatpertumbuhan')->with('succes', 'Profil Anak berhasil di Perbarui');
+        }
+    }
+
+    public function del_anak($id)
+    {
+        $del = Anak::where('nik_anak',$id);
+
+        $del->delete();
+
+        return redirect()->route('indexriwayatpertumbuhan')->with('succes', 'Data anak berhasil terhapus');
     }
 }

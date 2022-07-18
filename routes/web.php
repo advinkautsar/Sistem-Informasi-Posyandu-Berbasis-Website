@@ -89,13 +89,16 @@ Route::group(['middleware' => ['auth', 'petugas_desa']], function () {
 
     Route::resource('petugas_desa/dashboard_desa', DashboardDesaController::class);
     Route::resource('petugas_desa/kelola_ortu', ProfilOrtuCrudController::class);
+
     Route::get('petugas_desa/riwayat_pertumbuhan_anak/index', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "index"])->name('indexriwayatpertumbuhan');
     Route::get('petugas_desa/riwayat_pertumbuhan_anak/index_tambah', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "index_tambah"]);
 });
     Route::post('petugas_desa/riwayat_pertumbuhan_anak/store_anak', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "store_anak"]);
     Route::get('petugas_desa/riwayat_pertumbuhan_anak/riwayat_pemeriksaan/{id}', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "riwayat_pemeriksaan"])->name('riwayat_pemeriksaan');
     Route::get('petugas_desa/riwayat_pertumbuhan_anak/riwayat_penimbangan/{id}', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "riwayat_penimbangan"])->name('riwayat_penimbangan');
-
+    Route::get('petugas_desa/riwayat_pertumbuhan_anak/show_anak/{id}', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "show_anak"])->name('show_anak');
+    Route::put('petugas_desa/riwayat_pertumbuhan_anak/update/{id}', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "update_anak"])->name('update_anak');
+    Route::delete('petugas_desa/riwayat_pertumbuhan_anak/delete/{id}', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "del_anak"])->name('del_anak');
 
 Route::group(['middleware' => ['auth', 'dinas_kesehatan']], function () {
 
