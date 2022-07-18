@@ -15,9 +15,11 @@ class Penimbangan extends Model
         'tinggi_badan',
         'lingkar_kepala',
         'status_bb_u',
+        'status_pb_u',
         'status_tb_u',
         'status_lk_u',
         'status_bb_tb',
+        'status_bb_pb',
         'status_imt_u',
     ];
 

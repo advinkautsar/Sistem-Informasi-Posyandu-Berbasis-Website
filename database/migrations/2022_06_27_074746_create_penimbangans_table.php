@@ -21,9 +21,11 @@ class CreatePenimbangansTable extends Migration
             $table->float("tinggi_badan");
             $table->float("lingkar_kepala");
             $table->string("status_bb_u")->nullable();
+            $table->string("status_pb_u")->nullable();
             $table->string("status_tb_u")->nullable();
             $table->string("status_lk_u")->nullable();
             $table->string("status_bb_tb")->nullable();
+            $table->string("status_bb_pb")->nullable();
             $table->string("status_imt_u")->nullable();
             $table->foreign('nik_anak')->references('nik_anak')->on('anak')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
