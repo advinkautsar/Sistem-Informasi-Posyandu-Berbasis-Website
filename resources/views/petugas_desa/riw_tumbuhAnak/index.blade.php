@@ -51,13 +51,7 @@ Data Anak di {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                             <th style="font-size: 12px;">Status Gizi Terakhir</th>
                             <th style="font-size: 12px;">Riwayat Pemeriksaan</th>
                             <th style="font-size: 12px;">Riwayat Penimbangan</th>
-                            <th style="text-align:center; font-size: 12px;">Grafik BB_PB</th>
-                            <th style="text-align:center;font-size: 12px;">Grafik BB_TB</th>
-                            <th style="text-align:center;font-size: 12px;">Grafik PB_U</th>
-                            <th style="text-align:center;font-size: 12px;">Grafik BB_U</th>
-                            <th style="text-align:center;font-size: 12px;">Grafik TB_U</th>
-                            <th style="text-align:center;font-size: 12px;">Grafik LK_U</th>
-                            <th style="text-align:center;font-size: 12px;">Grafik IMT_U</th>
+                            <th style="font-size: 12px;">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,27 +69,15 @@ Data Anak di {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                             <td class="text-center" style="font-size: 12px;">
                                 <a href="{{route('riwayat_penimbangan',$row->nik_anak)}}" class=" btn btn-sm mb-2 btn-primary " style="font-size: 12px;" type="button" >Lihat Riwayat</a>
                             </td>
-                            <td style="text-align:center;" style="font-size: 12px;">
-                                <a href="" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
-                            </td>
-                            <td style="text-align:center;" style="font-size: 12px;">
-                                <a href="" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
-                            </td>
-
-                            <td style="text-align:center;" style="font-size: 12px;">
-                                <a href="" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
-                            </td>
-                            <td style="text-align:center;" style="font-size: 12px;">
-                                <a href="" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
-                            </td>
-                            <td style="text-align:center;" style="font-size: 12px;">
-                                <a href="" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
-                            </td>
-                            <td style="text-align:center;" style="font-size: 12px;">
-                                <a href="" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
-                            </td>
-                            <td style="text-align:center;" style="font-size: 12px;">
-                                <a href="" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                            <td>
+                                <a href="{{route('kelola_ortu.edit',$row->id)}}" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
+                                <form action="" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-sm mb-2 btn-danger">
+                                        <i class="ti-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
