@@ -57,24 +57,24 @@ Data Posyandu Wilayah {{auth()->user()->petugas_puskesmas->puskesmas->nama_puske
                 <table id="example" class="display nowrap" style="width:100%">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Nama Posyandu</th>
-                            <th>Alamat</th>
-                            <th>Kelurahan / Desa</th>
-                            <th>Hari Kegiatan</th>
-                            <th>Minggu Kegiatan</th>
-                            <th>Tindakan</th>
+                            <th style="font-size: 12px;">No.</th>
+                            <th style="font-size: 12px;">Nama Posyandu</th>
+                            <th style="font-size: 12px;">Alamat</th>
+                            <th style="font-size: 12px;">Kelurahan / Desa</th>
+                            <th style="font-size: 12px;">Hari Kegiatan</th>
+                            <th style="font-size: 12px;">Minggu Kegiatan</th>
+                            <th style="font-size: 12px;">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($data_posyandu as $i=>$row)
                         <tr>
-                            <td class="text-center">{{++$i}}</td>
-                            <td>{{$row->nama_posyandu}}</td>
-                            <td>{{$row->alamat}}</td>
-                            <td>{{$row->nama}}</td>
-                            <td>{{$row->hari_kegiatan}}</td>
-                            <td>{{$row->minggu_kegiatan}}</td>
+                            <td class="text-center" style="font-size: 12px;">{{++$i}}</td>
+                            <td style="font-size: 12px;">{{$row->nama_posyandu}}</td>
+                            <td style="font-size: 12px;">{{$row->alamat}}</td>
+                            <td style="font-size: 12px;">{{$row->nama}}</td>
+                            <td style="font-size: 12px;">{{$row->hari_kegiatan}}</td>
+                            <td style="font-size: 12px;">{{$row->minggu_kegiatan}}</td>
 
 
                             <td>

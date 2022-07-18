@@ -29,41 +29,41 @@ Riwayat Pemeriksaan Kesehatan
                 <table id="example" class="display nowrap" style="width:100%">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Nama Anak</th>
-                            <th>Imunisasi - 1</th>
-                            <th>Imunisasi - 2</th>
-                            <th>Imunisasi - 3</th>
-                            <th>Vitamin A Merah</th>
-                            <th>Vitamin A Biru</th>
-                            <th>Fe-1</th>
-                            <th>Fe-2</th>
-                            <th>PMT</th>
-                            <th>Asi Eksklusif</th>
-                            <th>Oralit</th>
-                            <th>Obat Cacing</th>
-                            <th>Tanggal Pemeriksaan</th>
-                            <th>Nama Bidan Pemeriksa</th>
+                            <th style="font-size: 12px;">No.</th>
+                            <th style="font-size: 12px;">Nama Anak</th>
+                            <th style="font-size: 12px;">Imunisasi - 1</th>
+                            <th style="font-size: 12px;">Imunisasi - 2</th>
+                            <th style="font-size: 12px;">Imunisasi - 3</th>
+                            <th style="font-size: 12px;">Vitamin A Merah</th>
+                            <th style="font-size: 12px;">Vitamin A Biru</th>
+                            <th style="font-size: 12px;">Fe-1</th>
+                            <th style="font-size: 12px;">Fe-2</th>
+                            <th style="font-size: 12px;">PMT</th>
+                            <th style="font-size: 12px;">Asi Eksklusif</th>
+                            <th style="font-size: 12px;">Oralit</th>
+                            <th style="font-size: 12px;">Obat Cacing</th>
+                            <th style="font-size: 12px;">Tanggal Pemeriksaan</th>
+                            <th style="font-size: 12px;">Nama Bidan Pemeriksa</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($data_anak as $i=>$row)
                         <tr>
-                            <td class="text-center">{{++$i}}</td>
-                            <td>{{$row->nama_anak}}</td>
-                            <td>{{$row->imun1}}</td>
-                            <td>{{$row->imun2}}</td>
-                            <td>{{$row->imun3}}</td>
-                            <td>{{$row->vitA_merah}}</td>
-                            <td>{{$row->vitA_biru}}</td>
-                            <td>{{$row->Fe_1}}</td>
-                            <td>{{$row->Fe_2}}</td>
-                            <td>{{$row->PMT}}</td>
-                            <td>{{$row->asi_ekslusif}}</td>
-                            <td>{{$row->oralit}}</td>
-                            <td>{{$row->obat_cacing}}</td>
-                            <td>{{$row->tanggal_pemeriksaan}}</td>
-                            <td>{{$row->nama_bidan}}</td>
+                            <td class="text-center" style="font-size: 12px;">{{++$i}}</td>
+                            <td style="font-size: 12px;">{{$row->nama_anak}}</td>
+                            <td style="font-size: 12px;">{{$row->imun1}}</td>
+                            <td style="font-size: 12px;">{{$row->imun2}}</td>
+                            <td style="font-size: 12px;">{{$row->imun3}}</td>
+                            <td style="font-size: 12px;">{{$row->vitA_merah}}</td>
+                            <td style="font-size: 12px;">{{$row->vitA_biru}}</td>
+                            <td style="font-size: 12px;">{{$row->Fe_1}}</td>
+                            <td style="font-size: 12px;">{{$row->Fe_2}}</td>
+                            <td style="font-size: 12px;">{{$row->PMT}}</td>
+                            <td style="font-size: 12px;">{{$row->asi_ekslusif}}</td>
+                            <td style="font-size: 12px;">{{$row->oralit}}</td>
+                            <td style="font-size: 12px;">{{$row->obat_cacing}}</td>
+                            <td style="font-size: 12px;">{{$row->tanggal_pemeriksaan}}</td>
+                            <td style="font-size: 12px;">{{$row->nama_bidan}}</td>
                             
                         </tr>
                         @endforeach

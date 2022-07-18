@@ -80,6 +80,7 @@ class RiwTumbuhAnakController extends Controller
                 'bidan.nama_bidan as nama_bidan',
             )
             ->where('anak.nik_anak', $id)
+            ->orderBy('tanggal_pemeriksaan','desc')
             ->get();
 
         // return $data_anak;
@@ -91,7 +92,9 @@ class RiwTumbuhAnakController extends Controller
     {
         $data_anak = DB::table('anak')
         ->join('penimbangan','penimbangan.nik_anak','anak.nik_anak')
+        ->select('anak.*','penimbangan.*')
         ->where('anak.nik_anak',$id)
+        ->orderBy('penimbangan.created_at','desc')
         ->get();
 
         // return $data_anak;

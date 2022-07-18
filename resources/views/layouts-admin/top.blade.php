@@ -7,93 +7,17 @@
                 </div>
                 <div class="header-content">
                     <div class="notification dropdown">
-                        <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="far fa-envelope"></i>
-                        </a>
-                        <ul class="dropdown-menu medium">
-                            <li class="menu-header">
-                                <a class="dropdown-item" href="#">Message</a>
-                            </li>
-                            <li class="menu-content ps-menu">
-                                <a href="#">
-                                    <div class="message-image">
-                                        <img src="public/arfa/assets/images/avatar1.png" class="rounded-circle w-100" alt="user1">
-                                    </div>
-                                    <div class="message-content read">
-                                        <div class="subject">
-                                            John
-                                        </div>
-                                        <div class="body">
-                                            Please call me at 9pm
-                                        </div>
-                                        <div class="time">Just now</div>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="message-image">
-                                        <img src="" class="rounded-circle w-100" alt="user1">
-                                    </div>
-                                    <div class="message-content">
-                                        <div class="subject">
-                                            Michele
-                                        </div>
-                                        <div class="body">
-                                            Please come to my party
-                                        </div>
-                                        <div class="time">3 hours ago</div>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="message-image">
-                                        <img src="" class="rounded-circle w-100" alt="user1">
-                                    </div>
-                                    <div class="message-content read">
-                                        <div class="subject">
-                                            Brad
-                                        </div>
-                                        <div class="body">
-                                            I have something to discuss, please call me soon
-                                        </div>
-                                        <div class="time">3 hours ago</div>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="message-image">
-                                        <img src="" class="rounded-circle w-100" alt="user1">
-                                    </div>
-                                    <div class="message-content">
-                                        <div class="subject">
-                                            Anel
-                                        </div>
-                                        <div class="body">
-                                          
-                                        </div>
-                                        <div class="time">8 hours ago</div>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="message-image">
-                                        <img src="" class="rounded-circle w-100" alt="user1">
-                                    </div>
-                                    <div class="message-content">
-                                        <div class="subject">
-                                            Mary
-                                        </div>
-                                        <div class="body">
-                                            Please answer my question last night
-                                        </div>
-                                        <div class="time">Last month</div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
+                        </a> -->
+                        
                     </div>
                     <div class="notification dropdown">
-                        <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="far fa-bell"></i>
                             <span class="badge">12</span>
-                        </a>
-                        <ul class="dropdown-menu medium">
+                        </a> -->
+                        <!-- <ul class="dropdown-menu medium">
                             <li class="menu-header">
                                 <a class="dropdown-item" href="#">Notification</a>
                             </li>
@@ -132,7 +56,7 @@
                                     </div>
                                 </a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </div>
                     <div class="dropdown dropdown-menu-end">
                         <a href="#" class="user-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -147,7 +71,7 @@
                                 <a class="dropdown-item" href="#">Notifikasi</a>
                             </li> -->
                             <li class="menu-content ps-menu">
-                                <a href="#">
+                                <!-- <a href="#">
                                     <div class="description">
                                         <i class="ti-user"></i> Profile
                                     </div>
@@ -156,7 +80,7 @@
                                     <div class="description">
                                         <i class="ti-settings"></i> Setting
                                     </div>
-                                </a>
+                                </a> -->
                                 <a href="{{url('logout')}}">
                                     <div class="description">
                                         <i class="ti-power-off"></i> Logout

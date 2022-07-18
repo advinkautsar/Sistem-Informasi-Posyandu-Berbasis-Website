@@ -57,20 +57,20 @@ Data Bidan di wilayah kerja {{auth()->user()->petugas_puskesmas->puskesmas->nama
                 <table id="example" class="display nowrap" style="width:100%">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Nama Bidan</th>
-                            <th>Alamat</th>
-                            <th>Wilayah Kerja Puskesmas</th>
-                            <th>Tindakan</th>
+                            <th style="font-size: 12px;">No.</th>
+                            <th style="font-size: 12px;">Nama Bidan</th>
+                            <th style="font-size: 12px;">Alamat</th>
+                            <th style="font-size: 12px;">Wilayah Kerja Puskesmas</th>
+                            <th style="font-size: 12px;">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($data_bidan as $i=>$row)
                         <tr>
-                            <td class="text-center">{{++$i}}</td>
-                            <td>{{$row->nama_bidan}}</td>
-                            <td>{{$row->alamat}}</td>
-                            <td>{{$row->nama_puskesmas}}</td>
+                            <td class="text-center" style="font-size: 12px;">{{++$i}}</td>
+                            <td style="font-size: 12px;">{{$row->nama_bidan}}</td>
+                            <td style="font-size: 12px;">{{$row->alamat}}</td>
+                            <td style="font-size: 12px;">{{$row->nama_puskesmas}}</td>
 
 
                             <td>

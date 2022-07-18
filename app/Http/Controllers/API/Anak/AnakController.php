@@ -136,21 +136,21 @@ class AnakController extends Controller
     
         if($tb_u){
             if( ($tb_u->plus_2_sd <= $i_tb) && ($i_tb <= $tb_u->plus_3_sd)){
-                $status_tb ='tinggi';
+                $status_tb ='Tinggi';
             }else if(($tb_u->plus_1_sd <= $i_tb) && ($i_tb <= $tb_u->plus_2_sd)){
-                $status_tb ='normal 1';
+                $status_tb ='Normal';
             }elseif(($tb_u->median <= $i_tb) && ($i_tb <= $tb_u->plus_1_sd)){
-                $status_tb = 'normal2';
+                $status_tb = 'Normal';
             }elseif(($tb_u->min_1_sd <= $i_tb) && ($i_tb <= $tb_u->median)){
-                $status_tb = 'normal3';
+                $status_tb = 'Normal';
             }
             elseif(($tb_u->min_2_sd <= $i_tb) && ($i_tb <= $tb_u->min_1_sd)){
-                $status_tb = 'normal4';
+                $status_tb = 'Normal';
             }
             elseif(($tb_u->min_3_sd <= $i_tb) && ($i_tb <= $tb_u->min_2_sd)){
-                $status_tb = 'pendek';
+                $status_tb = 'Pendek';
             }else{
-                $status_tb ='sangat pendek';
+                $status_tb ='Sangat Pendek';
             }
         }else{
             $status_tb ='data tidak tersedia';
@@ -166,22 +166,22 @@ class AnakController extends Controller
         $bb_u= DB::table('standart_bb_u')->where('umur_bulan',$umuranak )->where('jk',$jk)->first();
         // return $bb_u;
         if( ( $i_bb >= $bb_u->plus_3_sd )){
-            $status_bb ='obesitas';
+            $status_bb ='Obesitas';
         }else if(($i_bb >= $bb_u->plus_2_sd) && ($i_bb <= $bb_u->plus_3_sd)){
-            $status_bb ='obesitas0';
+            $status_bb ='Obesitas';
         }elseif(($i_bb >= $bb_u->plus_1_sd) && ($i_bb <= $bb_u->plus_2_sd)){
-            $status_bb = 'gemuk';
+            $status_bb = 'Resiko BB lebih';
         }elseif(($i_bb >= $bb_u->median) && ($i_bb <= $bb_u->plus_1_sd)){
-            $status_bb = 'normal3';
+            $status_bb = 'Normal';
         }elseif(($i_bb >= $bb_u->min_1_sd) && ($i_bb <= $bb_u->median)){
-            $status_bb = 'normal2';
+            $status_bb = 'Normal';
         }elseif(($i_bb >= $bb_u->min_2_sd) && ($i_bb <= $bb_u->min_1_sd)){
-            $status_bb = 'normal1';
+            $status_bb = 'Normal';
         }
         elseif(($i_bb >= $bb_u->min_3_sd) && ($i_bb <= $bb_u->min_2_sd)){
-            $status_bb = 'kurus';
+            $status_bb = 'BB kurang';
         }else{
-            $status_bb ='sangat kurus';
+            $status_bb ='BB sangat kurang';
         }
         // return $status_bb;
 
@@ -194,21 +194,21 @@ class AnakController extends Controller
         $lk_u= DB::table('standart_lk_u')->where('umur_bulan',$umuranak )->where('jk',$jk)->first();
         if($lk_u){
             if( ($lk_u->plus_2_sd <= $i_lk) && ($i_lk <= $lk_u->plus_3_sd)){
-                $status_lk ='lebih dr normal';
+                $status_lk ='LK terlalu besar';
             }else if(($lk_u->plus_1_sd <= $i_lk) && ($i_lk <= $lk_u->plus_2_sd)){
-                $status_lk ='lebih dr normal';
+                $status_lk ='LK terlalu besar';
             }elseif(($lk_u->median <= $i_lk) && ($i_lk <= $lk_u->plus_1_sd)){
-                $status_lk = 'normal2';
+                $status_lk = 'Normal';
             }elseif(($lk_u->min_1_sd <= $i_lk) && ($i_lk <= $lk_u->median)){
-                $status_lk = 'normal3';
+                $status_lk = 'Normal';
             }
             elseif(($lk_u->min_2_sd <= $i_lk) && ($i_lk <= $lk_u->min_1_sd)){
-                $status_lk = 'normal4';
+                $status_lk = 'Normal';
             }
             elseif(($lk_u->min_3_sd <= $i_lk) && ($i_lk <= $lk_u->min_2_sd)){
-                $status_lk ='lingkar kepala kurang dari normal';
+                $status_lk ='LK terlalu kecil';
             }else{
-                $status_lk ='lingkar kepala kurang dari normal';
+                $status_lk ='LK terlalu kecil';
             }
             // return $status_lk;
 
@@ -225,24 +225,26 @@ class AnakController extends Controller
 
         if($bb_tb){
 
-        
-        
+        //kurang +3sd untuk status gizi obesitas
+
         if( ($bb_tb->plus_2_sd <= $i_bb_tb) && ($i_bb_tb <= $bb_tb->plus_3_sd)){
-            $status_bb_tb ='gemuk';
+            $status_bb_tb ='Gizi lebih';
         }else if(($bb_tb->plus_1_sd <= $i_bb_tb) && ($i_bb_tb <= $bb_tb->plus_2_sd)){
-            $status_bb_tb ='normal 1';  
+            $status_bb_tb ='Beresiko gizi lebih';  
+        }elseif ($bb_tb->plus_3_sd <= $i_bb_tb) {
+            $status_bb_tb ='obesitas';          
         }elseif(($bb_tb->median <= $i_bb_tb) && ($i_bb_tb <= $bb_tb->plus_1_sd)){
-            $status_bb_tb = 'normal2';
+            $status_bb_tb = 'Gizi baik';
         }elseif(($bb_tb->min_1_sd <= $i_bb_tb) && ($i_bb_tb <= $bb_tb->median)){
-            $status_bb_tb = 'normal3';
+            $status_bb_tb = 'Gizi baik';
         }
         elseif(($bb_tb->min_2_sd <= $i_bb_tb) && ($i_bb_tb <= $bb_tb->min_1_sd)){
-            $status_bb_tb = 'normal4';
+            $status_bb_tb = 'Gizi baik';
         }
         elseif(($bb_tb->min_3_sd <= $i_bb_tb) && ($i_bb_tb <= $bb_tb->min_2_sd)){
-            $status_bb_tb ='kurus';
+            $status_bb_tb ='Gizi kurang';
         }else{
-            $status_bb_tb ='kurus';
+            $status_bb_tb ='Gizi Buruk';
         }
 
         // return $status_bb_tb;
@@ -260,22 +262,26 @@ class AnakController extends Controller
         $i_imt_u=$imt_us;
         $status_imt_u='';
 
+        //kurang pembacaan status gizi obesiteas +3sd
+
         if( ($imt_u->plus_2_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->plus_3_sd)){
-            $status_imt_u ='obesitas';
+            $status_imt_u ='Gizi lebih';
+        }elseif($imt_u->plus_3_sd <= $i_imt_u) {
+            $status_bb_tb ='Obesitas';
         }else if(($imt_u->plus_1_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->plus_2_sd)){
-            $status_imt_u ='obesitas';
+            $status_imt_u ='Resiko gizi lebih';
         }elseif(($imt_u->median <= $i_imt_u) && ($i_imt_u <= $imt_u->plus_1_sd)){
-            $status_imt_u = 'normal1';
+            $status_imt_u = 'Gizi baik';
         }elseif(($imt_u->min_1_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->median)){
-            $status_imt_u = 'normal2';
+            $status_imt_u = 'Gizi baik';
         }
         elseif(($imt_u->min_2_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->min_1_sd)){
-            $status_imt_u = 'normal3';
+            $status_imt_u = 'Gizi baik';
         }
         elseif(($imt_u->min_3_sd <= $i_imt_u) && ($i_imt_u <= $imt_u->min_2_sd)){
-            $status_imt_u ='kurus';
+            $status_imt_u ='Gizi kurang';
         }else{
-            $status_imt_u ='kurus';
+            $status_imt_u ='Gizi buruk';
         }
         // return $status_imt_u;
 

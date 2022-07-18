@@ -10,7 +10,7 @@
         </a>
     </div>
     <div class="sidebar-header">
-        <div class="text">Posyandu</div>
+        <div class="text" style="font-size: 12px; padding: 0;">Sistem Informasi Posyandu</div>
         <div class="close-sidebar action-toggle">
             <i class="ti-close"></i>
         </div>
@@ -73,6 +73,12 @@
                     <a href="#" class="link">
                         <i class="ti-support"></i>
                         <span>Kelola Tips Kesehatan</span>
+                    </a>
+                </li>
+                <li class="{{ request()->segment(2) === 'rekap_imunisasi' ? 'active' : '' }}">
+                    <a href="#" class="link">
+                        <i class="ti-layout"></i>
+                        <span>Rekapan Imunisasi</span>
                     </a>
                 </li>
             @endif
