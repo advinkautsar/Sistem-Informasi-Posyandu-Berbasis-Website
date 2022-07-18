@@ -61,6 +61,7 @@ class JadwalPosyanduController extends Controller
             $notif->sendNotifPosyandu($tokenList,"Hai Ibu ada agenda kegiatan posyandu nih, yang diadakan pada tanggal :"
             . $jadwal->tanggal_kegiatan. "  Pada Pukul : ".$jadwal->waktu_kegiatan. " Jangan sampai terlewat ya !",
              "Notifikasi Posyandu" );
+             
             // return "sukses";
             return response()->json($data);
 

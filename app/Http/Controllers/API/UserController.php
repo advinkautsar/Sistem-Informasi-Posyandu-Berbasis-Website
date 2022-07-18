@@ -20,7 +20,7 @@ class UserController extends Controller
         $user = User::where('nama_pengguna', $request->nama_pengguna)->first();
         
         if ($user) {
-            if (password_verify($request->kata_sandi, $user->kata_sandi)) {
+            if (password_verify($request->kata_sandi, $user->password)) {
                 $user->token = $request->token;
                 $user->save();
                 return response()->json([

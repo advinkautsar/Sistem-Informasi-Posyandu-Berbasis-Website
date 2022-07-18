@@ -2,7 +2,8 @@
 
 namespace App\Exports;
 
-
+use App\Models\Desa_kelurahan;
+use App\Models\Kecamatan;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithCustomStartCell;
 use Maatwebsite\Excel\Concerns\WithEvents;
@@ -44,6 +45,9 @@ class RegisterBalitaExport implements WithEvents
     {
 
         $data = DB::table('posyandu')->find($this->id);
+        $desa = Desa_kelurahan::where('id', $data->desa_kelurahan_id)->first();
+
+        $kecamatan =Kecamatan::where('id',$desa->kecamatan_id)->first();
         $filter= $this->request;
 
         $ortu = Orangtua::where('posyandu_id', $this->id)->with(
@@ -55,7 +59,9 @@ class RegisterBalitaExport implements WithEvents
         )->get();
 
         $sheet->setCellValue('M4', $data->nama_posyandu);
-        $sheet->setCellValue('M5', $data->alamat);
+        $sheet->setCellValue('M5', $desa->nama);
+        $sheet->setCellValue('M6', $kecamatan->nama_kecamatan);
+        $sheet->setCellValue('M7', $kecamatan->kabupaten);
         $urutan=1;
         $no=14;
         foreach ($ortu as $Orangtua) {
