@@ -113,8 +113,18 @@ class AnakController extends Controller
     {
 
         $usia = DB::table('anak')->where('nik_anak',$request->nik_anak)->first();
-        $usia->umur_bulan = Carbon::parse($usia->tanggal_lahir)->diff(\Carbon\Carbon::now())->format('%m');
-        // return $usia->umur_bulan;
+        // $usia->umur_bulan = Carbon::parse($usia->tanggal_lahir)->diff(\Carbon\Carbon::now())->format('%m');
+        $umuranak = $this->cekumur($usia->tanggal_lahir);
+        // return $umuranak;
+        $jk='';	
+        if($usia->jenis_kelamin=='L'){
+            $jk='Laki-laki';
+
+        }else{
+            $jk='Perempuan';
+
+        }
+    
 
         $i_tb = $request->tinggi_badan;
 
@@ -122,7 +132,8 @@ class AnakController extends Controller
         $status_tb='';
 
         
-        $tb_u= DB::table('standart_tb_u')->where('umur_bulan',$usia->umur_bulan )->where('jk','laki-laki')->first();
+        $tb_u= DB::table('standart_tb_u')->where('umur_bulan',$umuranak )->where('jk',$jk)->first();
+    
         if($tb_u){
             if( ($tb_u->plus_2_sd <= $i_tb) && ($i_tb <= $tb_u->plus_3_sd)){
                 $status_tb ='Tinggi';
@@ -152,7 +163,7 @@ class AnakController extends Controller
         $i_bb=$request->berat_badan;
         $status_bb='';
         
-        $bb_u= DB::table('standart_bb_u')->where('umur_bulan',$usia->umur_bulan )->where('jk','laki-laki')->first();
+        $bb_u= DB::table('standart_bb_u')->where('umur_bulan',$umuranak )->where('jk',$jk)->first();
         // return $bb_u;
         if( ( $i_bb >= $bb_u->plus_3_sd )){
             $status_bb ='Obesitas';
@@ -180,7 +191,7 @@ class AnakController extends Controller
         $i_lk=$request->lingkar_kepala;
         $status_lk='';
 
-        $lk_u= DB::table('standart_lk_u')->where('umur_bulan',$usia->umur_bulan )->where('jk','laki-laki')->first();
+        $lk_u= DB::table('standart_lk_u')->where('umur_bulan',$umuranak )->where('jk',$jk)->first();
         if($lk_u){
             if( ($lk_u->plus_2_sd <= $i_lk) && ($i_lk <= $lk_u->plus_3_sd)){
                 $status_lk ='LK terlalu besar';
@@ -207,7 +218,7 @@ class AnakController extends Controller
       
 
         
-    $bb_tb = DB::table('standart_bb_tb')->where('jk','laki-laki')->where('tinggi_badan',$request->tinggi_badan)->first();
+    $bb_tb = DB::table('standart_bb_tb')->where('jk',$jk)->where('tinggi_badan',$request->tinggi_badan)->first();
         // return $bb_tb;
         $i_bb_tb=$request->berat_badan;
         $status_bb_tb='';
@@ -243,7 +254,7 @@ class AnakController extends Controller
 
 
           
-        $imt_u = DB::table('standart_imt_u')->where('jk','laki-laki')->where('umur_bulan',$usia->umur_bulan)->first();
+        $imt_u = DB::table('standart_imt_u')->where('umur_bulan',$umuranak )->where('jk',$jk)->first();
         // return $bb_tb;
 
         $tinggi = $request->tinggi_badan*100;
@@ -335,5 +346,13 @@ class AnakController extends Controller
             ];
             return response()->json($data);
         }
+    }
+
+    
+    public function cekumur($tanggal_lahir)
+    {
+        $bulan =  Carbon::parse($tanggal_lahir)->diff(\Carbon\Carbon::now())->format('%m');
+        $tahun =  Carbon::parse($tanggal_lahir)->diff(\Carbon\Carbon::now())->format('%y');
+        return $tahun*12+$bulan;
     }
 }

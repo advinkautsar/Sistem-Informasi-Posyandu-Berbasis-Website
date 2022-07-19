@@ -47,13 +47,22 @@ Rekapitulasi Pertumbuhan Anak Posyandu
                                 <td style="text-align:center;">{{$data->nama_posyandu}}</td>
                                 <td style="text-align:center;">{{$data->nama}}</td>
                                 <td style="text-align:center;">
-                                    <button href="{{url('laporanbayi/'.$data->id)}}" onclick="send(this)" type="button" class="btn btn-sm btn-success" style="color: white;"><i class="fas fa-file-excel"></i>
+                                    <button href="{{url('laporanbayi/'.$data->id)}}" onclick="sendbayi(this)" type="button" class="btn btn-sm btn-success" style="color: white;"><i class="fas fa-file-excel"></i>
                                     </button>
                                 </td>
                                 <td style="text-align:center;">
                                     <button href="{{url('laporanbalita/'.$data->id)}}" onclick="send(this)" type="button" class="btn btn-sm btn-success" style="color: white;"><i class="fas fa-file-excel"></i>
                                     </button>
                                 </td>
+
+                                <!-- <td style="text-align:center;">
+                                    <a href="{{url('laporanbayi/'.$data->id)}}"  class="btn btn-sm btn-success" style="color: white;"><i class="fas fa-file-excel"></i>
+</a>
+                                </td>
+                                <td style="text-align:center;">
+                                    <a href="{{url('laporanbalita/'.$data->id)}}" class="btn btn-sm btn-success" style="color: white;"><i class="fas fa-file-excel"></i>
+</a>
+                                </td> -->
 
                             </tr>
                             @endforeach
@@ -81,7 +90,23 @@ Rekapitulasi Pertumbuhan Anak Posyandu
                     const url = window.URL.createObjectURL(new Blob([response.data]));
                     const link = document.createElement('a');
                     link.href = url;
-                    link.setAttribute('download', 'laporan.xlsx'); //or any other extension
+                    link.setAttribute('download', 'DATA REGISTRASI BALITA.xlsx'); //or any other extension
+                    document.body.appendChild(link);
+                    link.click();
+                })
+        }
+        function sendbayi(url) {
+            axios.post($(url).attr('href'), {
+                    tanggal: $('#tanggal_awal').val(),
+                    tanggal2: $('#tanggal_akhir').val()
+                }, {
+                    responseType: 'blob'
+                })
+                .then((response) => {
+                    const url = window.URL.createObjectURL(new Blob([response.data]));
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.setAttribute('download', 'DATA REGISTRASI BAYI.xlsx'); //or any other extension
                     document.body.appendChild(link);
                     link.click();
                 })

@@ -109,3 +109,8 @@ Route::get('get_user_orangtua/{id}', [UserController::class,'getUserRelasiOrtu']
 //Fitur Profil Ortu ( Orangtua )
 Route::get('get_profil_ortu/{id}',[OrangtuaController::class,'showprofilortu']);
 Route::post('updateProfilOrtu/{id}',[OrangtuaController::class,'updateProfilOrtu']);
+
+
+
+Route::post('laporanbalita/{id}', [App\Http\Controllers\WEB\LaporanExportController::class, "hasil_laporan_registrasi_balita"]);
+Route::post('laporanbayi/{id}', [App\Http\Controllers\WEB\LaporanExportController::class, "hasil_laporan_registrasi_bayi"]);

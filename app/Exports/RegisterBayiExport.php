@@ -2,6 +2,8 @@
 
 namespace App\Exports;
 
+use App\Models\Desa_kelurahan;
+use App\Models\Kecamatan;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\BeforeWriting;
@@ -41,6 +43,12 @@ class RegisterBayiExport implements WithEvents
     {
 
         $data = DB::table('posyandu')->find($this->id);
+        $desa = Desa_kelurahan::where('id', $data->desa_kelurahan_id)->first();
+
+        $kecamatan =Kecamatan::where('id',$desa->kecamatan_id)->first();
+      
+
+
         $filter = $this->request;
 
         $ortu = Orangtua::where('posyandu_id', $this->id)->with(
@@ -52,9 +60,9 @@ class RegisterBayiExport implements WithEvents
         )->get();
 
         $sheet->setCellValue('V4', $data->nama_posyandu);
-        $sheet->setCellValue('V5', $data->nama);
-        $sheet->setCellValue('V6', $data->nama_kecamatan);
-        $sheet->setCellValue('V7', $data->kabupaten);
+        $sheet->setCellValue('V5', $desa->nama);
+        $sheet->setCellValue('V6', $kecamatan->nama_kecamatan);
+        $sheet->setCellValue('V7',  $kecamatan->kabupaten);
         $urutan = 1;
         $no = 14;
         foreach ($ortu as $Orangtua) {
