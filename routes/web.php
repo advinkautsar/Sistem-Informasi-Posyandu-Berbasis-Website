@@ -79,6 +79,7 @@ Route::group(['middleware' => ['auth', 'petugas_puskesmas']], function () {
     })->name('dashboard');
 
     Route::get('petugas_puskesmas/dashboard_puskesmas', [App\Http\Controllers\WEB\PetugasPuskesmas\DashboardPetpusController::class, "index"])->name('dashboard_puskesmas');
+    Route::get('petugas_puskesmas/dashboard_puskesmas/detail_rekap_posyandu/{id}', [App\Http\Controllers\WEB\PetugasPuskesmas\DashboardPetpusController::class, "rekap_posyandu_desa"])->name('rekap_posyandu_desa');
     Route::resource('petugas_puskesmas/kelola_data/posyandu', PosyanduCrudController::class);
     Route::resource('petugas_puskesmas/kelola_data/bidan', BidanCrudController::class);
     Route::resource('petugas_puskesmas/kelola_data/kader', KaderCrudController::class);
