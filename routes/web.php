@@ -58,14 +58,11 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['auth', 'super_admin']], function () {
 
     Route::get('admin/dashboard_admin', [App\Http\Controllers\WEB\SuperAdmin\DashboardAdminController::class, "index"])->name('dashboard_admin');
-
     Route::get('admin/dashboard_admin/rekap_desa/{id}', [App\Http\Controllers\WEB\SuperAdmin\DashboardAdminController::class, "rekap_desa"])->name('rekap_desa');
-
     Route::get('admin/dashboard_admin/rekap_desa/rekap_posyandu/{id}', [App\Http\Controllers\WEB\SuperAdmin\DashboardAdminController::class, "rekap_posyandu"])->name('rekap_posyandu');
 
-    Route::GET('admin/data_anak', function () {
-        return view('admin.data_anak');
-    })->name('data_anak');
+    Route::get('admin/data_anak', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "index"])->name('data_anak');
+    Route::get('admin/data_anak/riw_pemeriksaan/{id}', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "riw_pemeriksaan"])->name('riw_pem_admin');
 
     Route::get('admin/rekapitulasi', [RekapitulasiAnakController::class, 'index'])->name('rekapitulasi');
     Route::get('admin/grafik_anak', [GrafikAnakController::class, 'index'])->name('grafik_anak');
