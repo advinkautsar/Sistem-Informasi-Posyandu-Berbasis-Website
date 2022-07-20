@@ -1,0 +1,120 @@
+@extends('layouts-admin.master')
+@section('title')
+Laporan Posyandu
+@endsection
+@section('content')
+
+<div class="col-md-12">
+    <div class="title fw-bold mt-2 mb-3" style="font-size: 20px;">
+        @yield('title')
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h4>Data Laporan Posyandu Per tahun di wilayah {{auth()->user()->petugas_desa->desa_kelurahan->nama}}</h4>
+        </div>
+        <div class="card-body">
+            <div class="row form-group gap-1 d-md-flex justify-content-end card-header ">
+                <form class="form" method="get" action="{{ url('')}}">
+
+
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <label for="">Tanggal awal</label>
+                            <input type="date" class="form-control ml-2" name="tanggal_awal" id="tanggal_awal">
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="">Tanggal Akhir</label>
+                            <input type="date" class="form-control ml-2" name="tanggal_akhir" id="tanggal_akhir">
+                        </div>
+                        <br>
+                    </div>
+                    <table id="example2" class="table display">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center;">No.</th>
+                                <th style="text-align:center;">Posyandu</th>
+                                <th style="text-align:center;">Alamat</th>
+                                <th style="text-align:center;">Tahun</th>
+                                <th style="text-align:center;">Lap. Format 2 - Register Bayi</th>
+                                <th style="text-align:center;">Lap. Format 3 - Register Balita</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                @foreach($data_pos as $key => $data)
+                                <td style="text-align:center;">{{$loop->iteration}} </td>
+                                <td style="text-align:center;">{{$data->nama_posyandu}}</td>
+                                <td style="text-align:center;">{{$data->nama}}</td>
+                                <td style="text-align:center;">2021</td>
+                                <td style="text-align:center;">
+                                    <button href="" onclick="sendbayi(this)" type="button" class="btn btn-sm btn-success" style="color: white;"><i class="fas fa-file-excel"></i>
+                                    </button>
+                                </td>
+                                <td style="text-align:center;">
+                                    <button href="" onclick="send(this)" type="button" class="btn btn-sm btn-success" style="color: white;"><i class="fas fa-file-excel"></i>
+                                    </button>
+                                </td>
+
+                                <!-- <td style="text-align:center;">
+                                    <a href="{{url('laporanbayi/'.$data->id)}}"  class="btn btn-sm btn-success" style="color: white;"><i class="fas fa-file-excel"></i>
+</a>
+                                </td>
+                                <td style="text-align:center;">
+                                    <a href="{{url('laporanbalita/'.$data->id)}}" class="btn btn-sm btn-success" style="color: white;"><i class="fas fa-file-excel"></i>
+</a>
+                                </td> -->
+
+                            </tr>
+                            @endforeach
+
+
+                        </tbody>
+
+                    </table>
+            </div>
+        </div>
+    </div>
+    @endsection
+
+    @section('js')
+
+    <script>
+        function send(url) {
+            axios.post($(url).attr('href'), {
+                    tanggal: $('#tanggal_awal').val(),
+                    tanggal2: $('#tanggal_akhir').val()
+                }, {
+                    responseType: 'blob'
+                })
+                .then((response) => {
+                    const url = window.URL.createObjectURL(new Blob([response.data]));
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.setAttribute('download', 'DATA REGISTRASI BALITA.xlsx'); //or any other extension
+                    document.body.appendChild(link);
+                    link.click();
+                })
+        }
+        function sendbayi(url) {
+            axios.post($(url).attr('href'), {
+                    tanggal: $('#tanggal_awal').val(),
+                    tanggal2: $('#tanggal_akhir').val()
+                }, {
+                    responseType: 'blob'
+                })
+                .then((response) => {
+                    const url = window.URL.createObjectURL(new Blob([response.data]));
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.setAttribute('download', 'DATA REGISTRASI BAYI.xlsx'); //or any other extension
+                    document.body.appendChild(link);
+                    link.click();
+                })
+        }
+
+       
+    </script>
+
+
+    @endsection

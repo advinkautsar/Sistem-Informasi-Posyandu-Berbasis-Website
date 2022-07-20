@@ -101,6 +101,34 @@ class RiwTumbuhAnakController extends Controller
         return view('petugas_desa.riw_tumbuhAnak.riwayat_penimbangan', compact(['data_anak']));
     }
 
+    public function riwayat_rujukan($id)
+    {
+        $data_anak = DB::table('anak')
+        ->join('rujukan','rujukan.nik_anak','anak.nik_anak')
+        ->join('bidan','rujukan.bidan_id','bidan.id')
+        ->join('puskesmas','bidan.puskesmas_id','puskesmas.id')
+        ->select('anak.*','rujukan.*', 'bidan.nama_bidan','puskesmas.nama_puskesmas')
+        ->where('anak.nik_anak',$id)
+        ->orderBy('rujukan.created_at', 'desc')
+        ->get();
+
+        // return $data_anak;
+
+        return view('petugas_desa.riw_tumbuhAnak.riwayat_rujukan', compact(['data_anak']));
+    }
+
+    public function detail_anak($id)
+    {
+        $data_anak = DB::table('anak')
+        ->join('orangtua', 'anak.orangtua_id','orangtua.id')
+        ->select('anak.*','orangtua.nama_ibu')
+        ->where('anak.nik_anak',$id)
+        ->first();
+
+        // return $data_anak;
+        return view('petugas_desa.riw_tumbuhAnak.detail_anak', compact(['data_anak']));
+    }
+
     public function show_anak($id)
     {
         $data_anak = DB::table('anak')

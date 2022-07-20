@@ -103,7 +103,7 @@
                     </a>
                 </li>
                 <li class="{{ request()->segment(2) === 'laporan_posyandu' ? 'active' : '' }}">
-                    <a href="#" class="link">
+                    <a href="{{route('laporan_pos_index')}}" class="link">
                         <i class="ti-files"></i>
                         <span>Laporan Posyandu</span>
                     </a>

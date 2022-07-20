@@ -47,10 +47,10 @@ Data Anak di {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                             <th style="font-size: 12px;">NIK Anak</th>
                             <th style="font-size: 12px;">Nama Anak</th>
                             <th style="font-size: 12px;">Jenis Kelamin</th>
-                            <th style="font-size: 12px;">Tanggal lahir</th>
                             <th style="font-size: 12px;">Status Gizi Terakhir</th>
+                            <th style="font-size: 12px;">Riwayat Rujukan</th>
                             <th style="font-size: 12px;">Riwayat Pemeriksaan</th>
-                            <th style="font-size: 12px;">Riwayat Penimbangan</th>
+                            <th style="font-size: 12px;">Riwayat Gizi</th>
                             <th style="font-size: 12px;">Tindakan</th>
                         </tr>
                     </thead>
@@ -61,15 +61,18 @@ Data Anak di {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                             <td style="font-size: 12px;">{{$row->nik_anak}}</td>
                             <td style="font-size: 12px;">{{$row->nama_anak}}</td>
                             <td style="font-size: 12px;">{{$row->jenis_kelamin}}</td>
-                            <td style="font-size: 12px;">{{$row->tanggal_lahir}}</td>
                             <td class="text-center" style="font-size: 12px;"><span class="badge bg-success ">Gizi Baik</span></td>
                             <td class="text-center" style="font-size: 12px;">
-                                <a href="{{route('riwayat_pemeriksaan',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-primary" style="font-size: 12px;" type="button"  >Lihat Riwayat</a>
+                                <a href="{{route('riwayat_rujukan',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-primary" style="font-size: 12px;" type="button">Lihat Riwayat</a>
                             </td>
                             <td class="text-center" style="font-size: 12px;">
-                                <a href="{{route('riwayat_penimbangan',$row->nik_anak)}}" class=" btn btn-sm mb-2 btn-primary " style="font-size: 12px;" type="button" >Lihat Riwayat</a>
+                                <a href="{{route('riwayat_pemeriksaan',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-primary" style="font-size: 12px;" type="button">Lihat Riwayat</a>
+                            </td>
+                            <td class="text-center" style="font-size: 12px;">
+                                <a href="{{route('riwayat_penimbangan',$row->nik_anak)}}" class=" btn btn-sm mb-2 btn-primary " style="font-size: 12px;" type="button">Lihat Riwayat</a>
                             </td>
                             <td>
+                                <a href="{{route('detail_anak',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-primary" type="button"><i class="ti-eye"></i></a>
                                 <a href="{{route('show_anak',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
                                 <form action="{{route('del_anak',$row->nik_anak)}}" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
                                     @method('DELETE')

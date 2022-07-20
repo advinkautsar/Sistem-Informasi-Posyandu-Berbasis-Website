@@ -34,8 +34,8 @@ Riwayat Pemeriksaan Kesehatan
                             <th style="font-size: 12px;">Imunisasi - 1</th>
                             <th style="font-size: 12px;">Imunisasi - 2</th>
                             <th style="font-size: 12px;">Imunisasi - 3</th>
-                            <th style="font-size: 12px;">Vitamin A Merah</th>
-                            <th style="font-size: 12px;">Vitamin A Biru</th>
+                            <th style="font-size: 12px;">Vit A Merah</th>
+                            <th style="font-size: 12px;">Vit A Biru</th>
                             <th style="font-size: 12px;">Fe-1</th>
                             <th style="font-size: 12px;">Fe-2</th>
                             <th style="font-size: 12px;">PMT</th>

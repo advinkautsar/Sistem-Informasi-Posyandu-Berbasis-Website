@@ -31,9 +31,9 @@ Riwayat Penimbangan dan Status Gizi Anak
                         <tr>
                             <th style="font-size: 12px;">No.</th>
                             <th style="font-size: 12px;">Nama Anak</th>
-                            <th style="font-size: 12px; ">Berat Badan</th>
-                            <th style="font-size: 12px;">Tinggi Badan</th>
-                            <th style="font-size: 12px;">Lingkar Kepala</th>
+                            <th style="font-size: 12px; ">BB</th>
+                            <th style="font-size: 12px;">TB</th>
+                            <th style="font-size: 12px;">LK</th>
                             <!-- <th style="text-align:center; font-size: 12px;">PB_U</th> -->
                             <th style="text-align:center; font-size: 12px;">BB_U</th>
                             <th style="text-align:center; font-size: 12px;">TB_U</th>
