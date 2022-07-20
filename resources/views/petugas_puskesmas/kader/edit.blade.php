@@ -28,7 +28,7 @@ Formulir Edit Data Kader
         @endif
 
         <div class="card-body">
-            <form action="{{route('kelola_kader.update', $data_kader->id)}}" method="POST" aria-label="abdul" data-id="abdul" class="needs-validation" novalidate="" autocomplete="off">
+            <form action="{{route('kader.update', $data_kader->id)}}" method="POST" aria-label="abdul" data-id="abdul" class="needs-validation" novalidate="" autocomplete="off">
 
                 @csrf
                 @method('PUT')
@@ -96,7 +96,7 @@ Formulir Edit Data Kader
                     </div>
 
 
-                    <a href="{{route('kelola_kader.index')}}" class="btn btn-light btn-sm me-2"><i class="me-2 ti-arrow-left"></i>Kembali</a>
+                    <a href="{{route('kader.index')}}" class="btn btn-light btn-sm me-2"><i class="me-2 ti-arrow-left"></i>Kembali</a>
 
                     <button type="submit" class="btn btn-primary btn-sm">
                         <i class="me-2 ti-save"></i> Simpan

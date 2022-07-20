@@ -39,7 +39,7 @@ Route::get('/', function () {
         if (auth()->user()->role == "super_admin") {
             return redirect('admin/dashboard');
         } elseif (auth()->user()->role == "petugas_puskesmas") {
-            return redirect('petugas_puskesmas/dashboard');
+            return redirect('petugas_puskesmas/dashboard_puskesmas');
         } elseif (auth()->user()->role == "petugas_desa") {
             return redirect('petugas_desa/dashboard_desa');
         } elseif (auth()->user()->role == "dinas_kesehatan") {
@@ -50,9 +50,10 @@ Route::get('/', function () {
     }
 })->name('login');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-
 Route::post('/login', [AuthController::class, 'postlogin'])->name('postlogin');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+
 
 Route::group(['middleware' => ['auth', 'super_admin']], function () {
 
@@ -73,14 +74,17 @@ Route::group(['middleware' => ['auth', 'super_admin']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'petugas_puskesmas']], function () {
-    Route::get('petugas_puskesmas/dashboard', function () {
+    Route::get('petugas_puskesmas/dashboard_puskesmas', function () {
         return view('petugas_puskesmas.dashboard');
     })->name('dashboard');
 
-    Route::resource('petugas_puskesmas/kelola_posyandu', PosyanduCrudController::class);
-    Route::resource('petugas_puskesmas/kelola_bidan', BidanCrudController::class);
-    Route::resource('petugas_puskesmas/kelola_kader', KaderCrudController::class);
+    Route::get('petugas_puskesmas/dashboard_puskesmas', [App\Http\Controllers\WEB\PetugasPuskesmas\DashboardPetpusController::class, "index"])->name('dashboard_puskesmas');
+    Route::resource('petugas_puskesmas/kelola_data/posyandu', PosyanduCrudController::class);
+    Route::resource('petugas_puskesmas/kelola_data/bidan', BidanCrudController::class);
+    Route::resource('petugas_puskesmas/kelola_data/kader', KaderCrudController::class);
 });
+
+
 
 Route::group(['middleware' => ['auth', 'petugas_desa']], function () {
     Route::get('petugas_desa/dashboard_desa', function () {
@@ -92,7 +96,7 @@ Route::group(['middleware' => ['auth', 'petugas_desa']], function () {
 
     Route::get('petugas_desa/riwayat_pertumbuhan_anak/index', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "index"])->name('indexriwayatpertumbuhan');
     Route::get('petugas_desa/riwayat_pertumbuhan_anak/index_tambah', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "index_tambah"]);
-});
+
     Route::post('petugas_desa/riwayat_pertumbuhan_anak/store_anak', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "store_anak"]);
     Route::get('petugas_desa/riwayat_pertumbuhan_anak/riwayat_pemeriksaan/{id}', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "riwayat_pemeriksaan"])->name('riwayat_pemeriksaan');
     Route::get('petugas_desa/riwayat_pertumbuhan_anak/riwayat_penimbangan/{id}', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "riwayat_penimbangan"])->name('riwayat_penimbangan');
@@ -104,6 +108,8 @@ Route::group(['middleware' => ['auth', 'petugas_desa']], function () {
 
 
     Route::get('petugas_desa/laporan_posyandu/index', [App\Http\Controllers\WEB\PetugasDesa\LaporanPosyanduController::class, "index"])->name('laporan_pos_index');
+});
+    
 
 Route::group(['middleware' => ['auth', 'dinas_kesehatan']], function () {
 

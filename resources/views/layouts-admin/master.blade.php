@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('arfa/vendor/themify-icons/themify-icons.css')}}">
     <link rel="stylesheet" href="{{asset('arfa/vendor/perfect-scrollbar/css/perfect-scrollbar.css')}}">
 
+    <link rel="stylesheet" href="{{asset('arfa/vendor/chart.js/dist/Chart.min.css')}}">
     <!-- CSS for this page only -->
     @stack('css')
     <link href="{{asset('arfa/vendor/datatables.net-dt/css/jquery.dataTables.min.css')}}" rel="stylesheet" />
@@ -43,7 +44,7 @@
         <div class="settings">
             <div class="settings-icon-wrapper">
                 <div class="settings-icon">
-                    <!-- <i class="ti ti-settings"></i> -->
+                    <i class="ti ti-settings"></i>
                 </div>
             </div>
             <div class="settings-content">
@@ -104,6 +105,10 @@
     <script src="{{asset('arfa/vendor/bootstrap/dist/js/bootstrap.bundle.js')}}"></script>
     <script src="{{asset('arfa/vendor/perfect-scrollbar/dist/perfect-scrollbar.min.js')}}"></script>
 
+    <!-- js for this page only -->
+    <script src="{{asset('arfa/vendor/chart.js/dist/Chart.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="{{asset('arfa/assets/js/page/index.js')}}"></script>
     <!-- js for this page only -->
     @stack('js')
     <script src="{{asset('arfa/vendor/jquery/dist/jquery.min.js')}}"></script>

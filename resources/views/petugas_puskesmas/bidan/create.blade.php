@@ -28,7 +28,7 @@ Formulir Daftar Data Bidan Baru
         @endif
 
         <div class="card-body">
-            <form action="{{route('kelola_bidan.store')}}" method="POST" aria-label="abdul" data-id="abdul" class="needs-validation" novalidate="" autocomplete="off">
+            <form action="{{route('bidan.store')}}" method="POST" aria-label="abdul" data-id="abdul" class="needs-validation" novalidate="" autocomplete="off">
 
                 @csrf
 
@@ -102,7 +102,7 @@ Formulir Daftar Data Bidan Baru
                             </select>
                         </div>
 
-                        <a href="{{route('kelola_bidan.index')}}" class="btn btn-light btn-sm me-2"><i class="me-2 ti-arrow-left"></i>Kembali</a>
+                        <a href="{{route('bidan.index')}}" class="btn btn-light btn-sm me-2"><i class="me-2 ti-arrow-left"></i>Kembali</a>
 
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="me-2 ti-save"></i> Simpan

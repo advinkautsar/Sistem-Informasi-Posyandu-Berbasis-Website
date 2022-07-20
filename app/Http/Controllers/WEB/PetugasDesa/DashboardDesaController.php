@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\WEB\PetugasDesa;
 
 use App\Http\Controllers\Controller;
+use App\Models\Anak;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardDesaController extends Controller
 {
@@ -14,7 +16,17 @@ class DashboardDesaController extends Controller
      */
     public function index()
     {
-        return view('petugas_desa.dashboard');
+        $data_user = auth()->user()->petugas_desa->desa_kelurahan_id;
+        
+        $data_pos = DB::table('posyandu')
+        ->join('desa_kelurahan','posyandu.desa_kelurahan_id','desa_kelurahan.id')
+        ->select('posyandu.*','desa_kelurahan.nama')
+        ->where('desa_kelurahan_id', $data_user)
+        ->get();
+
+        $data_anak = Anak::all();
+
+        return view('petugas_desa.dashboard', compact(['data_pos', 'data_anak']));
     }
 
     /**

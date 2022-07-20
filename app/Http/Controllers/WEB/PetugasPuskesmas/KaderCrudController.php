@@ -86,7 +86,7 @@ class KaderCrudController extends Controller
         ]);
 
         if ($create_akun || $create_kader) {
-            return redirect()->route('kelola_kader.index')->with('succes', 'Data Kader Telah Terdaftar');
+            return redirect()->route('kader.index')->with('succes', 'Data Kader Telah Terdaftar');
         } 
     }
 
@@ -165,9 +165,9 @@ class KaderCrudController extends Controller
         // return $data_user;
 
         if ($update_akun || $update_petkader) {
-            return redirect()->route('kelola_kader.index')->with('succes', 'Akun berhasil di edit');
+            return redirect()->route('kader.index')->with('succes', 'Akun berhasil di edit');
         } else {
-            return redirect()->route('kelola_kader.index')->with('fail', 'Ups!! ada sesuatu yang bermasalah, coba sesaat lagi !');
+            return redirect()->route('kader.index')->with('fail', 'Ups!! ada sesuatu yang bermasalah, coba sesaat lagi !');
         }
     }
 
@@ -182,6 +182,6 @@ class KaderCrudController extends Controller
         $del = User::find($id);
         $del->delete();
 
-        return redirect()->route('kelola_kader.index')->with('berhasil', 'Data Kader berhasil di hapus');
+        return redirect()->route('kader.index')->with('berhasil', 'Data Kader berhasil di hapus');
     }
 }

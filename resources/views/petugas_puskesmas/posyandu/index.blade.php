@@ -49,7 +49,7 @@ Data Posyandu Wilayah {{auth()->user()->petugas_puskesmas->puskesmas->nama_puske
         @endif -->
 
         <div class="card-body">
-            <a href="{{route('kelola_posyandu.create')}}" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Tambah Posyandu Baru</a>
+            <a href="{{route('posyandu.create')}}" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Tambah Posyandu Baru</a>
             <p class="form-text mb-2">Berikut ini list data posyandu yang terdaftar di sekitar lingkungan {{auth()->user()->petugas_puskesmas->puskesmas->nama_puskesmas}}
             </p>
 
@@ -78,8 +78,8 @@ Data Posyandu Wilayah {{auth()->user()->petugas_puskesmas->puskesmas->nama_puske
 
 
                             <td>
-                                <a href="{{route('kelola_posyandu.edit', $row->id)}}" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
-                                <form action="{{route('kelola_posyandu.destroy', $row->id)}}" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
+                                <a href="{{route('posyandu.edit', $row->id)}}" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
+                                <form action="{{route('posyandu.destroy', $row->id)}}" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
                                     @method('DELETE')
                                     @csrf
                                     <button class="btn btn-sm mb-2 btn-danger">

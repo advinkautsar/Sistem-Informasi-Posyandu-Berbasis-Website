@@ -45,10 +45,10 @@ class AuthController extends Controller
                         return redirect('/admin/rekapitulasi');
                         break;
                     case 'petugas_puskesmas':
-                        return redirect('/petugas_puskesmas/dashboard');
+                        return redirect('/petugas_puskesmas/dashboard_puskesmas');
                         break;
                     case 'petugas_desa':
-                        return redirect('/');
+                        return redirect('/petugas_desa/dashboard_desa');
                         break;
                     default:
                         return redirect('/');

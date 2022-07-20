@@ -28,7 +28,7 @@ Formulir Daftar Posyandu Baru
         @endif
 
         <div class="card-body">
-            <form action="{{route('kelola_posyandu.store')}}" method="POST" aria-label="abdul" data-id="abdul" class="needs-validation" novalidate="" autocomplete="off">
+            <form action="{{route('posyandu.store')}}" method="POST" aria-label="abdul" data-id="abdul" class="needs-validation" novalidate="" autocomplete="off">
 
                 @csrf
 
@@ -85,7 +85,7 @@ Formulir Daftar Posyandu Baru
                         </select>
                     </div>
 
-                    <a href="{{route('kelola_posyandu.index')}}" class="btn btn-light btn-sm me-2"><i class="me-2 ti-arrow-left"></i>Kembali</a>
+                    <a href="{{route('posyandu.index')}}" class="btn btn-light btn-sm me-2"><i class="me-2 ti-arrow-left"></i>Kembali</a>
 
                     <button type="submit" class="btn btn-primary btn-sm">
                         <i class="me-2 ti-save"></i> Simpan
