@@ -63,6 +63,9 @@ Route::group(['middleware' => ['auth', 'super_admin']], function () {
 
     Route::get('admin/data_anak', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "index"])->name('data_anak');
     Route::get('admin/data_anak/riw_pemeriksaan/{id}', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "riw_pemeriksaan"])->name('riw_pem_admin');
+    Route::get('admin/data_anak/riw_penimbangan/{id}', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "riw_penimbangan"])->name('riw_pen_admin');
+    Route::get('admin/data_anak/riw_rujukan/{id}', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "riw_rujukan"])->name('riw_rujukan_admin');
+    Route::get('admin/data_anak/profil_anak/{id}', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "profil_anak"])->name('profil_anak_admin');
 
     Route::get('admin/rekapitulasi', [RekapitulasiAnakController::class, 'index'])->name('rekapitulasi');
     Route::get('admin/grafik_anak', [GrafikAnakController::class, 'index'])->name('grafik_anak');

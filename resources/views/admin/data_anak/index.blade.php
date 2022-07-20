@@ -52,16 +52,16 @@ Data Kesehatan Seluruh Anak Banyuwangi
                             <td style="font-size: 12px;">{{$row->nama_posyandu}}</td>
 
                             <td class="text-center" style="font-size: 12px;">
-                                <a href="#" class="btn btn-sm mb-2 btn-primary" style="font-size: 12px;" type="button">Lihat Riwayat</a>
+                                <a href="{{route('riw_rujukan_admin',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-primary" style="font-size: 12px;" type="button">Lihat Riwayat</a>
                             </td>
                             <td class="text-center" style="font-size: 12px;">
                                 <a href="{{route('riw_pem_admin',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-primary" style="font-size: 12px;" type="button">Lihat Riwayat</a>
                             </td>
                             <td class="text-center" style="font-size: 12px;">
-                                <a href="#" class=" btn btn-sm mb-2 btn-primary " style="font-size: 12px;" type="button">Lihat Riwayat</a>
+                                <a href="{{route('riw_pen_admin',$row->nik_anak)}}" class=" btn btn-sm mb-2 btn-primary " style="font-size: 12px;" type="button">Lihat Riwayat</a>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-sm mb-2 btn-primary" type="button"><i class="ti-eye"></i></a>
+                                <a href="{{route('profil_anak_admin',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-primary" type="button"><i class="ti-eye"></i></a>
                                 
                             </td>
                         </tr>

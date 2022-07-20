@@ -45,4 +45,47 @@ class DataAnakBanyuwangiController extends Controller
 
         return view('admin.data_anak.riw_pemeriksaan', compact(['data_anak']));
     }
+
+    public function riw_penimbangan($id)
+    {
+        $data_anak = DB::table('anak')
+            ->join('penimbangan', 'penimbangan.nik_anak', 'anak.nik_anak')
+            ->select('anak.*', 'penimbangan.*')
+            ->where('anak.nik_anak', $id)
+            ->orderBy('penimbangan.created_at', 'desc')
+            ->get();
+
+        // return $data_anak;
+        return view('admin.data_anak.riw_penimbangan', compact(['data_anak']));
+    }
+
+    public function riw_rujukan($id)
+    {
+        $data_anak = DB::table('anak')
+        ->join('rujukan','rujukan.nik_anak','anak.nik_anak')
+        ->join('bidan','rujukan.bidan_id','bidan.id')
+        ->join('puskesmas','bidan.puskesmas_id','puskesmas.id')
+        ->select('anak.*','rujukan.*', 'bidan.nama_bidan','puskesmas.nama_puskesmas')
+        ->where('anak.nik_anak',$id)
+        ->orderBy('rujukan.created_at', 'desc')
+        ->get();
+
+        // return $data_anak;
+
+        return view('admin.data_anak.riw_rujukan', compact(['data_anak']));
+    }
+
+    public function profil_anak($id)
+    {
+        $data_anak = DB::table('anak')
+        ->join('orangtua', 'anak.orangtua_id','orangtua.id')
+        ->join('desa_kelurahan','orangtua.desa_kelurahan_id','desa_kelurahan.id')
+        ->join('kecamatan','orangtua.kecamatan_id','kecamatan.id')
+        ->select('anak.*','orangtua.*','desa_kelurahan.nama','kecamatan.nama_kecamatan')
+        ->where('anak.nik_anak',$id)
+        ->first();
+
+        // return $data_anak;
+        return view('admin.data_anak.profil_anak', compact(['data_anak']));
+    }
 }
