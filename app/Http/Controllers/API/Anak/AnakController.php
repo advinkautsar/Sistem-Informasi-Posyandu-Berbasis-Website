@@ -119,10 +119,8 @@ class AnakController extends Controller
         $jk='';	
         if($usia->jenis_kelamin=='L'){
             $jk='Laki-laki';
-
         }else{
             $jk='Perempuan';
-
         }
     
 
@@ -154,6 +152,39 @@ class AnakController extends Controller
             }
         }else{
             $status_tb ='data tidak tersedia';
+        }
+        // return $tb_u;
+       
+        // return $status_tb;
+
+        $i_pb = $request->tinggi_badan;
+
+        // $i=89.9;
+        $status_pb='';
+
+        
+        $pb_u= DB::table('standart_pb_u')->where('umur_bulan',$umuranak )->where('jk',$jk)->first();
+    
+        if($pb_u){
+            if( ($pb_u->plus_2_sd <= $i_pb) && ($i_pb <= $pb_u->plus_3_sd)){
+                $status_pb ='Tinggi';
+            }else if(($pb_u->plus_1_sd <= $i_pb) && ($i_pb <= $pb_u->plus_2_sd)){
+                $status_pb ='Normal';
+            }elseif(($pb_u->median <= $i_pb) && ($i_pb <= $pb_u->plus_1_sd)){
+                $status_pb = 'Normal';
+            }elseif(($pb_u->min_1_sd <= $i_pb) && ($i_pb <= $pb_u->median)){
+                $status_pb = 'Normal';
+            }
+            elseif(($pb_u->min_2_sd <= $i_pb) && ($i_pb <= $pb_u->min_1_sd)){
+                $status_pb = 'Normal';
+            }
+            elseif(($pb_u->min_3_sd <= $i_pb) && ($i_pb <= $pb_u->min_2_sd)){
+                $status_pb = 'Pendek';
+            }else{
+                $status_pb ='Sangat Pendek';
+            }
+        }else{
+            $status_pb ='data tidak tersedia';
         }
         // return $tb_u;
        
@@ -253,6 +284,42 @@ class AnakController extends Controller
     }
 
 
+    $bb_pb = DB::table('standart_bb_pb')->where('jk',$jk)->where('tinggi_badan',$request->tinggi_badan)->first();
+        // return $bb_tb;
+        $i_bb_pb=$request->berat_badan;
+        $status_bb_pb='';
+
+        if($bb_pb){
+
+        //kurang +3sd untuk status gizi obesitas
+
+        if( ($bb_pb->plus_2_sd <= $i_bb_pb) && ($i_bb_pb <= $bb_pb->plus_3_sd)){
+            $status_bb_pb ='Gizi lebih';
+        }else if(($bb_pb->plus_1_sd <= $i_bb_pb) && ($i_bb_pb <= $bb_pb->plus_2_sd)){
+            $status_bb_pb ='Beresiko gizi lebih';  
+        }elseif ($bb_pb->plus_3_sd <= $i_bb_pb) {
+            $status_bb_pb ='obesitas';          
+        }elseif(($bb_pb->median <= $i_bb_pb) && ($i_bb_pb <= $bb_pb->plus_1_sd)){
+            $status_bb_pb = 'Gizi baik';
+        }elseif(($bb_pb->min_1_sd <= $i_bb_pb) && ($i_bb_pb <= $bb_pb->median)){
+            $status_bb_pb = 'Gizi baik';
+        }
+        elseif(($bb_pb->min_2_sd <= $i_bb_pb) && ($i_bb_pb <= $bb_pb->min_1_sd)){
+            $status_bb_pb = 'Gizi baik';
+        }
+        elseif(($bb_pb->min_3_sd <= $i_bb_pb) && ($i_bb_pb <= $bb_pb->min_2_sd)){
+            $status_bb_pb ='Gizi kurang';
+        }else{
+            $status_bb_pb ='Gizi Buruk';
+        }
+
+        // return $status_bb_tb;
+    }else{
+        $status_bb_pb ='data tidak tersedia';
+    }
+
+
+
           
         $imt_u = DB::table('standart_imt_u')->where('umur_bulan',$umuranak )->where('jk',$jk)->first();
         // return $bb_tb;
@@ -297,10 +364,12 @@ class AnakController extends Controller
             'tinggi_badan'=>$request->tinggi_badan,
             'lingkar_kepala'=>$request->lingkar_kepala,
             'status_tb_u'=>$status_tb,
+            'status_pb_u'=>$status_pb,
             'status_bb_u'=>$status_bb,
             'status_lk_u'=>$status_lk,
             'status_imt_u'=>$status_imt_u,
             'status_bb_tb'=>$status_bb_tb,
+            'status_bb_pb'=>$status_bb_pb,
           
             // 'status_bb_tb',
             // 'status_imt_u',
