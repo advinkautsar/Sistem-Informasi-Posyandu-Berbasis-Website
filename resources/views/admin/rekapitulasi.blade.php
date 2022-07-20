@@ -17,7 +17,7 @@ Rekapitulasi Pertumbuhan Anak Posyandu
                 <form class="form" method="get" action="{{ url('')}}">
 
 
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-sm-3">
                             <label for="">Tanggal awal</label>
                             <input type="date" class="form-control ml-2" name="tanggal_awal" id="tanggal_awal">

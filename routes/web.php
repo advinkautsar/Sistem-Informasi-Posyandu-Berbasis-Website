@@ -37,7 +37,7 @@ Route::get('/', function () {
 
     if (auth()->check()) {
         if (auth()->user()->role == "super_admin") {
-            return redirect('admin/dashboard');
+            return redirect('admin/dashboard_admin');
         } elseif (auth()->user()->role == "petugas_puskesmas") {
             return redirect('petugas_puskesmas/dashboard_puskesmas');
         } elseif (auth()->user()->role == "petugas_desa") {
@@ -57,6 +57,12 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'super_admin']], function () {
 
+    Route::get('admin/dashboard_admin', [App\Http\Controllers\WEB\SuperAdmin\DashboardAdminController::class, "index"])->name('dashboard_admin');
+
+    Route::get('admin/dashboard_admin/rekap_desa/{id}', [App\Http\Controllers\WEB\SuperAdmin\DashboardAdminController::class, "rekap_desa"])->name('rekap_desa');
+
+    Route::get('admin/dashboard_admin/rekap_desa/rekap_posyandu/{id}', [App\Http\Controllers\WEB\SuperAdmin\DashboardAdminController::class, "rekap_posyandu"])->name('rekap_posyandu');
+
     Route::GET('admin/data_anak', function () {
         return view('admin.data_anak');
     })->name('data_anak');
@@ -68,10 +74,12 @@ Route::group(['middleware' => ['auth', 'super_admin']], function () {
         return view('admin.kelola_pengguna.dinas_kesehatan.index');
     })->name('rekapitulasi');
 
+
     Route::resource('admin/kelola_pengguna/dinkes', Kelola_PenggunaDinkesController::class);
     Route::resource('admin/kelola_pengguna/petdes', PetdesController::class);
     Route::resource('admin/kelola_pengguna/petpus', PetpusController::class);
 });
+
 
 Route::group(['middleware' => ['auth', 'petugas_puskesmas']], function () {
     Route::get('petugas_puskesmas/dashboard_puskesmas', function () {

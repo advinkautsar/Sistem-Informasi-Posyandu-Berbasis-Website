@@ -18,10 +18,10 @@
     <div class="sidebar-content">
         <ul>
             @if(auth()->user()->role == 'super_admin')
-            <li class="{{ request()->segment(2) === 'rekapitulasi' ? 'active' : '' }}"">
-                            <a href=" {{url('admin/rekapitulasi')}}" class="link">
-                <i class="ti-home"></i>
-                <span>Rekapitulasi</span>
+            <li class="{{ request()->segment(2) === 'dashboard_admin' ? 'active' : '' }}">
+                <a href="{{route('dashboard_admin')}}" class="link">
+                    <i class="ti-home"></i>
+                    <span>Dashboard</span>
                 </a>
             </li>
             <li class="{{ request()->segment(2) === 'kelola_pengguna' ? 'active open' : '' }}">
@@ -39,6 +39,12 @@
                 <a href="{{url('admin/data_anak')}}" class="link">
                     <i class="ti-pin"></i>
                     <span>Data Anak Banyuwangi</span>
+                </a>
+            </li>
+            <li class="{{ request()->segment(2) === 'rekapitulasi' ? 'active' : '' }}"">
+                            <a href=" {{url('admin/rekapitulasi')}}" class="link">
+                <i class="ti-files"></i>
+                <span>Laporan rekapitulasi</span>
                 </a>
             </li>
             <li class="{{ request()->is('admin/grafik_anak') ? 'active' : '' }}">
