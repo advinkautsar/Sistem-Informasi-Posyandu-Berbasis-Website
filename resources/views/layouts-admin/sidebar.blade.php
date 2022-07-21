@@ -9,8 +9,11 @@
             <i class="ti-angle-right"></i>
         </a>
     </div>
-    <div class="sidebar-header">
-        <div class="text" style="font-size: 12px; padding: 0;">Sistem Informasi Posyandu</div>
+    <div class="sidebar-header d-flex align-items-center">
+        <a class="navbar-brand" href="javascript:void(0)">
+            <img src="{{asset('arfa/assets/images/logo_web.png')}}" class="navbar-brand-img" alt="">
+        </a>
+        <!-- <div class="text" style="font-size: 12px; padding: 0;">Sistem Informasi Posyandu</div> -->
         <div class="close-sidebar action-toggle">
             <i class="ti-close"></i>
         </div>
@@ -79,7 +82,7 @@
                 </ul>
             </li>
 
-        
+
             <li class="{{ request()->segment(2) === 'rekap_imunisasi' ? 'active' : '' }}">
                 <a href="#" class="link">
                     <i class="ti-layout"></i>
