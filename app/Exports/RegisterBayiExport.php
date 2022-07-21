@@ -55,7 +55,7 @@ class RegisterBayiExport implements WithEvents
             ['anaks.penimbangans'
             => function ($q) use ($filter) {
                 $q->select("*", DB::raw('YEAR(created_at) year, MONTH(created_at) bulan'));
-                $q->wherebetween('created_at', [$filter->tanggal . ' 00:00:00', $filter->tanggal2 . ' 23:59:59'])->get();
+                $q->orwherebetween('created_at', [$filter->tanggal . ' 00:00:00', $filter->tanggal2 . ' 23:59:59'])->get();
             }]
         )->get();
 
@@ -82,10 +82,22 @@ class RegisterBayiExport implements WithEvents
                         if (!$anak->penimbangans->isEmpty()) {
                             foreach ($anak->penimbangans as $penimbangan) {
                                 $sheet->setCellValue($this->selectField($penimbangan->bulan) . $no, $penimbangan->berat_badan);
-                                $sheet->setCellValue('D' . $no, $penimbangan->berat_badan);
+                                // $sheet->setCellValue('D' . $no, $penimbangan->berat_badan);
                             }
                         }
                         if (!$anak->pemeriksaans->isEmpty()) {
+                            //kliru
+                            // foreach ($anak->pemeriksaans as $pemeriksaan) {
+                            // //    if($pemeriksaan->imunisasi_id_1 =!37||$pemeriksaan->imunisasi_id_2 =!37||$pemeriksaan->imunisasi_id_3 =!37){
+                            //     $dtp = $pemeriksaan->where('nik_anak',$anak->nik_anak)->where('imunisasi_id_1' ,4)->orWhere('imunisasi_id_1',4)->orWhere('imunisasi_id_1',4)->get();
+                            //     foreach($dtp as $dt){
+                                      
+                            //         $sheet->setCellValue('Z' . $no,  $dtp[0]->tanggal_pemeriksaan ?? '-');
+                            //         $sheet->setCellValue('AA' . $no, $dtp[1]->tanggal_pemeriksaan    ?? '-');
+                            //         $sheet->setCellValue('AB' . $no, $dtp[2]->tanggal_pemeriksaan    ?? '-');
+                                  
+                            //     }    
+                            // }
                             $pemeriksaan = $anak->pemeriksaans->last();
 
                             // if ($pemeriksaan->Fe_1 == 'Ya') {
@@ -108,11 +120,19 @@ class RegisterBayiExport implements WithEvents
                             if ($pemeriksaan->Fe_1 == 'Ya' && $pemeriksaan->Fe_2 == "Ya") {
                                 $sheet->setCellValue('T' . $no, $pemeriksaan->tanggal_pemeriksaan);
                                 $sheet->setCellValue('U' . $no, $pemeriksaan->tanggal_pemeriksaan);
+                            }else{
+                                $sheet->setCellValue('T' . $no, '-');
+                                $sheet->setCellValue('U' . $no, '-');
+
                             }
 
                             if ($pemeriksaan->vitA_merah == 'Ya' && $pemeriksaan->vitA_biru == "Ya") {
                                 $sheet->setCellValue('V' . $no, $pemeriksaan->tanggal_pemeriksaan);
                                 $sheet->setCellValue('W' . $no, $pemeriksaan->tanggal_pemeriksaan);
+                            }else{
+                                $sheet->setCellValue('V' . $no, '-');
+                                $sheet->setCellValue('W' . $no, '-');
+
                             }
                             // $sheet->setCellValue('X' . $no, $pemeriksaan->oralit);
                         }
