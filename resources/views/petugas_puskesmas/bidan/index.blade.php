@@ -49,7 +49,7 @@ Data Bidan di wilayah kerja {{auth()->user()->petugas_puskesmas->puskesmas->nama
         @endif -->
 
         <div class="card-body">
-            <a href="{{route('kelola_bidan.create')}}" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Tambah Akun Bidan Baru</a>
+            <a href="{{route('bidan.create')}}" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Tambah Akun Bidan Baru</a>
             <p class="form-text mb-2">Berikut ini list data bidan yang bertugas di sekitar wilayah kerja {{auth()->user()->petugas_puskesmas->puskesmas->nama_puskesmas}}
             </p>
 
@@ -74,8 +74,8 @@ Data Bidan di wilayah kerja {{auth()->user()->petugas_puskesmas->puskesmas->nama
 
 
                             <td>
-                                <a href="{{route('kelola_bidan.edit', $row->id)}}" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
-                                <form action="{{route('kelola_bidan.destroy', $row->id)}}" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
+                                <a href="{{route('bidan.edit', $row->id)}}" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
+                                <form action="{{route('bidan.destroy', $row->id)}}" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
                                     @method('DELETE')
                                     @csrf
                                     <button class="btn btn-sm mb-2 btn-danger">

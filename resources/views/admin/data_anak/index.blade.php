@@ -1,6 +1,6 @@
 @extends('layouts-admin.master')
 @section('title 1')
-Data Anak di {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
+Data Kesehatan Seluruh Anak Banyuwangi
 @endsection
 
 @push('css')
@@ -12,7 +12,7 @@ Data Anak di {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
 
 <div class="col-md-12">
     <div class="title fw-bold mt-2 mb-3" style="font-size: 20px;">
-        Riwayat Pertumbuhan Anak
+        Data Anak Banyuwangi
     </div>
 
     <div class="card">
@@ -20,23 +20,9 @@ Data Anak di {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
             <h4>@yield('title 1')</h4>
         </div>
 
-        @if(Session::get('succes'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ Session::get('succes') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-
-        @if(Session::get('berhasil'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ Session::get('berhasil') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-
         <div class="card-body">
-            <a href="{{url('petugas_desa/riwayat_pertumbuhan_anak/index_tambah')}}" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Daftar Anak Baru</a>
-            <p class="form-text mb-2">Berikut ini merupakan data seluruh anak yang terdaftar di wilayah {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
+            
+            <p class="form-text mb-2">Berikut ini merupakan data riwayat kesehatan seluruh anak yang terdaftar di Banyuwangi.
             </p>
 
             <div class="table-responsive">
@@ -46,12 +32,13 @@ Data Anak di {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                             <th style="font-size: 12px;">No.</th>
                             <th style="font-size: 12px;">NIK Anak</th>
                             <th style="font-size: 12px;">Nama Anak</th>
-                            <th style="font-size: 12px;">Jenis Kelamin</th>
                             <th style="font-size: 12px;">Status Gizi Terakhir</th>
+                            <th class="text-center" style="font-size: 12px;">Desa</th>
+                            <th style="font-size: 12px;">Posyandu</th>
                             <th style="font-size: 12px;">Riwayat Rujukan</th>
                             <th style="font-size: 12px;">Riwayat Pemeriksaan</th>
                             <th style="font-size: 12px;">Riwayat Gizi</th>
-                            <th style="font-size: 12px;">Tindakan</th>
+                            <th style="font-size: 12px;">Profil</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,27 +47,22 @@ Data Anak di {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                             <td class="text-center" style="font-size: 12px;">{{++$i}}</td>
                             <td style="font-size: 12px;">{{$row->nik_anak}}</td>
                             <td style="font-size: 12px;">{{$row->nama_anak}}</td>
-                            <td style="font-size: 12px;">{{$row->jenis_kelamin}}</td>
                             <td class="text-center" style="font-size: 12px;"><span class="badge bg-success ">Gizi Baik</span></td>
+                            <td style="font-size: 12px;">{{$row->nama}}</td>
+                            <td style="font-size: 12px;">{{$row->nama_posyandu}}</td>
+
                             <td class="text-center" style="font-size: 12px;">
-                                <a href="{{route('riwayat_rujukan',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-primary" style="font-size: 12px;" type="button">Lihat Riwayat</a>
+                                <a href="{{route('riw_rujukan_admin',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-primary" style="font-size: 12px;" type="button">Lihat Riwayat</a>
                             </td>
                             <td class="text-center" style="font-size: 12px;">
-                                <a href="{{route('riwayat_pemeriksaan',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-primary" style="font-size: 12px;" type="button">Lihat Riwayat</a>
+                                <a href="{{route('riw_pem_admin',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-primary" style="font-size: 12px;" type="button">Lihat Riwayat</a>
                             </td>
                             <td class="text-center" style="font-size: 12px;">
-                                <a href="{{route('riwayat_penimbangan',$row->nik_anak)}}" class=" btn btn-sm mb-2 btn-primary " style="font-size: 12px;" type="button">Lihat Riwayat</a>
+                                <a href="{{route('riw_pen_admin',$row->nik_anak)}}" class=" btn btn-sm mb-2 btn-primary " style="font-size: 12px;" type="button">Lihat Riwayat</a>
                             </td>
                             <td>
-                                <a href="{{route('detail_anak',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-primary" type="button"><i class="ti-eye"></i></a>
-                                <a href="{{route('show_anak',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
-                                <form action="{{route('del_anak',$row->nik_anak)}}" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="btn btn-sm mb-2 btn-danger">
-                                        <i class="ti-trash"></i>
-                                    </button>
-                                </form>
+                                <a href="{{route('profil_anak_admin',$row->nik_anak)}}" class="btn btn-sm mb-2 btn-primary" type="button"><i class="ti-eye"></i></a>
+                                
                             </td>
                         </tr>
                         @endforeach

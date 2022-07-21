@@ -42,13 +42,13 @@ class AuthController extends Controller
                    
                 switch (Auth::user()->role) {
                     case 'super_admin':
-                        return redirect('/admin/rekapitulasi');
+                        return redirect('/admin/dashboard_admin');
                         break;
                     case 'petugas_puskesmas':
-                        return redirect('/petugas_puskesmas/dashboard');
+                        return redirect('/petugas_puskesmas/dashboard_puskesmas');
                         break;
                     case 'petugas_desa':
-                        return redirect('/');
+                        return redirect('/petugas_desa/dashboard_desa');
                         break;
                     default:
                         return redirect('/');

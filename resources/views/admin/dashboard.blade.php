@@ -1,11 +1,11 @@
 @extends('layouts-admin.master')
 @section('title')
-Selamat Datang Petugas {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
 @endsection
 @section('content')
 
 <div class="col-md-12 title">
-    <h4 class="fw-bold" style="font-size: 20px;">Selamat Datang Petugas Desa {{auth()->user()->petugas_desa->desa_kelurahan->nama}}</h4>
+    <h4 class="fw-bold" style="font-size: 20px;">Selamat Datang di Dashboard Super Admin
+</h4>
 
     <!-- Keterangan Jumlah Terdaftar -->
     <div class="row same-height mt-3">
@@ -73,12 +73,12 @@ Selamat Datang Petugas {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Rekapitulasi Gizi Anak</h4>
+                    <h4>Rekapitulasi Data Anak Banyuwangi Per Kecamatan</h4>
                 </div>
 
                 <div class="card-body">
                     <!-- <a href="" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Daftar Anak Baru</a> -->
-                    <p class="form-text mb-2">Berikut ini merupakan rekapitulasi data seluruh anak yang terdaftar di wilayah {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
+                    <p class="form-text mb-2">Berikut ini merupakan rekapitulasi data anak berdasarkan kecamatan di Banyuwangi
                     </p>
 
                     <div class="table-responsive">
@@ -86,21 +86,20 @@ Selamat Datang Petugas {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                             <thead>
                                 <tr>
                                     <th class="text-center" style="font-size: 12px;">No.</th>
-                                    <th class="text-center" style="font-size: 12px;">Nama Posyandu</th>
-                                    <th class="text-center" style="font-size: 12px;">Alamat Posyandu</th>
+                                    <th class="text-center" style="font-size: 12px;">Nama Kecamatan</th>
                                     <th class="text-center" style="font-size: 12px;">Jumlah Anak Sehat</th>
                                     <th class="text-center" style="font-size: 12px;">Jumlah Anak Sakit</th>
+                                    <th class="text-center" style="font-size: 12px;">Tindakan</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data_pos as $i=>$row)
+                                @foreach($data_kecamatan as $i=>$row)
                                 <tr>
                                     <td class="text-center" style="font-size: 12px;">{{++$i}}</td>
-                                    <td class="text-center" style="font-size: 12px;">{{$row->nama_posyandu}}</td>
-                                    <td class="text-center" style="font-size: 12px;">{{$row->alamat}}</td>
+                                    <td  style="font-size: 12px;">{{$row->nama_kecamatan}}</td>
                                     <td class="text-center" style="font-size: 12px;">40</td>
                                     <td class="text-center" style="font-size: 12px;">3</td>
-
+                                    <td class="text-center" style="font-size: 12px;"><a href="{{route('rekap_desa', $row->id)}}" class="btn btn-sm mb-2 btn-primary" type="button">Lihat Detail</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

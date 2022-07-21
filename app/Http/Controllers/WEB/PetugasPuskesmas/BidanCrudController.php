@@ -95,9 +95,9 @@ class BidanCrudController extends Controller
         ]);
 
         if ($create_akun || $create_bidan) {
-            return redirect()->route('kelola_bidan.index')->with('succes', 'Data Bidan Telah Terdaftar');
+            return redirect()->route('bidan.index')->with('succes', 'Data Bidan Telah Terdaftar');
         } else {
-            return redirect()->route('kelola_bidan.index')->with('fail', 'Ups!! ada sesuatu yang bermasalah, coba sesaat lagi !');
+            return redirect()->route('bidan.index')->with('fail', 'Ups!! ada sesuatu yang bermasalah, coba sesaat lagi !');
         }
     }
 
@@ -181,9 +181,9 @@ class BidanCrudController extends Controller
         // return $data_user;
 
         if ($update_akun || $update_petbid) {
-            return redirect()->route('kelola_bidan.index')->with('succes', 'Akun berhasil di edit');
+            return redirect()->route('bidan.index')->with('succes', 'Akun berhasil di edit');
         } else {
-            return redirect()->route('kelola_bidan.index')->with('fail', 'Ups!! ada sesuatu yang bermasalah, coba sesaat lagi !');
+            return redirect()->route('bidan.index')->with('fail', 'Ups!! ada sesuatu yang bermasalah, coba sesaat lagi !');
         }
     }
 
@@ -200,6 +200,6 @@ class BidanCrudController extends Controller
         $del = User::find($id);
 
         $del->delete();
-        return redirect()->route('kelola_bidan.index')->with('berhasil', 'Data Bidan berhasil di hapus');
+        return redirect()->route('bidan.index')->with('berhasil', 'Data Bidan berhasil di hapus');
     }
 }

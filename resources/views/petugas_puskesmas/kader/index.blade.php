@@ -49,7 +49,7 @@ Data Kader di wilayah kerja {{auth()->user()->petugas_puskesmas->puskesmas->nama
         @endif -->
 
         <div class="card-body">
-            <a href="{{route('kelola_kader.create')}}" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Tambah Akun Petugas</a>
+            <a href="{{route('kader.create')}}" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Tambah Akun Petugas</a>
             <p class="form-text mb-2">Berikut ini list data bidan yang bertugas di sekitar wilayah kerja {{auth()->user()->petugas_puskesmas->puskesmas->nama_puskesmas}}
             </p>
 
@@ -73,11 +73,11 @@ Data Kader di wilayah kerja {{auth()->user()->petugas_puskesmas->puskesmas->nama
                             <td style="font-size: 12px;">{{$row->nama_posyandu}}</td>
                             <td>
 
-                                <a href="{{route('kelola_kader.edit', $row->id)}}" class="btn btn-sm mb-2 btn-warning" type="button">
+                                <a href="{{route('kader.edit', $row->id)}}" class="btn btn-sm mb-2 btn-warning" type="button">
                                     <i class="ti-pencil"></i>
                                 </a>
 
-                                <form action="{{route('kelola_kader.destroy', $row->id)}}" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
+                                <form action="{{route('kader.destroy', $row->id)}}" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
                                     @method('DELETE')
                                     @csrf
                                     <button class="btn btn-sm mb-2 btn-danger">

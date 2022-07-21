@@ -28,7 +28,7 @@ Formulir Daftar Data Kader Baru
         @endif
 
         <div class="card-body">
-            <form action="{{route('kelola_kader.store')}}" method="POST" aria-label="abdul" data-id="abdul" class="needs-validation" novalidate="" autocomplete="off">
+            <form action="{{route('kader.store')}}" method="POST" aria-label="abdul" data-id="abdul" class="needs-validation" novalidate="" autocomplete="off">
 
                 @csrf
 
@@ -94,7 +94,7 @@ Formulir Daftar Data Kader Baru
                         </div>
 
                         
-                        <a href="{{route('kelola_kader.index')}}" class="btn btn-light btn-sm me-2"><i class="me-2 ti-arrow-left"></i>Kembali</a>
+                        <a href="{{route('kader.index')}}" class="btn btn-light btn-sm me-2"><i class="me-2 ti-arrow-left"></i>Kembali</a>
 
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="me-2 ti-save"></i> Simpan

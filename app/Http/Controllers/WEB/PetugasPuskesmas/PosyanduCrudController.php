@@ -72,7 +72,7 @@ class PosyanduCrudController extends Controller
        $save = $pos->save();
 
        if ($save) {
-           return redirect()->route('kelola_posyandu.index')->with('succes', 'Data posyandu berhasil terdaftar');
+           return redirect()->route('posyandu.index')->with('succes', 'Data posyandu berhasil terdaftar');
        } 
 
 
@@ -135,7 +135,7 @@ class PosyanduCrudController extends Controller
             $pos->save();
 
         if ($pos) {
-            return redirect()->route('kelola_posyandu.index')->with('succes', 'Akun pengguna berhasil di ubah');
+            return redirect()->route('posyandu.index')->with('succes', 'Akun pengguna berhasil di ubah');
         } 
     }
 
@@ -149,6 +149,6 @@ class PosyanduCrudController extends Controller
     {
         $pos = Posyandu::find($id);
         $pos->delete();
-        return redirect()->route('kelola_posyandu.index')->with('berhasil', 'Data posyandu berhasil di hapus');
+        return redirect()->route('posyandu.index')->with('berhasil', 'Data posyandu berhasil di hapus');
     }
 }

@@ -1,14 +1,14 @@
 @extends('layouts-admin.master')
 @section('title')
-Selamat Datang Petugas {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
 @endsection
 @section('content')
 
 <div class="col-md-12 title">
-    <h4 class="fw-bold" style="font-size: 20px;">Selamat Datang Petugas Desa {{auth()->user()->petugas_desa->desa_kelurahan->nama}}</h4>
+    <h4 class="fw-bold" style="font-size: 20px;">Selamat Datang Petugas {{auth()->user()->petugas_puskesmas->puskesmas->nama_puskesmas}}
+</h4>
 
     <!-- Keterangan Jumlah Terdaftar -->
-    <div class="row same-height mt-3">
+    <!-- <div class="row same-height mt-3">
 
         <div class="col-md-3">
             <div class="card text-center">
@@ -46,7 +46,7 @@ Selamat Datang Petugas {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
             </div>
         </div>
 
-    </div>
+    </div> -->
 
     <!-- Grafik -->
     <!-- <div class="col-md-12 mb-4">
@@ -73,12 +73,12 @@ Selamat Datang Petugas {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Rekapitulasi Gizi Anak</h4>
+                    <h4>Rekapitulasi Data Anak Per Posyandu </h4>
                 </div>
 
                 <div class="card-body">
                     <!-- <a href="" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Daftar Anak Baru</a> -->
-                    <p class="form-text mb-2">Berikut ini merupakan rekapitulasi data seluruh anak yang terdaftar di wilayah {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
+                    <p class="form-text mb-2">Berikut ini merupakan rekapitulasi data anak berdasarkan posyandu yang terdaftar di desa terpilih.
                     </p>
 
                     <div class="table-responsive">
@@ -87,7 +87,8 @@ Selamat Datang Petugas {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                                 <tr>
                                     <th class="text-center" style="font-size: 12px;">No.</th>
                                     <th class="text-center" style="font-size: 12px;">Nama Posyandu</th>
-                                    <th class="text-center" style="font-size: 12px;">Alamat Posyandu</th>
+                                    <th class="text-center" style="font-size: 12px;">Alamat</th>
+                                    <th class="text-center" style="font-size: 12px;">Desa</th>
                                     <th class="text-center" style="font-size: 12px;">Jumlah Anak Sehat</th>
                                     <th class="text-center" style="font-size: 12px;">Jumlah Anak Sakit</th>
                                 </tr>
@@ -96,15 +97,17 @@ Selamat Datang Petugas {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                                 @foreach($data_pos as $i=>$row)
                                 <tr>
                                     <td class="text-center" style="font-size: 12px;">{{++$i}}</td>
-                                    <td class="text-center" style="font-size: 12px;">{{$row->nama_posyandu}}</td>
-                                    <td class="text-center" style="font-size: 12px;">{{$row->alamat}}</td>
+                                    <td  style="font-size: 12px;">{{$row->nama_posyandu}}</td>
+                                    <td  style="font-size: 12px;">{{$row->alamat}}</td>
+                                    <td  style="font-size: 12px;">{{$row->nama}}</td>
                                     <td class="text-center" style="font-size: 12px;">40</td>
                                     <td class="text-center" style="font-size: 12px;">3</td>
-
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
+
+                        <a href="{{route('dashboard_puskesmas')}}" class="btn btn-light btn-sm me-2 mt-3"><i class="me-2 ti-arrow-left"></i>Kembali</a>
                     </div>
                 </div>
             </div>

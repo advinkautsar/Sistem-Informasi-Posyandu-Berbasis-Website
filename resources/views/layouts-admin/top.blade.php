@@ -1,23 +1,23 @@
 <div class="shadow-header"></div>
-        <header class="header-navbar fixed">
-            <div class="toggle-mobile action-toggle"><i class="fas fa-bars"></i></div>
-            <div class="header-wrapper">
-                <div class="header-left">
-                    <div class="theme-switch-icon"></div>
-                </div>
-                <div class="header-content">
-                    <div class="notification dropdown">
-                        <!-- <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+<header class="header-navbar fixed">
+    <div class="toggle-mobile action-toggle"><i class="fas fa-bars"></i></div>
+    <div class="header-wrapper">
+        <div class="header-left">
+            <div class="theme-switch-icon"></div>
+        </div>
+        <div class="header-content">
+            <div class="notification dropdown">
+                <!-- <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="far fa-envelope"></i>
                         </a> -->
-                        
-                    </div>
-                    <div class="notification dropdown">
-                        <!-- <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+
+            </div>
+            <div class="notification dropdown">
+                <!-- <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="far fa-bell"></i>
                             <span class="badge">12</span>
                         </a> -->
-                        <!-- <ul class="dropdown-menu medium">
+                <!-- <ul class="dropdown-menu medium">
                             <li class="menu-header">
                                 <a class="dropdown-item" href="#">Notification</a>
                             </li>
@@ -57,21 +57,22 @@
                                 </a>
                             </li>
                         </ul> -->
+            </div>
+            <div class="dropdown dropdown-menu-end">
+                <a href="#" class="user-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="label">
+                        <span></span>
+                        <div>{{auth()->user()->nama_pengguna}}</div>
                     </div>
-                    <div class="dropdown dropdown-menu-end">
-                        <a href="#" class="user-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <div class="label">
-                                <span></span>
-                                <div>{{auth()->user()->nama_pengguna}}</div>
-                            </div>
-                            <!-- <img class="img-user" src="" alt="user"srcset=""> -->
-                        </a>
-                        <ul class="dropdown-menu small">
-                            <!-- <li class="menu-header">
+                    <img class="img-user" src="{{asset('arfa/assets/images/avatar1.png')}}" alt="user" srcset="">
+                    <!-- <img class="img-user" src="" alt="user"srcset=""> -->
+                </a>
+                <ul class="dropdown-menu small">
+                    <!-- <li class="menu-header">
                                 <a class="dropdown-item" href="#">Notifikasi</a>
                             </li> -->
-                            <li class="menu-content ps-menu">
-                                <!-- <a href="#">
+                    <li class="menu-content ps-menu">
+                        <!-- <a href="#">
                                     <div class="description">
                                         <i class="ti-user"></i> Profile
                                     </div>
@@ -81,15 +82,15 @@
                                         <i class="ti-settings"></i> Setting
                                     </div>
                                 </a> -->
-                                <a href="{{url('logout')}}">
-                                    <div class="description">
-                                        <i class="ti-power-off"></i> Logout
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
+                        <a href="{{url('logout')}}">
+                            <div class="description">
+                                <i class="ti-power-off"></i> Logout
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </header>
+
+        </div>
+    </div>
+</header>
