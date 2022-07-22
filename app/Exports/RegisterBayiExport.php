@@ -86,18 +86,7 @@ class RegisterBayiExport implements WithEvents
                             }
                         }
                         if (!$anak->pemeriksaans->isEmpty()) {
-                            //kliru
-                            // foreach ($anak->pemeriksaans as $pemeriksaan) {
-                            // //    if($pemeriksaan->imunisasi_id_1 =!37||$pemeriksaan->imunisasi_id_2 =!37||$pemeriksaan->imunisasi_id_3 =!37){
-                            //     $dtp = $pemeriksaan->where('nik_anak',$anak->nik_anak)->where('imunisasi_id_1' ,4)->orWhere('imunisasi_id_1',4)->orWhere('imunisasi_id_1',4)->get();
-                            //     foreach($dtp as $dt){
-                                      
-                            //         $sheet->setCellValue('Z' . $no,  $dtp[0]->tanggal_pemeriksaan ?? '-');
-                            //         $sheet->setCellValue('AA' . $no, $dtp[1]->tanggal_pemeriksaan    ?? '-');
-                            //         $sheet->setCellValue('AB' . $no, $dtp[2]->tanggal_pemeriksaan    ?? '-');
-                                  
-                            //     }    
-                            // }
+
                             $zz = ['Z', 'AA', 'AB'];
                             $zd = ['AC', 'AD', 'AE','AF'];
                             $zc = ['AH', 'AI','AJ'];
