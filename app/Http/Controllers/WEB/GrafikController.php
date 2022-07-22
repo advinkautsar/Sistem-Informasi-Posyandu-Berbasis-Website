@@ -111,7 +111,7 @@ class GrafikController extends Controller
     }
 
 
-    public function penimbangan_all($kode,$id)
+    public function penimbangan_alls($kode,$id)
     {
         $penimbangan = DB::table('penimbangan')
         ->join("anak", "anak.nik_anak", "=", "penimbangan.nik_anak")
