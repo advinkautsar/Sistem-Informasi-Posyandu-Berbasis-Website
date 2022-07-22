@@ -23,6 +23,7 @@ Grafik Anak
                         <th style="text-align:center;">Grafik BB_U</th>
                         <th style="text-align:center;">Grafik TB_U</th>
                         <th style="text-align:center;">Grafik IMT_U</th>
+                        <th style="text-align:center;">Grafik LK_U</th>
 
                     </tr>
                 </thead>
@@ -52,6 +53,9 @@ Grafik Anak
                         </td>
                         <td style="text-align:center;">
                             <a href="{{url('grafik/standart_imt_u',$data->id)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                        </td>
+                        <td style="text-align:center;">
+                            <a href="{{url('grafik/standart_lk_u',$data->id)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
                         </td>
 
                     </tr>
