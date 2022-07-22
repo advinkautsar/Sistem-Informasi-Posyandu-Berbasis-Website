@@ -64,7 +64,7 @@
                         <span></span>
                         <div>{{auth()->user()->nama_pengguna}}</div>
                     </div>
-                    <img class="img-user" src="{{asset('arfa/assets/images/avatar1.png')}}" alt="user" srcset="">
+                    <img class="img-user" src="{{asset('public/arfa/assets/images/avatar1.png')}}" alt="user" srcset="">
                     <!-- <img class="img-user" src="" alt="user"srcset=""> -->
                 </a>
                 <ul class="dropdown-menu small">

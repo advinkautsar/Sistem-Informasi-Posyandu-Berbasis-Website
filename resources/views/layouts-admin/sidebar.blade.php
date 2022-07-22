@@ -11,7 +11,7 @@
     </div>
     <div class="sidebar-header d-flex align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-            <img src="{{asset('arfa/assets/images/logo_web.png')}}" class="navbar-brand-img" alt="">
+            <img src="{{asset('public/arfa/assets/images/logo_web.png')}}" class="navbar-brand-img" alt="">
         </a>
         <!-- <div class="text" style="font-size: 12px; padding: 0;">Sistem Informasi Posyandu</div> -->
         <div class="close-sidebar action-toggle">
