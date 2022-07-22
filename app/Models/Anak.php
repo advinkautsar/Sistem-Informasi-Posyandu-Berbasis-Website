@@ -31,8 +31,10 @@ class Anak extends Model
     }
     public function pemeriksaans()
     {
-        return $this->hasMany(Pemeriksaan::class,'nik_anak');
+        return $this->hasMany(Pemeriksaan::class,'nik_anak')->with(['imunisasi1','imunisasi2','imunisasi3']);
     }
+
+
     public function penimbangans()
     {
         return $this->hasMany(Penimbangan::class,'nik_anak');

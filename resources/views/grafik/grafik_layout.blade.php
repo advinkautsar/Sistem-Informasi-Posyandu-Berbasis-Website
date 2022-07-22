@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grafik</title>
-    <link rel="stylesheet" href="{{asset('arfa/vendor/bootstrap/dist/css/bootstrap.min.css')}}">
-    <script src="{{asset('arfa/vendor/jquery/dist/jquery.min.js')}}"></script>
-    <script src="{{asset('arfa/vendor/chart.js/chart.min.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('public/arfa/vendor/bootstrap/dist/css/bootstrap.min.css')}}">
+    <script src="{{asset('public/arfa/vendor/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{asset('public/arfa/vendor/chart.js/chart.min.js')}}"></script>
 
 </head>
 <body>

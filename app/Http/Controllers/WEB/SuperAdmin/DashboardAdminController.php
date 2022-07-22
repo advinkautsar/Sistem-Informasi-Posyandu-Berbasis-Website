@@ -14,6 +14,32 @@ class DashboardAdminController extends Controller
     public function index()
     {
         $data_kecamatan = Kecamatan::all();
+        
+        $data = Kecamatan::
+        leftjoin('desa_kelurahan', 'desa_kelurahan.kecamatan_id', 'kecamatan.id')
+        ->join('posyandu', 'posyandu.desa_kelurahan_id', 'desa_kelurahan.id')
+        ->join('orangtua', 'orangtua.posyandu_id', 'posyandu.id')
+        ->join('anak', 'anak.orangtua_id', 'orangtua.id')
+        ->join('penimbangan', 'penimbangan.nik_anak', 'anak.nik_anak')
+        ->get();
+
+        foreach($data_kecamatan as $kecamatan)
+        {
+           $kecamatan['jumlah_sehat'] = $data
+           ->where('nama_kecamatan', $kecamatan->nama_kecamatan)
+           ->where('status_bb_tb','Normal')
+           ->where('status_bb_pb','Normal')
+           ->count();
+
+           $kecamatan['jumlah_sakit'] = $data
+           ->where('nama_kecamatan', $kecamatan->nama_kecamatan)
+           ->where('status_bb_tb','Gizi buruk')
+           ->where('status_bb_pb','Gizi buruk')
+           ->count();
+        }
+
+// dd($data_kecamatan);
+        
 
         return view('admin.dashboard', compact(['data_kecamatan']));
     }

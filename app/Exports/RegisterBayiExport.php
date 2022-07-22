@@ -98,6 +98,39 @@ class RegisterBayiExport implements WithEvents
                                   
                             //     }    
                             // }
+                            $zz = ['Z', 'AA', 'AB'];
+                            $zd = ['AC', 'AD', 'AE','AF'];
+                            $zc = ['AH', 'AI','AJ'];
+                            $zn = 0;
+                            $ze=0;
+                            $zf=0;
+                            foreach($anak->pemeriksaans as $dpt){
+                                if(
+                                substr($dpt->imunisasi1->jenis_imunisasi,0,3) == "DPT" || 
+                                substr($dpt->imunisasi2->jenis_imunisasi,0,3)  == "DPT" || 
+                                substr($dpt->imunisasi3->jenis_imunisasi,0,3) == "DPT" ){
+                                $sheet->setCellValue($zz[$zn] . $no, $dpt->tanggal_pemeriksaan);
+                                $zn++;
+                                }
+
+                                if(
+                                    substr($dpt->imunisasi1->jenis_imunisasi,0,5) == "Polio" || 
+                                    substr($dpt->imunisasi2->jenis_imunisasi,0,5)  == "Polio" || 
+                                    substr($dpt->imunisasi3->jenis_imunisasi,0,5) == "Polio" ){
+                                    $sheet->setCellValue($zd[$ze] . $no, $dpt->tanggal_pemeriksaan);
+                                    $ze++;
+                                }
+
+                                if(
+                                    substr($dpt->imunisasi1->jenis_imunisasi,0,9) == "Hepatitis" || 
+                                    substr($dpt->imunisasi2->jenis_imunisasi,0,9)  == "Hepatitis" || 
+                                    substr($dpt->imunisasi3->jenis_imunisasi,0,9) == "Hepatitis" ){
+                                    $sheet->setCellValue($zc[$zf] . $no, $dpt->tanggal_pemeriksaan);
+                                    $zf++;
+                                }
+
+
+                            }
                             $pemeriksaan = $anak->pemeriksaans->last();
 
                             // if ($pemeriksaan->Fe_1 == 'Ya') {

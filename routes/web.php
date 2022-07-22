@@ -133,3 +133,6 @@ Route::get('grafik/{kode}/{id}', [App\Http\Controllers\WEB\GrafikController::cla
 Route::get("export/hasilkegiatan/{id}", [App\Http\Controllers\WEB\LaporanExportController::class, "hasilkegiatan"]);
 Route::post('laporanbalita/{id}', [App\Http\Controllers\WEB\LaporanExportController::class, "hasil_laporan_registrasi_balita"]);
 Route::post('laporanbayi/{id}', [App\Http\Controllers\WEB\LaporanExportController::class, "hasil_laporan_registrasi_bayi"]);
+
+Route::get('grafikall/{kode}/{nik}', [App\Http\Controllers\WEB\GrafikController::class, "penimbangan_all"]);
+
