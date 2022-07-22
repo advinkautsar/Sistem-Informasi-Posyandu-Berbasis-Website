@@ -79,10 +79,12 @@ Rekapitulasi Pertumbuhan Anak Posyandu
     @section('js')
 
     <script>
+
         function send(url) {
             axios.post($(url).attr('href'), {
                     tanggal: $('#tanggal_awal').val(),
                     tanggal2: $('#tanggal_akhir').val()
+                   
                 }, {
                     responseType: 'blob'
                 })

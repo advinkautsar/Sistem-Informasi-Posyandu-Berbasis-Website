@@ -216,7 +216,8 @@ class AnakController extends Controller
         }
         // return $status_bb;
 
-
+   
+      
 
 
         $i_lk=$request->lingkar_kepala;
@@ -278,13 +279,14 @@ class AnakController extends Controller
             $status_bb_tb ='Gizi Buruk';
         }
 
-        // return $status_bb_tb;
+        
     }else{
         $status_bb_tb ='data tidak tersedia';
     }
+    // return $status_bb_tb;
 
 
-    $bb_pb = DB::table('standart_bb_pb')->where('jk',$jk)->where('tinggi_badan',$request->tinggi_badan)->first();
+    $bb_pb = DB::table('standart_bb_pb')->where('jk',$jk)->where('panjang_badan',$request->tinggi_badan)->first();
         // return $bb_tb;
         $i_bb_pb=$request->berat_badan;
         $status_bb_pb='';
@@ -318,7 +320,8 @@ class AnakController extends Controller
         $status_bb_pb ='data tidak tersedia';
     }
 
-
+ 
+   
 
           
         $imt_u = DB::table('standart_imt_u')->where('umur_bulan',$umuranak )->where('jk',$jk)->first();
@@ -328,6 +331,8 @@ class AnakController extends Controller
         $imt_us = $request->berat_badan/($tinggi*$tinggi);
         $i_imt_u=$imt_us;
         $status_imt_u='';
+
+        if($imt_u){
 
         //kurang pembacaan status gizi obesiteas +3sd
 
@@ -352,9 +357,10 @@ class AnakController extends Controller
         }
         // return $status_imt_u;
 
-      
-      
-
+     } else{
+            $status_bb_pb ='data tidak tersedia';
+        }
+     
   
 
         
