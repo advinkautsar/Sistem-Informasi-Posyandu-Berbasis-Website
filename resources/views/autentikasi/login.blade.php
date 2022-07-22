@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
 
 
-    <link rel="stylesheet" href="{{asset('arfa/vendor/bootstrap/dist/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/arfa/vendor/bootstrap/dist/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="{{asset('arfa/assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('public/arfa/assets/css/style.css')}}">
 
-    <link rel="stylesheet" href="{{asset('arfa/assets/css/bootstrap-override.css')}}">
+    <link rel="stylesheet" href="{{asset('public/arfa/assets/css/bootstrap-override.css')}}">
 
 
 </head>
@@ -81,9 +81,7 @@
                         </div>
                         @endif
 
-                        <form action="{{ route('postlogin') }}" method="POST" aria-label="abdul" data-id="abdul" class="needs-validation" novalidate="" autocomplete="off">
-
-
+                        <form action="{{route('postlogin')}}" method="POST" aria-label="abdul" data-id="abdul" class="needs-validation" novalidate="" autocomplete="off">
                             @csrf
                             <div class="mb-3">
                                 <label class="mb-2 text-muted fw-bold " for="email">Nama Pengguna</label>
@@ -128,8 +126,8 @@
                 </div>
             </div>
     </section>
-    <script src="{{asset('arfa/assets/js/login.js')}}"></script>
-    <script src="{{asset('arfa/plugins/toastr/toastr.min.js')}}"></script>
+    <script src="{{asset('public/arfa/assets/js/login.js')}}"></script>
+    <script src="{{asset('public/arfa/plugins/toastr/toastr.min.js')}}"></script>
     <script>
         $(function() {
 

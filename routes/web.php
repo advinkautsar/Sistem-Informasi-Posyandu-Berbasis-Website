@@ -50,7 +50,7 @@ Route::get('/', function () {
     }
 })->name('login');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-Route::post('/login', [AuthController::class, 'postlogin'])->name('postlogin');
+Route::post('login', [AuthController::class, 'postlogin'])->name('postlogin');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 
