@@ -34,11 +34,11 @@ Riwayat Penimbangan dan Status Gizi Anak
                             <th style="font-size: 12px; ">BB</th>
                             <th style="font-size: 12px;">TB</th>
                             <th style="font-size: 12px;">LK</th>
-                            <!-- <th style="text-align:center; font-size: 12px;">PB_U</th> -->
                             <th style="text-align:center; font-size: 12px;">BB_U</th>
+                            <th style="text-align:center; font-size: 12px;">PB_U</th>
                             <th style="text-align:center; font-size: 12px;">TB_U</th>
                             <th style="text-align:center; font-size: 12px;">LK_U</th>
-                            <!-- <th style="text-align:center; font-size: 12px;">BB_PB</th> -->
+                            <th style="text-align:center; font-size: 12px;">BB_PB</th>
                             <th style="text-align:center; font-size: 12px;">BB_TB</th>
                             <th style="text-align:center; font-size: 12px;">IMT_U</th>
                             <th style="font-size: 12px;">Tanggal Penimbangan</th>
@@ -54,11 +54,11 @@ Riwayat Penimbangan dan Status Gizi Anak
                             <td style="text-align:center; font-size: 12px;">{{$row->tinggi_badan}}</td>
                             <td style="text-align:center; font-size: 12px;">{{$row->lingkar_kepala}}</td>
                             <td style="text-align:center; font-size: 12px;">{{$row->status_bb_u}}</td>
-                            <!-- <td style="text-align:center; font-size: 12px;"></td> -->
+                            <td style="text-align:center; font-size: 12px;">{{$row->status_pb_u}}</td>
                             <td style="text-align:center; font-size: 12px;">{{$row->status_tb_u}}</td>
                             <td style="text-align:center; font-size: 12px;">{{$row->status_lk_u}}</td>
+                            <td style="text-align:center; font-size: 12px;">{{$row->status_bb_pb}}</td>
                             <td style="text-align:center; font-size: 12px;">{{$row->status_bb_tb}}</td>
-                            <!-- <td style="text-align:center; font-size: 12px;"></td> -->
                             <td style="text-align:center; font-size: 12px;">{{$row->status_imt_u}}</td> 
                             <td style="text-align:center; font-size: 12px;">{{\Carbon\Carbon::parse($row->created_at)->format('d M Y')}}</td>        
                         </tr>
