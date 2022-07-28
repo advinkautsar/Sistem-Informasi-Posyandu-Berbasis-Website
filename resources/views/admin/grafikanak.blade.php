@@ -36,26 +36,26 @@ Grafik Anak
 
 
                         <td style="text-align:center;">
-                            <a href="{{url('grafik/standart_bb_pb',$data->id)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                            <a href="{{url('grafikall/standart_bb_pb',$data->nik_anak)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
                         </td>
                         <td style="text-align:center;">
-                            <a href="{{url('grafik/standart_bb_tb',$data->id)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                            <a href="{{url('grafikall/standart_bb_tb',$data->nik_anak)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
                         </td>
                       
                         <td style="text-align:center;">
-                            <a href="{{url('grafik/standart_pb_u',$data->id)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                            <a href="{{url('grafikall/standart_pb_u',$data->nik_anak)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
                         </td>
                         <td style="text-align:center;">
-                            <a href="{{url('grafik/standart_bb_u',$data->id)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                            <a href="{{url('grafikall/standart_bb_u',$data->nik_anak)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
                         </td>
                         <td style="text-align:center;">
-                            <a href="{{url('grafik/standart_tb_u',$data->id)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                            <a href="{{url('grafikall/standart_tb_u',$data->nik_anak)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
                         </td>
                         <td style="text-align:center;">
-                            <a href="{{url('grafik/standart_imt_u',$data->id)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                            <a href="{{url('grafikall/standart_imt_u',$data->nik_anak)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
                         </td>
                         <td style="text-align:center;">
-                            <a href="{{url('grafik/standart_lk_u',$data->id)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
+                            <a href="{{url('grafikall/standart_lk_u',$data->nik_anak)}}" class="btn btn-sm btn-success"><i class="fas fa-chart-bar"></i>
                         </td>
 
                     </tr>

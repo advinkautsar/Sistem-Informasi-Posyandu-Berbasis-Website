@@ -12,7 +12,7 @@ use Maatwebsite\Excel\Files\LocalTemporaryFile;
 use Maatwebsite\Excel\Excel;
 use Illuminate\Support\Facades\DB;
 use App\Models\Orangtua;
-
+use Carbon\Carbon;
 
 class RegisterBalitaExport implements WithEvents
 {
@@ -49,12 +49,15 @@ class RegisterBalitaExport implements WithEvents
 
         $kecamatan = Kecamatan::where('id', $desa->kecamatan_id)->first();
         $filter = $this->request;
+        $tanggal1 = $filter->tanggal == null ? Carbon::now()->startOfYear()->format('Y-m-d') : $filter->tanggal;	
+        $tanggal2 = $filter->tanggal2 == null ? Carbon::now()->endOfYear()->format('Y-m-d') : $filter->tanggal2;
 
         $ortu = Orangtua::where('posyandu_id', $this->id)->with(
             ['anaks.penimbangans'
-            => function ($q) use ($filter) {
+            => function ($q) use ($tanggal1,$tanggal2) {
                 $q->select("*", DB::raw('YEAR(created_at) year, MONTH(created_at) bulan'));
-                $q->wherebetween('created_at', [$filter->tanggal . ' 00:00:00', $filter->tanggal2 . ' 23:59:59'])->get();
+                $q->wherebetween('created_at', [$tanggal1 . ' 00:00:00', $tanggal2 . ' 23:59:59'])->get();
+              
             }]
         )->get();
 
