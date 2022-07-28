@@ -11,7 +11,7 @@
     </div>
     <div class="sidebar-header d-flex align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-            <img src="{{asset('arfa/assets/images/logo_web.png')}}" class="navbar-brand-img" alt="">
+            <img src="{{asset('public/arfa/assets/images/logo_web.png')}}" class="navbar-brand-img" alt="">
         </a>
         <!-- <div class="text" style="font-size: 12px; padding: 0;">Sistem Informasi Posyandu</div> -->
         <div class="close-sidebar action-toggle">
@@ -39,7 +39,7 @@
                 </ul>
             </li>
             <li class="{{ request()->segment(2) === 'data_anak' ? 'active' : '' }}">
-                <a href="{{url('admin/data_anak')}}" class="link">
+                <a href="{{route('data_anak')}}" class="link">
                     <i class="ti-pin"></i>
                     <span>Data Anak Banyuwangi</span>
                 </a>
@@ -59,6 +59,8 @@
             </li>
             @endif
 
+
+
             @if(auth()->user()->role == 'petugas_puskesmas')
             <li class="{{ request()->segment(2) === 'dashboard_puskesmas' ? 'active' : '' }}">
                 <a href="{{route('dashboard_puskesmas')}}" class="link">
@@ -66,7 +68,6 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-
 
             <!-- Dropdown -->
             <li class="{{ request()->segment(2) === 'kelola_data' ? 'active open' : '' }}">
@@ -82,7 +83,6 @@
                 </ul>
             </li>
 
-
             <li class="{{ request()->segment(2) === 'rekap_imunisasi' ? 'active' : '' }}">
                 <a href="#" class="link">
                     <i class="ti-layout"></i>
@@ -90,6 +90,8 @@
                 </a>
             </li>
             @endif
+
+
 
             @if(auth()->user()->role == 'petugas_desa')
             <li class="{{ request()->segment(2) === 'dashboard_desa' ? 'active' : '' }}">
@@ -116,7 +118,22 @@
                     <span>Laporan Posyandu</span>
                 </a>
             </li>
+            @endif
 
+            @if(auth()->user()->role == 'dinas_kesehatan')
+            <li class="{{ request()->segment(2) === 'dashboard_dinkes' ? 'active' : '' }}">
+                <a href="{{route('dashboard_dinkes')}}" class="link">
+                    <i class="ti-home"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="{{ request()->segment(2) === 'data_anak' ? 'active' : '' }}">
+                <a href="{{route('data_anak_dinkes')}}" class="link">
+                    <i class="ti-pin"></i>
+                    <span>Data Anak Banyuwangi</span>
+                </a>
+            </li>
+            
             @endif
         </ul>
     </div>

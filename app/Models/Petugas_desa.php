@@ -18,7 +18,7 @@ class Petugas_desa extends Model
 
     public function desa_kelurahan()
     {
-        return $this->belongsTo(Desa_Kelurahan::class);
+        return $this->belongsTo(Desa_kelurahan::class);
     }
     public function user()
     {

@@ -67,7 +67,7 @@ Riwayat Penimbangan dan Status Gizi Anak
                 </table>
                 
             </div>
-            <a href="{{route('data_anak')}}" class="btn btn-light btn-sm me-2 mt-3 mb-2"><i class="me-2 ti-arrow-left"></i>Kembali</a>
+            <a href="{{route('data_anak_dinkes')}}" class="btn btn-light btn-sm me-2 mt-3 mb-2"><i class="me-2 ti-arrow-left"></i>Kembali</a>
         </div>
 
     </div>

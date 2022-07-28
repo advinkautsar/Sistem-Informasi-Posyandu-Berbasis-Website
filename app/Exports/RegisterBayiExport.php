@@ -115,34 +115,38 @@ class RegisterBayiExport implements WithEvents
                                 }
 
                                 if(
-                                    substr($dpt->imunisasi1->jenis_imunisasi,0,9) == "Hepatitis" || 
-                                    substr($dpt->imunisasi2->jenis_imunisasi,0,9)  == "Hepatitis" || 
-                                    substr($dpt->imunisasi3->jenis_imunisasi,0,9) == "Hepatitis" ){
+                                    substr($dpt->imunisasi1->jenis_imunisasi,0,3) == "DPT" || 
+                                    substr($dpt->imunisasi2->jenis_imunisasi,0,3)  == "DPT" || 
+                                    substr($dpt->imunisasi3->jenis_imunisasi,0,3) == "DPT" ){
                                     $sheet->setCellValue($zc[$zf] . $no, $dpt->tanggal_pemeriksaan);
                                     $zf++;
+                                }
+
+                                if(
+                                    substr($dpt->imunisasi1->jenis_imunisasi,0,3) == "BCG" || 
+                                    substr($dpt->imunisasi2->jenis_imunisasi,0,3)  == "BCG" || 
+                                    substr($dpt->imunisasi3->jenis_imunisasi,0,3) == "BCG" ){
+                                    $sheet->setCellValue('Y' . $no, $dpt->tanggal_pemeriksaan);
+                                }
+
+                                if(
+                                    substr($dpt->imunisasi1->jenis_imunisasi,0,6) == "Campak" || 
+                                    substr($dpt->imunisasi2->jenis_imunisasi,0,6)  == "Campak" || 
+                                    substr($dpt->imunisasi3->jenis_imunisasi,0,6) == "Campak" ){
+                                    $sheet->setCellValue('AG' . $no, $dpt->tanggal_pemeriksaan);
                                 }
 
 
                             }
                             $pemeriksaan = $anak->pemeriksaans->last();
 
-                            // if ($pemeriksaan->Fe_1 == 'Ya') {
-                            //     $sheet->setCellValue('T' . $no, $pemeriksaan->tanggal_pemeriksaan);
-                            // }
-                            // if ($pemeriksaan->Fe_2 == 'Ya') {
-                            //     $sheet->setCellValue('U' . $no, $pemeriksaan->tanggal_pemeriksaan);
-                            // }
-                            // if ($pemeriksaan->vitA_biru == 'Ya') {
-                            //     $sheet->setCellValue('V' . $no, $pemeriksaan->tanggal_pemeriksaan);
-                            // }
-                            // if ($pemeriksaan->vitA_merah == 'Ya') {
-                            //     $sheet->setCellValue('W' . $no, $pemeriksaan->tanggal_pemeriksaan);
-                            // }
                             if ($pemeriksaan->oralit == 'Ya') {
                                 $sheet->setCellValue('X' . $no, $pemeriksaan->tanggal_pemeriksaan);
+                            }else{
+                                $sheet->setCellValue('X' . $no, '-');
                             }
                             // $sheet->setCellValue('W' . $no, $pemeriksaan->PMT);
-                            $sheet->setCellValue('X' . $no, $pemeriksaan->oralit);
+                            // $sheet->setCellValue('X' . $no, $pemeriksaan->oralit);
                             if ($pemeriksaan->Fe_1 == 'Ya' && $pemeriksaan->Fe_2 == "Ya") {
                                 $sheet->setCellValue('T' . $no, $pemeriksaan->tanggal_pemeriksaan);
                                 $sheet->setCellValue('U' . $no, $pemeriksaan->tanggal_pemeriksaan);
@@ -160,7 +164,6 @@ class RegisterBayiExport implements WithEvents
                                 $sheet->setCellValue('W' . $no, '-');
 
                             }
-                            // $sheet->setCellValue('X' . $no, $pemeriksaan->oralit);
                         }
                         $no++;
                         $urutan++;
