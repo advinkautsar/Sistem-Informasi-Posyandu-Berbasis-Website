@@ -86,18 +86,40 @@ class RegisterBayiExport implements WithEvents
                             }
                         }
                         if (!$anak->pemeriksaans->isEmpty()) {
-                            //kliru
-                            // foreach ($anak->pemeriksaans as $pemeriksaan) {
-                            // //    if($pemeriksaan->imunisasi_id_1 =!37||$pemeriksaan->imunisasi_id_2 =!37||$pemeriksaan->imunisasi_id_3 =!37){
-                            //     $dtp = $pemeriksaan->where('nik_anak',$anak->nik_anak)->where('imunisasi_id_1' ,4)->orWhere('imunisasi_id_1',4)->orWhere('imunisasi_id_1',4)->get();
-                            //     foreach($dtp as $dt){
-                                      
-                            //         $sheet->setCellValue('Z' . $no,  $dtp[0]->tanggal_pemeriksaan ?? '-');
-                            //         $sheet->setCellValue('AA' . $no, $dtp[1]->tanggal_pemeriksaan    ?? '-');
-                            //         $sheet->setCellValue('AB' . $no, $dtp[2]->tanggal_pemeriksaan    ?? '-');
-                                  
-                            //     }    
-                            // }
+
+                            $zz = ['Z', 'AA', 'AB'];
+                            $zd = ['AC', 'AD', 'AE','AF'];
+                            $zc = ['AH', 'AI','AJ'];
+                            $zn = 0;
+                            $ze=0;
+                            $zf=0;
+                            foreach($anak->pemeriksaans as $dpt){
+                                if(
+                                substr($dpt->imunisasi1->jenis_imunisasi,0,3) == "DPT" || 
+                                substr($dpt->imunisasi2->jenis_imunisasi,0,3)  == "DPT" || 
+                                substr($dpt->imunisasi3->jenis_imunisasi,0,3) == "DPT" ){
+                                $sheet->setCellValue($zz[$zn] . $no, $dpt->tanggal_pemeriksaan);
+                                $zn++;
+                                }
+
+                                if(
+                                    substr($dpt->imunisasi1->jenis_imunisasi,0,5) == "Polio" || 
+                                    substr($dpt->imunisasi2->jenis_imunisasi,0,5)  == "Polio" || 
+                                    substr($dpt->imunisasi3->jenis_imunisasi,0,5) == "Polio" ){
+                                    $sheet->setCellValue($zd[$ze] . $no, $dpt->tanggal_pemeriksaan);
+                                    $ze++;
+                                }
+
+                                if(
+                                    substr($dpt->imunisasi1->jenis_imunisasi,0,9) == "Hepatitis" || 
+                                    substr($dpt->imunisasi2->jenis_imunisasi,0,9)  == "Hepatitis" || 
+                                    substr($dpt->imunisasi3->jenis_imunisasi,0,9) == "Hepatitis" ){
+                                    $sheet->setCellValue($zc[$zf] . $no, $dpt->tanggal_pemeriksaan);
+                                    $zf++;
+                                }
+
+
+                            }
                             $pemeriksaan = $anak->pemeriksaans->last();
 
                             // if ($pemeriksaan->Fe_1 == 'Ya') {

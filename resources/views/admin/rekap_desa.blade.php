@@ -97,8 +97,8 @@
                                 <tr>
                                     <td class="text-center" style="font-size: 12px;">{{++$i}}</td>
                                     <td  style="font-size: 12px;">{{$row->nama}}</td>
-                                    <td class="text-center" style="font-size: 12px;">40</td>
-                                    <td class="text-center" style="font-size: 12px;">3</td>
+                                    <td class="text-center" style="font-size: 12px;">{{$row->jumlah_sehat}}</td>
+                                    <td class="text-center" style="font-size: 12px;">{{$row->jumlah_sakit}}</td>
                                     <td class="text-center" style="font-size: 12px;"><a href="{{route('rekap_posyandu', $row->id)}}" class="btn btn-sm mb-2 btn-primary" type="button">Lihat Detail</a></td>
 
                                 </tr>
