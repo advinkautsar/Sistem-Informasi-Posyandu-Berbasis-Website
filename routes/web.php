@@ -43,7 +43,7 @@ Route::get('/', function () {
         } elseif (auth()->user()->role == "petugas_desa") {
             return redirect('petugas_desa/dashboard_desa');
         } elseif (auth()->user()->role == "dinas_kesehatan") {
-            return redirect('dinas_kesehatan/dashboard');
+            return redirect('dinas_kesehatan/dashboard_dinkes');
         }
     } else {
         return view('autentikasi.login');
@@ -74,7 +74,6 @@ Route::group(['middleware' => ['auth', 'super_admin']], function () {
         return view('admin.kelola_pengguna.dinas_kesehatan.index');
     })->name('rekapitulasi');
 
-
     Route::resource('admin/kelola_pengguna/dinkes', Kelola_PenggunaDinkesController::class);
     Route::resource('admin/kelola_pengguna/petdes', PetdesController::class);
     Route::resource('admin/kelola_pengguna/petpus', PetpusController::class);
@@ -88,6 +87,7 @@ Route::group(['middleware' => ['auth', 'petugas_puskesmas']], function () {
 
     Route::get('petugas_puskesmas/dashboard_puskesmas', [App\Http\Controllers\WEB\PetugasPuskesmas\DashboardPetpusController::class, "index"])->name('dashboard_puskesmas');
     Route::get('petugas_puskesmas/dashboard_puskesmas/detail_rekap_posyandu/{id}', [App\Http\Controllers\WEB\PetugasPuskesmas\DashboardPetpusController::class, "rekap_posyandu_desa"])->name('rekap_posyandu_desa');
+
     Route::resource('petugas_puskesmas/kelola_data/posyandu', PosyanduCrudController::class);
     Route::resource('petugas_puskesmas/kelola_data/bidan', BidanCrudController::class);
     Route::resource('petugas_puskesmas/kelola_data/kader', KaderCrudController::class);
@@ -105,7 +105,6 @@ Route::group(['middleware' => ['auth', 'petugas_desa']], function () {
 
     Route::get('petugas_desa/riwayat_pertumbuhan_anak/index', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "index"])->name('indexriwayatpertumbuhan');
     Route::get('petugas_desa/riwayat_pertumbuhan_anak/index_tambah', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "index_tambah"]);
-
     Route::post('petugas_desa/riwayat_pertumbuhan_anak/store_anak', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "store_anak"]);
     Route::get('petugas_desa/riwayat_pertumbuhan_anak/riwayat_pemeriksaan/{id}', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "riwayat_pemeriksaan"])->name('riwayat_pemeriksaan');
     Route::get('petugas_desa/riwayat_pertumbuhan_anak/riwayat_penimbangan/{id}', [App\Http\Controllers\WEB\PetugasDesa\RiwTumbuhAnakController::class, "riwayat_penimbangan"])->name('riwayat_penimbangan');
@@ -117,14 +116,28 @@ Route::group(['middleware' => ['auth', 'petugas_desa']], function () {
 
 
     Route::get('petugas_desa/laporan_posyandu/index', [App\Http\Controllers\WEB\PetugasDesa\LaporanPosyanduController::class, "index"])->name('laporan_pos_index');
+
+    
 });
     
 
 Route::group(['middleware' => ['auth', 'dinas_kesehatan']], function () {
 
-    Route::get('dinas_kesehatan/dashboard', function () {
+    Route::get('dinas_kesehatan/dashboard_dinkes', function () {
         return view('dinas_kesehatan.dashboard');
     })->name('dashboard');
+
+    //dashboard dinkes
+    Route::get('dinas_kesehatan/dashboard_dinkes', [App\Http\Controllers\WEB\DinasKesehatan\DashboardDinkesController::class, "index"])->name('dashboard_dinkes');
+    Route::get('dinas_kesehatan/dashboard_dinkes/rekap_desa_dinkes/{id}', [App\Http\Controllers\WEB\DinasKesehatan\DashboardDinkesController::class, "rekap_desa"])->name('rekap_desa_dinkes');
+    Route::get('dinas_kesehatan/dashboard_dinkes/rekap_desa_dinkes/rekap_posyandu_dinkes/{id}', [App\Http\Controllers\WEB\DinasKesehatan\DashboardDinkesController::class, "rekap_posyandu"])->name('rekap_posyandu_dinkes');
+
+    //data anak
+    Route::get('admin/data_anak', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "index"])->name('data_anak');
+    Route::get('admin/data_anak/riw_pemeriksaan/{id}', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "riw_pemeriksaan"])->name('riw_pem_admin');
+    Route::get('admin/data_anak/riw_penimbangan/{id}', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "riw_penimbangan"])->name('riw_pen_admin');
+    Route::get('admin/data_anak/riw_rujukan/{id}', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "riw_rujukan"])->name('riw_rujukan_admin');
+    Route::get('admin/data_anak/profil_anak/{id}', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "profil_anak"])->name('profil_anak_admin');
 });
 
 

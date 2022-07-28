@@ -59,6 +59,8 @@
             </li>
             @endif
 
+
+
             @if(auth()->user()->role == 'petugas_puskesmas')
             <li class="{{ request()->segment(2) === 'dashboard_puskesmas' ? 'active' : '' }}">
                 <a href="{{route('dashboard_puskesmas')}}" class="link">
@@ -66,7 +68,6 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-
 
             <!-- Dropdown -->
             <li class="{{ request()->segment(2) === 'kelola_data' ? 'active open' : '' }}">
@@ -81,7 +82,6 @@
                     <li class="{{ request()->segment(2) === 'kelola_data' && request()->segment(3) === 'tips_kesehatan' ? 'active': '' }}"><a href="#" class="link"><span>Kelola Tips Kesehatan</span></a></li>
                 </ul>
             </li>
-
 
             <li class="{{ request()->segment(2) === 'rekap_imunisasi' ? 'active' : '' }}">
                 <a href="#" class="link">
@@ -116,7 +116,22 @@
                     <span>Laporan Posyandu</span>
                 </a>
             </li>
+            @endif
 
+            @if(auth()->user()->role == 'dinas_kesehatan')
+            <li class="{{ request()->segment(2) === 'dashboard_dinkes' ? 'active' : '' }}">
+                <a href="{{route('dashboard_dinkes')}}" class="link">
+                    <i class="ti-home"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="{{ request()->segment(2) === 'data_anak' ? 'active' : '' }}">
+                <a href="{{url('admin/data_anak')}}" class="link">
+                    <i class="ti-pin"></i>
+                    <span>Data Anak Banyuwangi</span>
+                </a>
+            </li>
             @endif
         </ul>
     </div>
