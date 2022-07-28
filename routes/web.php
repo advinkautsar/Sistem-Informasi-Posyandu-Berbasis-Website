@@ -133,11 +133,11 @@ Route::group(['middleware' => ['auth', 'dinas_kesehatan']], function () {
     Route::get('dinas_kesehatan/dashboard_dinkes/rekap_desa_dinkes/rekap_posyandu_dinkes/{id}', [App\Http\Controllers\WEB\DinasKesehatan\DashboardDinkesController::class, "rekap_posyandu"])->name('rekap_posyandu_dinkes');
 
     //data anak
-    Route::get('admin/data_anak', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "index"])->name('data_anak');
-    Route::get('admin/data_anak/riw_pemeriksaan/{id}', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "riw_pemeriksaan"])->name('riw_pem_admin');
-    Route::get('admin/data_anak/riw_penimbangan/{id}', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "riw_penimbangan"])->name('riw_pen_admin');
-    Route::get('admin/data_anak/riw_rujukan/{id}', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "riw_rujukan"])->name('riw_rujukan_admin');
-    Route::get('admin/data_anak/profil_anak/{id}', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "profil_anak"])->name('profil_anak_admin');
+    Route::get('dinas_kesehatan/data_anak', [App\Http\Controllers\WEB\DinasKesehatan\DataAnakDinkesController::class, "index"])->name('data_anak_dinkes');
+    Route::get('dinas_kesehatan/data_anak/riw_pemeriksaan/{id}', [App\Http\Controllers\WEB\DinasKesehatan\DataAnakDinkesController::class, "riw_pemeriksaan"])->name('riw_pem_dinkes');
+    Route::get('dinas_kesehatan/data_anak/riw_penimbangan/{id}', [App\Http\Controllers\WEB\DinasKesehatan\DataAnakDinkesController::class, "riw_penimbangan"])->name('riw_pen_dinkes');
+    Route::get('dinas_kesehatan/data_anak/riw_rujukan/{id}', [App\Http\Controllers\WEB\DinasKesehatan\DataAnakDinkesController::class, "riw_rujukan"])->name('riw_rujukan_dinkes');
+    Route::get('dinas_kesehatan/data_anak/profil_anak/{id}', [App\Http\Controllers\WEB\DinasKesehatan\DataAnakDinkesController::class, "profil_anak"])->name('profil_anak_dinkes');
 });
 
 

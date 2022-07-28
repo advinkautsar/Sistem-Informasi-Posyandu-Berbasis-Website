@@ -39,7 +39,7 @@
                 </ul>
             </li>
             <li class="{{ request()->segment(2) === 'data_anak' ? 'active' : '' }}">
-                <a href="{{url('admin/data_anak')}}" class="link">
+                <a href="{{route('data_anak')}}" class="link">
                     <i class="ti-pin"></i>
                     <span>Data Anak Banyuwangi</span>
                 </a>
@@ -91,6 +91,8 @@
             </li>
             @endif
 
+
+
             @if(auth()->user()->role == 'petugas_desa')
             <li class="{{ request()->segment(2) === 'dashboard_desa' ? 'active' : '' }}">
                 <a href="{{route('dashboard_desa.index')}}" class="link">
@@ -125,13 +127,13 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-
             <li class="{{ request()->segment(2) === 'data_anak' ? 'active' : '' }}">
-                <a href="{{url('admin/data_anak')}}" class="link">
+                <a href="{{route('data_anak_dinkes')}}" class="link">
                     <i class="ti-pin"></i>
                     <span>Data Anak Banyuwangi</span>
                 </a>
             </li>
+            
             @endif
         </ul>
     </div>

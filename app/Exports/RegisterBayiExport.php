@@ -111,11 +111,25 @@ class RegisterBayiExport implements WithEvents
                                 }
 
                                 if(
-                                    substr($dpt->imunisasi1->jenis_imunisasi,0,9) == "Hepatitis" || 
-                                    substr($dpt->imunisasi2->jenis_imunisasi,0,9)  == "Hepatitis" || 
-                                    substr($dpt->imunisasi3->jenis_imunisasi,0,9) == "Hepatitis" ){
+                                    substr($dpt->imunisasi1->jenis_imunisasi,0,3) == "DPT" || 
+                                    substr($dpt->imunisasi2->jenis_imunisasi,0,3)  == "DPT" || 
+                                    substr($dpt->imunisasi3->jenis_imunisasi,0,3) == "DPT" ){
                                     $sheet->setCellValue($zc[$zf] . $no, $dpt->tanggal_pemeriksaan);
                                     $zf++;
+                                }
+
+                                if(
+                                    substr($dpt->imunisasi1->jenis_imunisasi,0,3) == "BCG" || 
+                                    substr($dpt->imunisasi2->jenis_imunisasi,0,3)  == "BCG" || 
+                                    substr($dpt->imunisasi3->jenis_imunisasi,0,3) == "BCG" ){
+                                    $sheet->setCellValue('Y' . $no, $dpt->tanggal_pemeriksaan);
+                                }
+
+                                if(
+                                    substr($dpt->imunisasi1->jenis_imunisasi,0,6) == "Campak" || 
+                                    substr($dpt->imunisasi2->jenis_imunisasi,0,6)  == "Campak" || 
+                                    substr($dpt->imunisasi3->jenis_imunisasi,0,6) == "Campak" ){
+                                    $sheet->setCellValue('AG' . $no, $dpt->tanggal_pemeriksaan);
                                 }
 
 

@@ -96,9 +96,11 @@ class DashboardDinkesController extends Controller
         foreach($data_pos as $pos)
         {
            $pos['jumlah_sehat'] = $data
-           ->where('nama_posyandu', $pos->nama_posyandu)
-           ->where('status_bb_tb','Normal')
-           ->where('status_bb_pb','Normal')
+           ->where('orangtua.posyandu_id', $pos->id)
+           ->where('anak.orangtua_id', 'orangtua.id')
+           ->where('penimbangan.nik_anak', 'anak.nik_anak')
+           ->where('penimbangan.status_bb_tb','Gizi baik')
+           ->where('penimbangan.status_bb_pb','Gizi baik')
            ->count();
 
            $pos['jumlah_sakit'] = $data
@@ -108,7 +110,7 @@ class DashboardDinkesController extends Controller
            ->count();
         }
        
-        // return $data_pos;
+        return $data_pos;
 
         
 
