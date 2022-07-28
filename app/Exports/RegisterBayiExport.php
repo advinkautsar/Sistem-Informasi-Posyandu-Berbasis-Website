@@ -136,18 +136,6 @@ class RegisterBayiExport implements WithEvents
                             }
                             $pemeriksaan = $anak->pemeriksaans->last();
 
-                            // if ($pemeriksaan->Fe_1 == 'Ya') {
-                            //     $sheet->setCellValue('T' . $no, $pemeriksaan->tanggal_pemeriksaan);
-                            // }
-                            // if ($pemeriksaan->Fe_2 == 'Ya') {
-                            //     $sheet->setCellValue('U' . $no, $pemeriksaan->tanggal_pemeriksaan);
-                            // }
-                            // if ($pemeriksaan->vitA_biru == 'Ya') {
-                            //     $sheet->setCellValue('V' . $no, $pemeriksaan->tanggal_pemeriksaan);
-                            // }
-                            // if ($pemeriksaan->vitA_merah == 'Ya') {
-                            //     $sheet->setCellValue('W' . $no, $pemeriksaan->tanggal_pemeriksaan);
-                            // }
                             if ($pemeriksaan->oralit == 'Ya') {
                                 $sheet->setCellValue('X' . $no, $pemeriksaan->tanggal_pemeriksaan);
                             }else{
@@ -172,7 +160,6 @@ class RegisterBayiExport implements WithEvents
                                 $sheet->setCellValue('W' . $no, '-');
 
                             }
-                            // $sheet->setCellValue('X' . $no, $pemeriksaan->oralit);
                         }
                         $no++;
                         $urutan++;
