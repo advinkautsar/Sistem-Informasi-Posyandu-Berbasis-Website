@@ -98,17 +98,38 @@ class DashboardAdminController extends Controller
 
         foreach($data_pos as $pos)
         {
-           $pos['jumlah_sehat'] = $data
-           ->where('nama_posyandu', $pos->nama_posyandu)
-           ->where('status_bb_tb','Normal')
-           ->where('status_bb_pb','Normal')
-           ->count();
 
-           $pos['jumlah_sakit'] = $data
+            
+           $pos['jumlah_sehat'] = 0;
+           $fsehat = $data
+           ->where('nama_posyandu', $pos->nama_posyandu)
+           ->whereIn('status_bb_tb',['Normal','Gizi baik'])
+           ->whereIn('status_bb_pb',['Normal','Gizi baik']);
+           $jsehat = array();
+              foreach($fsehat as $sehat)
+              {
+                if(in_array($sehat->nik, $jsehat) == false)
+                {
+                    $pos['jumlah_sehat'] = $pos['jumlah_sehat'] + 1;
+                   array_push($jsehat, $sehat->nik_anak);
+                }
+              }
+
+           $pos['jumlah_sakit'] = 0;
+           $fsakit = $data
            ->where('nama_posyandu', $pos->nama_posyandu)
            ->where('status_bb_tb','Gizi buruk')
-           ->where('status_bb_pb','Gizi buruk')
-           ->count();
+           ->where('status_bb_pb','Gizi buruk');
+
+            $jsakit = array();
+            foreach($fsakit as $g)
+            {
+                if(in_array($g->nik_anak, $jsakit) == false){
+                    $pos['jumlah_sakit'] = $pos['jumlah_sakit'] + 1;
+                    array_push($jsakit, $g->nik_anak);
+                }
+            }
+
         }
        
         // return $data_pos;
