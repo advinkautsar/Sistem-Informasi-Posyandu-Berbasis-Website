@@ -2,7 +2,78 @@
 @section('title')
 Rekapitulasi Pertumbuhan Anak Posyandu
 @endsection
+
+@section('css')
+<style>
+.loding-progress{
+    width: 100vw;
+    position:absolute;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+}
+.loding-progress ul { 
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    list-style: none;
+}
+.loding-progress li { 
+  float: left;
+  width: 16px; 
+  height: 64px;
+  background: #aeb5da;
+  border: 1px solid #8490c6;
+  box-sizing: border-box;
+  margin-right:8px;
+  opacity: 0.2;
+}
+
+.loding-progress li:nth-child(1) {
+  animation-name: anim;
+  animation-duration: .9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.loding-progress li:nth-child(2) {
+  animation-name: anim;
+  animation-duration: .9s;
+  animation-delay: .3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.loding-progress li:nth-child(3) {
+  animation-name: anim;
+  animation-duration: .9s;
+  animation-delay: .6s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes anim {
+  from {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+}
+</style>
+@endsection
+
 @section('content')
+
+<div class="loding-progress d-none">
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+</div>
 
 <div class="col-md-12">
     <div class="title fw-bold mt-2 mb-3" style="font-size: 20px;">
@@ -81,6 +152,7 @@ Rekapitulasi Pertumbuhan Anak Posyandu
     <script>
 
         function send(url) {
+            $(".loding-progress").removeClass("d-none");
             axios.post($(url).attr('href'), {
                     tanggal: $('#tanggal_awal').val(),
                     tanggal2: $('#tanggal_akhir').val()
@@ -95,9 +167,14 @@ Rekapitulasi Pertumbuhan Anak Posyandu
                     link.setAttribute('download', 'DATA REGISTRASI BALITA.xlsx'); //or any other extension
                     document.body.appendChild(link);
                     link.click();
-                })
+                $(".loding-progress").addClass("d-none");
+                }).catch((error) => {
+                    console.log(error);
+                });
         }
+
         function sendbayi(url) {
+            $(".loding-progress").removeClass("d-none");
             axios.post($(url).attr('href'), {
                     tanggal: $('#tanggal_awal').val(),
                     tanggal2: $('#tanggal_akhir').val()
@@ -111,7 +188,10 @@ Rekapitulasi Pertumbuhan Anak Posyandu
                     link.setAttribute('download', 'DATA REGISTRASI BAYI.xlsx'); //or any other extension
                     document.body.appendChild(link);
                     link.click();
-                })
+                $(".loding-progress").addClass("d-none");
+                }).catch((error) => {
+                    console.log(error);
+                });
         }
 
        

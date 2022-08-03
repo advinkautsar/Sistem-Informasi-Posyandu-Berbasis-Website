@@ -85,7 +85,9 @@ class RegisterBalitaExport implements WithEvents
                             }
                         }
                         if (!$anak->pemeriksaans->isEmpty()) {
-                            $pemeriksaan = $anak->pemeriksaans->last();
+                            $pemeriksaan = $anak->pemeriksaans
+                            ->wherebetween('tanggal_pemeriksaan', [$tanggal1, $tanggal2])
+                            ->last();
 
                             if ($pemeriksaan->oralit == 'Ya') {
                                 $sheet->setCellValue('X' . $no, $pemeriksaan->tanggal_pemeriksaan);

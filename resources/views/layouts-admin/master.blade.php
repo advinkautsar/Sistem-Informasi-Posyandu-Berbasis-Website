@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('public/arfa/assets/css/style.min.css')}}">
     <link rel="stylesheet" href="{{asset('public/arfa/assets/css/bootstrap-override.min.css')}}">
     <link rel="stylesheet" id="theme-color" href="{{asset('public/arfa/assets/css/dark.min.css')}}">
+    @yield('css')	
 </head>
 
 <body>
