@@ -80,11 +80,52 @@ class RegisterBalitaExport implements WithEvents
                         $sheet->setCellValue('D' . $no, $nama_ayah);
                         $sheet->setCellValue('E' . $no, $nama_ibu);
                         if (!$anak->penimbangans->isEmpty()) {
+                            
                             foreach ($anak->penimbangans as $penimbangan) {
                                 $sheet->setCellValue($this->selectField($penimbangan->bulan) . $no, $penimbangan->berat_badan);
                             }
                         }
                         if (!$anak->pemeriksaans->isEmpty()) {
+                            $pemeriksaans = $anak->pemeriksaans
+                            ->wherebetween('tanggal_pemeriksaan', [$tanggal1, $tanggal2])
+                            ;
+
+
+                            $zvit = ['U', 'V'];
+                            $zfe = ['S', 'T'];
+                            $zfe0=0;
+                            $zvit0=0;
+                            foreach($pemeriksaans as $dpt){
+                            
+                            if($zfe0 > 1 || $zvit0 > 1){
+                                break;
+                            }
+
+                            if($dpt->Fe_1 == 'Ya' && $dpt->Fe_2 == 'Ya'){
+                                $sheet->setCellValue($zfe[$zfe0] . $no, $dpt->tanggal_pemeriksaan);
+                                $zfe0++;
+                            }
+                            if($dpt->vitA_merah == 'Ya' && $dpt->vitA_biru == 'Ya'){
+                                $sheet->setCellValue($zvit[$zvit0] . $no, $dpt->tanggal_pemeriksaan);
+                                $zvit0++;
+                            }
+                        }
+
+                        if($zfe0 == 0){
+                            $sheet->setCellValue($zfe[0] . $no, '-');
+                            $sheet->setCellValue($zfe[1] . $no, '-');
+                        }elseif($zfe0 == 1){
+                            $sheet->setCellValue($zfe[1] . $no, '-');
+                        }
+
+                        if($zvit0 == 0){
+                            $sheet->setCellValue($zvit[0] . $no, '-');
+                            $sheet->setCellValue($zvit[1] . $no, '-');
+                        }elseif($zvit0 == 1){
+                            $sheet->setCellValue($zvit[1] . $no, '-');
+                        }
+
+
                             $pemeriksaan = $anak->pemeriksaans
                             ->wherebetween('tanggal_pemeriksaan', [$tanggal1, $tanggal2])
                             ->last();
@@ -101,21 +142,21 @@ class RegisterBalitaExport implements WithEvents
                                 $sheet->setCellValue('W' . $no, '-');
                             }
 
-                            if ($pemeriksaan->Fe_1 == 'Ya' && $pemeriksaan->Fe_2 == "Ya") {
-                                $sheet->setCellValue('S' . $no, $pemeriksaan->tanggal_pemeriksaan);
-                                $sheet->setCellValue('T' . $no, $pemeriksaan->tanggal_pemeriksaan);
-                            } else {
-                                $sheet->setCellValue('S' . $no, '-');
-                                $sheet->setCellValue('T' . $no, '-');
-                            }
+                            // if ($pemeriksaan->Fe_1 == 'Ya' && $pemeriksaan->Fe_2 == "Ya") {
+                            //     $sheet->setCellValue('S' . $no, $pemeriksaan->tanggal_pemeriksaan);
+                            //     $sheet->setCellValue('T' . $no, $pemeriksaan->tanggal_pemeriksaan);
+                            // } else {
+                            //     $sheet->setCellValue('S' . $no, '-');
+                            //     $sheet->setCellValue('T' . $no, '-');
+                            // }
 
-                            if ($pemeriksaan->vitA_merah == 'Ya' && $pemeriksaan->vitA_biru == "Ya") {
-                                $sheet->setCellValue('U' . $no, $pemeriksaan->tanggal_pemeriksaan);
-                                $sheet->setCellValue('V' . $no, $pemeriksaan->tanggal_pemeriksaan);
-                            } else {
-                                $sheet->setCellValue('U' . $no, '-');
-                                $sheet->setCellValue('V' . $no, '-');
-                            }
+                            // if ($pemeriksaan->vitA_merah == 'Ya' && $pemeriksaan->vitA_biru == "Ya") {
+                            //     $sheet->setCellValue('U' . $no, $pemeriksaan->tanggal_pemeriksaan);
+                            //     $sheet->setCellValue('V' . $no, $pemeriksaan->tanggal_pemeriksaan);
+                            // } else {
+                            //     $sheet->setCellValue('U' . $no, '-');
+                            //     $sheet->setCellValue('V' . $no, '-');
+                            // }
                         }
                         $no++;
                         $urutan++;
