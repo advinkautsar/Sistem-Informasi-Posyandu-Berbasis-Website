@@ -15,6 +15,11 @@ class DashboardAdminController extends Controller
 {
     public function index()
     {
+        $jumlah_anak = DB::table('anak')->count();
+        $jumlah_ortu = DB::table('orangtua')->count();
+        $jumlah_bidan = DB::table('bidan')->count();
+        $jumlah_kader = DB::table('kader')->count();
+
         $data_kecamatan = Kecamatan::all();
         
         $data = Kecamatan::
@@ -43,7 +48,7 @@ class DashboardAdminController extends Controller
 // dd($data_kecamatan);
         
 
-        return view('admin.dashboard', compact(['data_kecamatan']));
+        return view('admin.dashboard', compact(['data_kecamatan','jumlah_anak','jumlah_ortu','jumlah_bidan','jumlah_kader']));
     }
 
     public function rekap_desa($id)
@@ -138,4 +143,6 @@ class DashboardAdminController extends Controller
 
         return view('admin.rekap_posyandu', compact('data_pos'));
     }
+
+    
 }

@@ -15,7 +15,7 @@ Selamat Datang Petugas {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                 <div class="text mt-2">
                     <span class="fw-bold">Total Anak Terdaftar</span>
                 </div>
-                <span style="font-size: 2rem ;">80</span>
+                <span style="font-size: 2rem ;">{{$jumlah_anak}}</span>
             </div>
         </div>
 
@@ -24,7 +24,7 @@ Selamat Datang Petugas {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                 <div class="text mt-2">
                     <span class="fw-bold">Total Orangtua Terdaftar</span>
                 </div>
-                <span style="font-size: 2rem ;">76</span>
+                <span style="font-size: 2rem ;">{{$jumlah_ortu}}</span>
             </div>
         </div>
 
@@ -33,7 +33,7 @@ Selamat Datang Petugas {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                 <div class="text mt-2">
                     <span class="fw-bold">Total Bidan Terdaftar</span>
                 </div>
-                <span style="font-size: 2rem ;">2</span>
+                <span style="font-size: 2rem ;">{{$jumlah_bidan}}</span>
             </div>
         </div>
 
@@ -42,7 +42,7 @@ Selamat Datang Petugas {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                 <div class="text mt-2">
                     <span class="fw-bold">Total Kader Terdaftar</span>
                 </div>
-                <span style="font-size: 2rem ;">32</span>
+                <span style="font-size: 2rem ;">{{$jumlah_kader}}</span>
             </div>
         </div>
 

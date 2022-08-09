@@ -101,7 +101,7 @@ class RegisterBalitaExport implements WithEvents
                                 $sheet->setCellValue('W' . $no, '-');
                             }
 
-                            if ($pemeriksaan->Fe_1 == 'Ya' && $pemeriksaan->Fe_2 == "Ya") {
+                            if ($pemeriksaan->Fe_1 == 'Ya' && $pemeriksaan->Fe_2 == 'Ya') {
                                 $sheet->setCellValue('S' . $no, $pemeriksaan->tanggal_pemeriksaan);
                                 $sheet->setCellValue('T' . $no, $pemeriksaan->tanggal_pemeriksaan);
                             } else {
@@ -109,7 +109,7 @@ class RegisterBalitaExport implements WithEvents
                                 $sheet->setCellValue('T' . $no, '-');
                             }
 
-                            if ($pemeriksaan->vitA_merah == 'Ya' && $pemeriksaan->vitA_biru == "Ya") {
+                            if ($pemeriksaan->vitA_merah == 'Ya' && $pemeriksaan->vitA_biru == 'Ya') {
                                 $sheet->setCellValue('U' . $no, $pemeriksaan->tanggal_pemeriksaan);
                                 $sheet->setCellValue('V' . $no, $pemeriksaan->tanggal_pemeriksaan);
                             } else {

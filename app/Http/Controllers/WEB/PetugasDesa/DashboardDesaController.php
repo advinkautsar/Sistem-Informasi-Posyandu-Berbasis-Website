@@ -18,6 +18,28 @@ class DashboardDesaController extends Controller
     {
         $data_user = auth()->user()->petugas_desa->desa_kelurahan_id;
         
+        $jumlah_anak = DB::table('anak')
+        ->join('orangtua','anak.orangtua_id','orangtua.id')
+        ->select('anak.*','orangtua.*')
+        ->where('desa_kelurahan_id',$data_user)
+        ->count();
+
+        $jumlah_ortu = DB::table('orangtua')
+        ->where('desa_kelurahan_id',$data_user)
+        ->count();
+
+        $jumlah_bidan = DB::table('bidan')
+        ->join('posyandu','bidan.posyandu_id','posyandu.id')
+        ->select('bidan.*','posyandu.*')
+        ->where('desa_kelurahan_id',$data_user)
+        ->count();
+
+        $jumlah_kader = DB::table('kader')
+        ->join('posyandu','kader.posyandu_id','posyandu.id')
+        ->select('kader.*','posyandu.*')
+        ->where('desa_kelurahan_id',$data_user)
+        ->count();
+        
         $data_pos = DB::table('posyandu')
         ->join('desa_kelurahan','posyandu.desa_kelurahan_id','desa_kelurahan.id')
         ->select('posyandu.*','desa_kelurahan.nama')
@@ -26,7 +48,7 @@ class DashboardDesaController extends Controller
 
         $data_anak = Anak::all();
 
-        return view('petugas_desa.dashboard', compact(['data_pos', 'data_anak']));
+        return view('petugas_desa.dashboard', compact(['data_pos', 'data_anak','jumlah_anak','jumlah_ortu','jumlah_bidan','jumlah_kader']));
     }
 
     /**

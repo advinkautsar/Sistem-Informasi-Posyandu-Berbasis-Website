@@ -7,11 +7,17 @@ use App\Models\Desa_kelurahan;
 use App\Models\Kecamatan;
 use App\Models\Posyandu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardDinkesController extends Controller
 {
     public function index()
     {
+        $jumlah_anak = DB::table('anak')->count();
+        $jumlah_ortu = DB::table('orangtua')->count();
+        $jumlah_bidan = DB::table('bidan')->count();
+        $jumlah_kader = DB::table('kader')->count();
+
         $data_kecamatan = Kecamatan::all();
         
         $data = Kecamatan::
@@ -40,7 +46,7 @@ class DashboardDinkesController extends Controller
 // dd($data_kecamatan);
         
 
-        return view('dinas_kesehatan.dashboard', compact(['data_kecamatan']));
+        return view('dinas_kesehatan.dashboard', compact(['data_kecamatan','jumlah_anak','jumlah_ortu','jumlah_bidan','jumlah_kader']));
     }
 
     public function rekap_desa($id)
