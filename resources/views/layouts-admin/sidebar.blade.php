@@ -79,12 +79,12 @@
                     <li class="{{ request()->segment(2) === 'kelola_data' && request()->segment(3) === 'posyandu' ? 'active': '' }}"><a href="{{route('posyandu.index')}}" class="link"><span>Kelola Posyandu</span></a></li>
                     <li class="{{ request()->segment(2) === 'kelola_data' && request()->segment(3) === 'bidan' ? 'active': '' }}"><a href="{{route('bidan.index')}}" class="link"><span>Kelola Bidan</span></a></li>
                     <li class="{{ request()->segment(2) === 'kelola_data' && request()->segment(3) === 'kader' ? 'active': '' }}"><a href="{{route('kader.index')}}" class="link"><span>Kelola Kader</span></a></li>
-                    <li class="{{ request()->segment(2) === 'kelola_data' && request()->segment(3) === 'tips_kesehatan' ? 'active': '' }}"><a href="#" class="link"><span>Kelola Tips Kesehatan</span></a></li>
+                    <li class="{{ request()->segment(2) === 'kelola_data' && request()->segment(3) === 'tips' ? 'active': '' }}"><a href="{{route('tips.index')}}" class="link"><span>Kelola Tips Kesehatan</span></a></li>
                 </ul>
             </li>
 
-            <li class="{{ request()->segment(2) === 'rekap_imunisasi' ? 'active' : '' }}">
-                <a href="#" class="link">
+            <li class="{{ request()->segment(2) === 'rekapitulasi_imunisasi' ? 'active' : '' }}">
+                <a href="{{route('rekap_imunisasi')}}" class="link">
                     <i class="ti-layout"></i>
                     <span>Rekapan Imunisasi</span>
                 </a>

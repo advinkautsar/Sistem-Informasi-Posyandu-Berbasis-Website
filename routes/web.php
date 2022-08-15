@@ -7,6 +7,7 @@ use App\Http\Controllers\WEB\PetugasDesa\ProfilOrtuCrudController;
 use App\Http\Controllers\WEB\PetugasPuskesmas\BidanCrudController;
 use App\Http\Controllers\WEB\PetugasPuskesmas\KaderCrudController;
 use App\Http\Controllers\WEB\PetugasPuskesmas\PosyanduCrudController;
+use App\Http\Controllers\WEB\PetugasPuskesmas\TipsCrudController;
 use App\Http\Controllers\WEB\SuperAdmin\Kelola_Pengguna\DinkesController as Kelola_PenggunaDinkesController;
 use App\Http\Controllers\WEB\SuperAdmin\Kelola_Pengguna\PetdesController;
 use App\Http\Controllers\WEB\SuperAdmin\Kelola_Pengguna\PetpusController;
@@ -91,6 +92,9 @@ Route::group(['middleware' => ['auth', 'petugas_puskesmas']], function () {
     Route::resource('petugas_puskesmas/kelola_data/posyandu', PosyanduCrudController::class);
     Route::resource('petugas_puskesmas/kelola_data/bidan', BidanCrudController::class);
     Route::resource('petugas_puskesmas/kelola_data/kader', KaderCrudController::class);
+    Route::resource('petugas_puskesmas/kelola_data/tips', TipsCrudController::class);
+
+    Route::get('petugas_puskesmas/rekapitulasi_imunisasi', [App\Http\Controllers\WEB\PetugasPuskesmas\RekapImunisasiController::class, "index"])->name('rekap_imunisasi');
 });
 
 
