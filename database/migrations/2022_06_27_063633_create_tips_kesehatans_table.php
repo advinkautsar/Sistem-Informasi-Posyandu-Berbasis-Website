@@ -18,7 +18,7 @@ class CreateTipsKesehatansTable extends Migration
             $table->id();
             $table->bigInteger("bidan_id")->unsigned()->nullable();
             $table->string("judul_tips");
-            $table->string("gambar_tips");
+            $table->string("gambar_tips")->nullable();
             $table->string("keterangan");
             $table->foreign('bidan_id')->references('id')->on('bidan')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

@@ -20,7 +20,7 @@ Data Tips Kesehatan
             <h4>@yield('title 1')</h4>
         </div>
 
-         @if(Session::get('succes'))
+        @if(Session::get('succes'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ Session::get('succes') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -35,7 +35,7 @@ Data Tips Kesehatan
         @endif
 
         <div class="card-body">
-            <a href="{{route('posyandu.create')}}" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Post Tips Kesehatan Baru</a>
+            <a href="{{route('tips.create')}}" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Post Tips Kesehatan Baru</a>
             <p class="form-text mb-2">Berikut ini list data tips kesehatan yang berhasil tersimpan
             </p>
 
@@ -54,8 +54,9 @@ Data Tips Kesehatan
                             <td class="text-center" style="font-size: 12px;">{{++$i}}</td>
                             <td style="font-size: 12px;">{{$row->judul_tips}}</td>
                             <td>
-                                <a href="#" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
-                                <form action="#" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
+                                <a href="{{route('tips.show',$row->id)}}" class="btn btn-sm mb-2 btn-primary" type="button"><i class="ti-eye"></i></a>
+                                <a href="{{route('tips.edit',$row->id)}}" class="btn btn-sm mb-2 btn-warning" type="button"><i class="ti-pencil"></i></a>
+                                <form action="{{route('tips.destroy',$row->id)}}" method='post' class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini ?') ">
                                     @method('DELETE')
                                     @csrf
                                     <button class="btn btn-sm mb-2 btn-danger">
