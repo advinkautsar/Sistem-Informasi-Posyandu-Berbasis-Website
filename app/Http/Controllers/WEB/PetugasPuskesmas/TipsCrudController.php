@@ -47,7 +47,7 @@ class TipsCrudController extends Controller
         ]);
 
 
-        $storage = "storage/content";
+        $storage = "C:\xampp\htdocs\SistemInformasiPosyandu\storage\content";
         $dom = new \DOMDocument();
         libxml_use_internal_errors(true);
         $dom->loadHTML($request->keterangan, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NOIMPLIED);
