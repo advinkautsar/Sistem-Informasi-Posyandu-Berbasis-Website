@@ -7,7 +7,8 @@ use App\Models\Tips_kesehatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Path\To\DOMDocument;
-use Intervention\Image\ImageManagerStatic as Image;
+// use Intervention\Image\ImageManagerStatic as Image;
+use Image;
 
 class TipsCrudController extends Controller
 {
@@ -45,9 +46,9 @@ class TipsCrudController extends Controller
             'judul_tips' => 'required',
             'keterangan' => 'required',
         ]);
+       
 
-
-        $storage = "storage/content";
+        $storage = "isi";
         $dom = new \DOMDocument();
         libxml_use_internal_errors(true);
         $dom->loadHTML($request->keterangan, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NOIMPLIED);
@@ -65,7 +66,7 @@ class TipsCrudController extends Controller
                     ->resize(1200, 1200)
                     ->encode($mimetype, 100)
                     ->save(public_path($filepath));
-                $new_src = asset($filepath);
+                $new_src = asset("public/".$filepath);
                 $img->removeAttribute('src');
                 $img->setAttribute('src', $new_src);
                 $img->setAttribute('class', 'img-responsive');
@@ -126,7 +127,7 @@ class TipsCrudController extends Controller
         ]);
 
 
-        $storage = "storage/content";
+        $storage = "isi";
         $dom = new \DOMDocument();
         libxml_use_internal_errors(true);
         $dom->loadHTML($request->keterangan, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NOIMPLIED);
@@ -144,7 +145,7 @@ class TipsCrudController extends Controller
                     ->resize(1200, 1200)
                     ->encode($mimetype, 100)
                     ->save(public_path($filepath));
-                $new_src = asset($filepath);
+                $new_src = asset("public/".$filepath);
                 $img->removeAttribute('src');
                 $img->setAttribute('src', $new_src);
                 $img->setAttribute('class', 'img-responsive');
