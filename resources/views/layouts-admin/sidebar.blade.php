@@ -47,13 +47,13 @@
             <li class="{{ request()->segment(2) === 'rekapitulasi' ? 'active' : '' }}"">
                             <a href=" {{url('admin/rekapitulasi')}}" class="link">
                 <i class="ti-files"></i>
-                <span>Laporan rekapitulasi</span>
+                <span>Laporan rekapitulasi posyandu</span>
                 </a>
             </li>
             <li class="{{ request()->is('admin/grafik_anak') ? 'active' : '' }}">
                 <a href="{{url('admin/grafik_anak')}}" class="link">
                     <i class="ti-stats-up"></i>
-                    <span>Grafik</span>
+                    <span>Grafik Pertumbuhan Anak</span>
                 </a>
 
             </li>
@@ -112,12 +112,25 @@
                     <span>Riwayat Pertumbuhan Anak</span>
                 </a>
             </li>
-            <li class="{{ request()->segment(2) === 'laporan_posyandu' ? 'active' : '' }}">
+            <li class="{{ request()->segment(2) === 'rekapitulasi' ? 'active' : '' }}"">
+                            <a href=" {{url('admin/rekapitulasi')}}" class="link">
+                <i class="ti-files"></i>
+                <span>Laporan posyandu</span>
+                </a>
+            </li>
+            <li class="{{ request()->is('admin/grafik_anak') ? 'active' : '' }}">
+                <a href="{{url('admin/grafik_anak')}}" class="link">
+                    <i class="ti-stats-up"></i>
+                    <span>Grafik Pertumbuhan Anak</span>
+                </a>
+
+            </li>
+            <!-- <li class="{{ request()->segment(2) === 'laporan_posyandu' ? 'active' : '' }}">
                 <a href="{{route('laporan_pos_index')}}" class="link">
                     <i class="ti-files"></i>
                     <span>Laporan Posyandu</span>
                 </a>
-            </li>
+            </li> -->
             @endif
 
             @if(auth()->user()->role == 'dinas_kesehatan')
@@ -133,7 +146,14 @@
                     <span>Data Anak Banyuwangi</span>
                 </a>
             </li>
-            
+            <li class="{{ request()->is('admin/grafik_anak') ? 'active' : '' }}">
+                <a href="{{url('admin/grafik_anak')}}" class="link">
+                    <i class="ti-stats-up"></i>
+                    <span>Grafik Pertumbuhan Anak</span>
+                </a>
+
+            </li>
+
             @endif
         </ul>
     </div>

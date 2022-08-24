@@ -74,6 +74,7 @@ Route::post('create_datatimbang',[AnakController::class, 'create_timbang']);
 Route::post('create_dataAnakBaru',[AnakController::class, 'create_anak']);
 Route::get('list-status',[ListController::class,'status']);
 Route::get('list-status_persetujuan',[ListController::class,'status_persetujuan']);
+Route::get('list-tips',[ListController::class,'listTips']);
 
 // Testing
 Route::post('create-imunisasi',[ListController::class,'create_imunisasi']);

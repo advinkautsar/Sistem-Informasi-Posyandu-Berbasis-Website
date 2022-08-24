@@ -10,6 +10,7 @@ use App\Models\Imunisasi;
 use App\Models\Jadwal_Imunisasi;
 use App\Models\Kecamatan;
 use App\Models\Puskesmas;
+use App\Models\Tips_kesehatan;
 use Illuminate\Support\Facades\DB;
 
 
@@ -275,6 +276,25 @@ class ListController extends Controller
                 'status'    => 'success',
                 'message'   => 'Data tersedia',
                 'data'      => $array
+            ], 200);
+        } else {
+            return response()->json([
+                'status'    => 'failed',
+                'message'   => 'Data tidak tersedia',
+                'data'      => []
+            ], 404);
+        }
+    }
+
+    public function listTips()
+    {
+        $tips = Tips_kesehatan::all();
+
+        if ($tips) {
+            return response()->json([
+                'status'    => 'success',
+                'message'   => 'Data tersedia',
+                'data'      => $tips
             ], 200);
         } else {
             return response()->json([

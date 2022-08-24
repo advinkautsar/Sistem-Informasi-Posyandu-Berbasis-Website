@@ -253,7 +253,7 @@ class UserController extends Controller
     {
         $create_akun = User::create([
             'nama_pengguna'=>$request->nama_pengguna,
-            'kata_sandi'=>bcrypt($request->kata_sandi),
+            'password'=>bcrypt($request->password),
             'no_hp'=>$request->no_hp,   
             'token'=>$request->token,
         ]);

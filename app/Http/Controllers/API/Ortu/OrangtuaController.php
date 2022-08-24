@@ -67,7 +67,7 @@ class OrangtuaController extends Controller
             ->leftJoin('desa_kelurahan', 'orangtua.desa_kelurahan_id', 'desa_kelurahan.id')
             ->select(
                 'user.nama_pengguna',
-                'user.kata_sandi',
+                'user.password',
                 'user.no_hp',
                 'kecamatan.nama_kecamatan',
                 'desa_kelurahan.nama',
@@ -109,7 +109,7 @@ class OrangtuaController extends Controller
         $user = User::where('id', $orangtua->user_id)->first();
         $updateuser = $user->update([
             'nama_pengguna' => $request->nama_pengguna,
-            'kata_sandi' => bcrypt($request->kata_sandi),
+            'password' => bcrypt($request->password),
             'no_hp' => $request->no_hp,
         ]);
 

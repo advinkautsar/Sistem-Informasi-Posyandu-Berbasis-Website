@@ -68,8 +68,7 @@ Route::group(['middleware' => ['auth', 'super_admin']], function () {
     Route::get('admin/data_anak/riw_rujukan/{id}', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "riw_rujukan"])->name('riw_rujukan_admin');
     Route::get('admin/data_anak/profil_anak/{id}', [App\Http\Controllers\WEB\SuperAdmin\DataAnakBanyuwangiController::class, "profil_anak"])->name('profil_anak_admin');
 
-    Route::get('admin/rekapitulasi', [RekapitulasiAnakController::class, 'index'])->name('rekapitulasi');
-    Route::get('admin/grafik_anak', [GrafikAnakController::class, 'index'])->name('grafik_anak');
+    
 
     Route::get('admin/kelola_pengguna/dinkes', function () {
         return view('admin.kelola_pengguna.dinas_kesehatan.index');
@@ -92,7 +91,6 @@ Route::group(['middleware' => ['auth', 'petugas_puskesmas']], function () {
     Route::resource('petugas_puskesmas/kelola_data/posyandu', PosyanduCrudController::class);
     Route::resource('petugas_puskesmas/kelola_data/bidan', BidanCrudController::class);
     Route::resource('petugas_puskesmas/kelola_data/kader', KaderCrudController::class);
-    Route::resource('petugas_puskesmas/kelola_data/tips', TipsCrudController::class);
 
     Route::get('petugas_puskesmas/rekapitulasi_imunisasi', [App\Http\Controllers\WEB\PetugasPuskesmas\RekapImunisasiController::class, "index"])->name('rekap_imunisasi');
 });
@@ -152,4 +150,10 @@ Route::post('laporanbalita/{id}', [App\Http\Controllers\WEB\LaporanExportControl
 Route::post('laporanbayi/{id}', [App\Http\Controllers\WEB\LaporanExportController::class, "hasil_laporan_registrasi_bayi"]);
 
 Route::get('grafikall/{kode}/{nik}', [App\Http\Controllers\WEB\GrafikController::class, "penimbangan_alls"]);
+
+Route::resource('petugas_puskesmas/kelola_data/tips', TipsCrudController::class);
+
+//sementara
+Route::get('admin/rekapitulasi', [RekapitulasiAnakController::class, 'index'])->name('rekapitulasi');
+Route::get('admin/grafik_anak', [GrafikAnakController::class, 'index'])->name('grafik_anak');
 
