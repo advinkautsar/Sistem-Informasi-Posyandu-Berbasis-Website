@@ -78,7 +78,7 @@
 
                 <div class="card-body">
                     <!-- <a href="" class="btn mb-2 btn-primary btn-sm"><i class="me-2 ti-plus"></i>Daftar Anak Baru</a> -->
-                    <p class="form-text mb-2">Berikut ini merupakan rekapitulasi data anak di desa atau kelurahan yang terdaftar di wilayah {{auth()->user()->petugas_puskesmas->puskesmas->nama_puskesmas}}
+                    <p class="form-text mb-2">Berikut ini merupakan rekapitulasi data anak di desa atau kelurahan yang terdaftar di kecamatan wilayah kerja {{auth()->user()->petugas_puskesmas->puskesmas->nama_puskesmas}}
                     </p>
 
                     <div class="table-responsive">
@@ -97,8 +97,8 @@
                                 <tr>
                                     <td class="text-center" style="font-size: 12px;">{{++$i}}</td>
                                     <td  style="font-size: 12px;">{{$row->nama}}</td>
-                                    <td class="text-center" style="font-size: 12px;">40</td>
-                                    <td class="text-center" style="font-size: 12px;">3</td>
+                                    <td class="text-center" style="font-size: 12px;">{{$row->jumlah_sehat}}</td>
+                                    <td class="text-center" style="font-size: 12px;">{{$row->jumlah_sakit}}</td>
                                     <td class="text-center" style="font-size: 12px;"><a href="{{route('rekap_posyandu_desa',$row->id)}}" class="btn btn-sm mb-2 btn-primary" type="button">Lihat Detail</a></td>
 
                                 </tr>

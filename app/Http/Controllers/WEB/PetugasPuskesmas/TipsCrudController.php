@@ -66,7 +66,7 @@ class TipsCrudController extends Controller
                     ->resize(1200, 1200)
                     ->encode($mimetype, 100)
                     ->save(public_path($filepath));
-                $new_src = asset("public/".$filepath);
+                $new_src = url("public/".$filepath);
                 $img->removeAttribute('src');
                 $img->setAttribute('src', $new_src);
                 $img->setAttribute('class', 'img-responsive');
@@ -145,7 +145,7 @@ class TipsCrudController extends Controller
                     ->resize(1200, 1200)
                     ->encode($mimetype, 100)
                     ->save(public_path($filepath));
-                $new_src = asset("public/".$filepath);
+                $new_src = url("public/".$filepath);
                 $img->removeAttribute('src');
                 $img->setAttribute('src', $new_src);
                 $img->setAttribute('class', 'img-responsive');

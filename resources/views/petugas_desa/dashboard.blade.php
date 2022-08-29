@@ -98,8 +98,8 @@ Selamat Datang Petugas {{auth()->user()->petugas_desa->desa_kelurahan->nama}}
                                     <td class="text-center" style="font-size: 12px;">{{++$i}}</td>
                                     <td class="text-center" style="font-size: 12px;">{{$row->nama_posyandu}}</td>
                                     <td class="text-center" style="font-size: 12px;">{{$row->alamat}}</td>
-                                    <td class="text-center" style="font-size: 12px;">40</td>
-                                    <td class="text-center" style="font-size: 12px;">3</td>
+                                    <td class="text-center" style="font-size: 12px;">{{$row->jumlah_sehat}}</td>
+                                    <td class="text-center" style="font-size: 12px;">{{$row->jumlah_sakit}}</td>
 
                                 </tr>
                                 @endforeach

@@ -32,7 +32,7 @@ Data Kesehatan Seluruh Anak Banyuwangi
                             <th style="font-size: 12px;">No.</th>
                             <th style="font-size: 12px;">NIK Anak</th>
                             <th style="font-size: 12px;">Nama Anak</th>
-                            <th style="font-size: 12px;">Status Gizi Terakhir</th>
+                            <th style="font-size: 12px;">Status Gizi</th>
                             <th class="text-center" style="font-size: 12px;">Desa</th>
                             <th style="font-size: 12px;">Posyandu</th>
                             <th style="font-size: 12px;">Riwayat Rujukan</th>
